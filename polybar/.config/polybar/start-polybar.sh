@@ -6,7 +6,6 @@
 # start-polybar.sh
 
 # Kill any previous polybars
-pkill -f polybar
 
 # For each monitor in list up to ':'
 for m in $(polybar --list-monitors | cut -d":" -f1); do
