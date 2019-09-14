@@ -13,10 +13,3 @@ stow bash # Install bash settings
 # ... etc ...
 ```
 
-Initially, if forking this to make your own repo, may need to use  `stow --adopt` - 
-
-```bash
-stow --adopt i3/
-stow --adopt bash/
-```
-
