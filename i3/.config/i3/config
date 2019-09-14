@@ -319,10 +319,12 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-# Custom startup apps
+# Kapper
+# Custom startup apps every reload / restart
 exec_always --no-startup-id $HOME/.config/polybar/start-polybar.sh
 
-
+# Custom startup apps every reboot
+exec --no-startup-id autorandr.sh --change --default ~/.autorandr/kapp/config
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 #bar {
