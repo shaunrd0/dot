@@ -1,5 +1,5 @@
 " Single-quote is a comment written to be read
-" Double-quotes ("") are commented out code and can be removed or added
+" Double-quotes are commented out code and can be removed or added
 
 " Set tabwidth=2, adjust Vim shiftwidth to the same
 set tabstop=2 shiftwidth=2 
@@ -31,4 +31,3 @@ filetype plugin indent on
 " Set window jump to custom binding
 " default Ctrl-W conflict - closes browser tabs
 nnoremap <C-e> <C-w>
-

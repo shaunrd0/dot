@@ -1,0 +1,9 @@
+[submodule "vim/.vim/bundle/clang_complete"]
+	path = vim/.vim/bundle/clang_complete
+	url = https://github.com/xavierd/clang_complete
+[submodule "vim/.vim/bundle/supertab"]
+	path = vim/.vim/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "vim/.vim/bundle/unicode.vim"]
+	path = vim/.vim/bundle/unicode.vim
+	url = https://github.com/chrisbra/unicode.vim
