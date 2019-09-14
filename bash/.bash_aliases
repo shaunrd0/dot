@@ -12,5 +12,12 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias gitkapp='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com" && git config user.name && git config user.email'
+# Custom aliases / exports - Appended
+# echo "alias ls='ls -la'" >> ~/.bash_aliases
+alias gitkapp='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com"'
+
 alias config='/usr/bin/git --git-dir=/home/kapper/.cfg/ --work-tree=/home/kapper'
+
+export EDITOR='/usr/bin/vim'
+export VISUAL='/usr/bin/vim'
+
