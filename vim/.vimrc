@@ -51,7 +51,18 @@ filetype plugin indent on
 " base16 soda base16_pop laederon  night_owl kalisi* ayu_mirage* raven
 let g:airline_theme='kalisi'
 
-" Gitgutter
+" Gitgutter installed for + -  diffs in gutters within repo files
+
+" Syntastic syntax checker settings
+"  See :help syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Understand how the plugin works: :h signify-modus-operandi
 " Spare the plugin some work and read: :h g:signify_vcs_list
