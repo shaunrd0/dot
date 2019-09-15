@@ -20,4 +20,13 @@ alias config='/usr/bin/git --git-dir=/home/kapper/.cfg/ --work-tree=/home/kapper
 
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
+export TERMINAL='urxvt -e tmux'
+export PROMPT_COMMAND="$TMUX_GITBAR_DIR/update-gitbar; $PROMPT_COMMAND"
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+eval "$(dircolors ~/.dir_colors)"
+export LS_COLORS="di=1;34:ln=31;47:so=32:pi=33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+
 
