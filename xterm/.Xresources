@@ -1,69 +1,55 @@
-*background:                      #272827
-*foreground:                      #657b83
-*cursorColor:                     #16A085
+!
+!   ██████  ██████  ██   ██ ██████  █████   █████  ██████  █████  ██████
+!  ██░░░░  ██░░░░██░██  ░██░░██░░████░░░██ ██░░░██░░██░░████░░░██░░██░░██
+! ░░█████ ░██   ░██░██  ░██ ░██ ░░░██  ░░ ░███████ ░██ ░░░███████ ░██ ░░
+!  ░░░░░██░██   ░██░██  ░██ ░██   ░██   ██░██░░░░  ░██   ░██░░░░  ░██   
+!  ██████ ░░██████ ░░██████░███   ░░█████ ░░██████░███   ░░██████░███   
+! ░░░░░░   ░░░░░░   ░░░░░░ ░░░     ░░░░░   ░░░░░░ ░░░     ░░░░░░ ░░░   
+!  r  e  a  d     c  o  d  e     l  i  k  e     a     w  i  z  a  r  d 
+!
+! sourcerer by xero harrison (http://sourcerer.xero.nu)
+!  ├─ based on sorcerer by Jeet Sukumaran (http://jeetworks.org)
+!  └─ based on mustang by Henrique C. Alves (hcarvalhoalves@gmail.com)
 
-! special
-*.foreground:   #00a51e
-*.background:   #1a1a1a
-*.cursorColor:  #00a51e
-
+! █▓▒░ scorcerer colors
+*.foreground:   #c2c2b0
+*.background:   #222222
+*.cursorColor:  #c2c2b0
 ! black
-*.color0:       #808080
-*.color8:       #9c9c9c
-
+*.color0:       #111111
+*.color8:       #181818
 ! red
-*.color1:       #c48980
-*.color9:       #a15048
-
+*.color1:       #aa4450
+*.color9:       #ff6a6a
 ! green
-*.color2:       #8da862
-*.color10:      #63fb69
-
+*.color2:       #719611
+*.color10:      #b1d631
 ! yellow
-*.color3:       #b29b7a
-*.color11:      #916f27
-
+*.color3:       #ff9800
+*.color11:      #87875f
 ! blue
-*.color4:       #809bc4
-*.color12:      #567cb0
-
+*.color4:       #6688aa
+*.color12:      #90b0d1
 ! magenta
-*.color5:       #aa88b2
-*.color13:      #964e8f
-
+*.color5:       #8f6f8f
+*.color13:      #8181a6
 ! cyan
-*.color6:       #82adad
-*.color14:      #4e848a
-
+*.color6:       #528b8b
+*.color14:      #87ceeb
 ! white
-*.color7:       #bfbfbf
-*.color15:      #9c9c9c
+*.color7:       #d3d3d3
+*.color15:      #c1cdc1
+! stylized
+*.colorIT:      #719611
+*.colorBD:      #d3d3d3
+*.colorUL:      #528b8b
 
-URxvt.font: xft:Source Code Pro:size=12
+! Can use backup fonts -> 1,2,3,etc..
+URxvt.font: xft:Source Code Pro:size=10,xft:Code2000:size=10,xft:Powerline Consolas:size=10
+
+!URxvt.font: xft:Hack Regular:size=10
 URxvt.depth:                      32
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
-URxvt*cursorBlink:                true
-URxvt*saveLines:                  5000
-URxvt*internalBorder: 5
-URxvt*geometry: 70x19
-
-rofi.color-enabled: true
-rofi.color-window: #272827, #13bf9d, #13bf9d
-rofi.color-normal: #000000, #657b83, #272827, #272827, #13bf9d
-rofi.color-active: #000000, #000000, #000000, #272827, #13bf9d
-rofi.color-urgent: #272827, #657b83, #272827, #272827, #13bf9d
-
-rofi.separator-style: solid
-rofi.sidebar-mode: false
-rofi.lines: 5
-rofi.font: Source Code Pro Semibold 12
-rofi.bw: 1
-rofi.columns: 2
-rofi.padding: 5
-rofi.fixed-num-lines: true
-rofi.hide-scrollbar: true
-
-URxvt.iso14755: false
-URxvt.iso14755_52: false
+URxvt*cursorBlink:                tru
 
