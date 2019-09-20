@@ -83,6 +83,9 @@ let g:signify_update_on_focusgained = 1
 
 " Symbols important to vim / terminal layouts
 
+set termencoding=utf-8
+set encoding=utf-8
+
 " air-line
 let g:airline_powerline_fonts = 1
  
@@ -103,7 +106,7 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
- 
+
 " airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -112,3 +115,4 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
