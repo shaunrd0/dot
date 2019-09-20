@@ -2,23 +2,21 @@
 monitor = ${env:MONITOR}
 width = 100%
 height = 34
-
 background = #000000
 foreground = #00c24a
-
 line-color = ${bar/bottom.background}
 line-size = 16
-
 spacing = 2
 padding-right = 5
 module-margin = 4
-
-font-0 = NotoSans-Regular:size=8;-1
-font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8:antialias=false;-2
-font-3 = FontAwesome:size=10;0
-font-4 = Unifont:size=8;0
-
+; Type font
+font-0 = NotoSans-Regular:size=8;0
+; Symbols fonts
+font-1 = Font Awesome 5 Free Regular:size=8;0
+font-2 = Font Awesome 5 Free Solid:size=8;0
+font-3 = Font Awesome 5 Brands Regular:size=8;0
+;font-4 = Unifont:size=8;0
+font-4 = MaterialIcons:size=10;0
 modules-left = powermenu
 modules-center = ki3
 modules-right = keyboard volume wired-network clock
@@ -28,52 +26,48 @@ monitor = ${env:MONITOR}
 bottom = true
 width = 100%
 height = 27
-
 background = ${bar/top.background}
 foreground = ${bar/top.foreground}
-
 line-color = ${bar/top.background}
 line-size = 2
-
 spacing = 3
 padding-right = 4
 module-margin-left = 0
 module-margin-right = 6
-
+; Typeface font
 font-0 = NotoSans-Regular:size=8;0
-font-1 = unifont:size=6;-3
-font-2 = FontAwesome:size=8;-2
-font-3 = NotoSans-Regular:size=8;-1
-font-4 = MaterialIcons:size=10;-1
-font-5 = Termsynu:size=8:antialias=false;0
-
+; Symbols fonts
+font-1 = Font Awesome 5 Free Regular:size=10;0
+font-2 = Font Awesome 5 Free Solid:size=10;0
+font-3 = Font Awesome 5 Brands Regular:size=10;0
+font-4 = unifont:size=6;0
+;font-0 = NotoSans-Regular:size=8;0
+;font-1 = unifont:size=6;0
+;font-2 = Font Awesome 5 Free Regular:size=10;0
+;font-3 = Font Awesome 5 Free Solid:size=10;0
+;font-4 = Font Awesome 5 Brands Regular:size=10;0
 modules-left = temp-cpu cpu
 modules-center = network filesystem
 modules-right = temp-gpu memory
 
 [module/filesystem]
 type = internal/fs
-
 ; Mountpoints to display
 mount-0 = /
 ;mount-1 = /home
 ;mount-2 = /var
-
 ; Seconds to sleep between updates
 ; Default: 30
 interval = 10
-
 ; Display fixed precision values
 ; Default: false
 fixed-values = true
-
  ;Available tags:
  ;   <label-mounted> (default)
  ;   <bar-free>
  ;   <bar-used>
  ;   <ramp-capacity>
 format-mounted = <label-mounted> 
-
 ; Available tokens:
 ;   %mountpoint%
 ;   %type%
@@ -84,8 +78,7 @@ format-mounted = <label-mounted>
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted = root: %total%
-
+label-mounted =  : %total%
 ; Spacing between entries
 ; Default: 2
 spacing = 4
@@ -93,34 +86,27 @@ spacing = 4
 [module/network]
 type = internal/network
 interface = enp0s31f6
-
 ; Available tags:
 ;   <label-connected> (default)
 ;   <ramp-signal>
 format-connected = <ramp-signal> <label-connected>
-
 ; Available tags:
 ;   <label-disconnected> (default)
 format-disconnected = <label-disconnected>
-
 ; Available tags:
 ;   <label-connected> (default)
 ;   <label-packetloss>
 ;   <animation-packetloss>
 format-packetloss = <animation-packetloss> <label-connected>
-
 ; Default: %ifname% %local_ip%
-label-connected = %ifname%  %local_ip%: %upspeed%    /%downspeed:9%  %linkspeed% 
-label-connected-foreground = #eefafafa
-
+label-connected = %upspeed%    /   %downspeed:9%       %linkspeed%    %local_ip%
+label-connected-foreground =#00c24a 
 ; Default: (none)
 label-disconnected = not connected
-label-disconnected-foreground = #66ffffff
-
+label-disconnected-foreground = #d00
 ; Default: (none)
 ;label-packetloss = %essid%
 ;label-packetloss-foreground = #eefafafa
-
 ; Only applies if <ramp-signal> is used
 ramp-signal-0 = 😱
 ramp-signal-1 = 😠
@@ -128,7 +114,6 @@ ramp-signal-2 = 😒
 ramp-signal-3 = 😊
 ramp-signal-4 = 😃
 ramp-signal-5 = 😈
-
 ; Only applies if <animation-packetloss> is used
 animation-packetloss-0 = ⚠
 animation-packetloss-0-foreground = #ffa64c
@@ -136,28 +121,22 @@ animation-packetloss-1 = 📶
 animation-packetloss-1-foreground = #000000
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
-
-
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 3.0
-
 ; Test connectivity every Nth update
 ; A value of 0 disables the feature
 ; NOTE: Experimental (needs more testing)
 ; Default: 0
 ;ping-interval = 3
-
 ; @deprecated: Define min width using token specifiers (%downspeed:min% and %upspeed:min%)
 ; Minimum output width of upload/download rate
 ; Default: 3
 udspeed-minwidth = 5
-
 ; Accumulate values from all interfaces
 ; when querying for up/downspeed rate
 ; Default: false
 accumulate-stats = true
-
 ; Consider an `UNKNOWN` interface state as up.
 ; Some devices like USB network adapters have 
 ; an unknown state, even when they're running
@@ -166,38 +145,31 @@ unknown-as-up = true
 
 [module/temp-cpu]
 type = internal/temperature
-
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 0.5
-
 ; Thermal zone to use
 ; To list all the zone types, run 
 ; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
 ; Default: 0
 thermal-zone = 0
-
 ; Full path of temperature sysfs path
 ; Use `sensors` to find preferred temperature source, then run
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
-
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0
 base-temperature = 20
-
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
 warn-temperature = 60
-
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label = CPU:    %temperature-f%
-
+label =   %temperature-f%
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
@@ -207,38 +179,31 @@ label-warn-foreground = #f00
 
 [module/temp-gpu]
 type = internal/temperature
-
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 0.5
-
 ; Thermal zone to use
 ; To list all the zone types, run 
 ; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
 ; Default: 0
 thermal-zone = 2
-
 ; Full path of temperature sysfs path
 ; Use `sensors` to find preferred temperature source, then run
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
-
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0
 base-temperature = 20
-
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
 warn-temperature = 60
-
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label = GPU: %temperature-f%
-
+label =   %temperature-f%
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
@@ -246,50 +211,51 @@ label = GPU: %temperature-f%
 label-warn = %temperature-f%
 label-warn-foreground = #f00
 
-
 [module/keyboard]
 type = internal/xkeyboard
 ; List of indicators to ignore
 blacklist-1 = scroll lock
-;label-indicator-on-capslock = 
-;label-indicator-off-capslock = 
-;label-indicator-on-numlock = 
-;label-indicator-off-numlock = 
+label-indicator-on-capslock = Caps 
+label-indicator-off-capslock = Caps 
+label-indicator-on-numlock = Num 
+label-indicator-off-numlock = Num 
 format = <label-indicator> <label-layout>
-
-
+; layout-icon-[0-9]+ = layout;icon
+; Assign each layout an icon that will be available as %icon% token for the
+; <label-layout> tag. The part before ';' will try to match %layout% value.
+label-layout = %name% %icon%
+;layout-icon-default = 
+;layout-icon-1 = us;
 
 [module/powermenu]
 type = custom/menu
-
 format-padding = 5
 format = <label-toggle> <menu> 
-label-open = ䷡  
-label-close = "Ⓧ  "
-
-menu-0-0 = "↸  pkill poly   " 
+;label-open = ䷡  
+label-open = 
+;label-open = 
+;label-open = 
+;label-close = Ⓧ  
+label-close = 
+menu-0-0 = "  pkill poly   " 
 menu-0-0-foreground = #fba922
 menu-0-0-exec = pkill -f polybar
-
-menu-0-1 = "⊒  i3 restart   "
+menu-0-1 = "  i3 restart   "
 menu-0-1-foreground = #fba922
+;menu-0-1-background = #141414
 menu-0-1-exec = i3 restart
-
-menu-0-2 = "⬡  Reboot   "
+menu-0-2 = " Reboot   " 
 menu-0-2-foreground = #fba922
 menu-0-2-exec = sudo /sbin/reboot
-
-menu-0-3 = "⏾  Power off   "
+menu-0-3 =  Power off
 menu-0-3-foreground = #fba922
 menu-0-3-exec = sudo poweroff
-
 menu-1-0 = Cancel
 menu-1-0-foreground = #fba922
 menu-1-0-exec = menu_open-0
 menu-1-1 = Reboot
 menu-1-1-foreground = #fff
 menu-1-1-exec = xterm
-
 menu-2-0 = Power off
 menu-2-0-foreground = #fba922
 menu-2-0-exec = sudo poweroff
@@ -299,10 +265,9 @@ menu-2-1-exec = menu_open-0
 
 [module/cpu]
 type = internal/cpu
-interval = 0.5
+interval = 5
 format = <ramp-coreload> <label> 
 label = %percentage-cores%
-
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
 ramp-coreload-0-foreground = #aaff77
@@ -338,11 +303,11 @@ type = internal/date
 date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
+
 [module/memory]
 type = internal/memory
 format = <label> <bar-used>
 label = RAM
-
 bar-used-width = 30
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
@@ -359,7 +324,6 @@ bar-used-empty-foreground = #444444
 
 [module/ki3]
 type = internal/i3
-
 ; Only show workspaces defined on the same output as the bar
 ;
 ; Useful if you want to show monitor specific workspaces
@@ -367,52 +331,41 @@ type = internal/i3
 ;
 ; Default: false
 pin-workspaces = true
-
 ; This will split the workspace name on ':'
 ; Default: false
 strip-wsnumbers = true
-
 ; Sort the workspaces by index instead of the default
 ; sorting that groups the workspaces by output
 ; Default: false
 index-sort = true
-
 ; Create click handler used to focus workspace
 ; Default: true
-enable-click = false
-
+enable-click = true
 ; Create scroll handlers used to cycle workspaces
 ; Default: true
 enable-scroll = true
-
 ; Wrap around when reaching the first/last workspace
 ; Default: true
 wrapping-scroll = true
-
 ; Set the scroll cycle direction 
 ; Default: true
 reverse-scroll = false
-
 ; Use fuzzy (partial) matching on labels when assigning 
 ; icons to workspaces
 ; Example: code;♚ will apply the icon to all workspaces 
 ; containing 'code' in the label
 ; Default: false
 fuzzy-match = true
-
-
 ; Available tags:
 ;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
 ;   <label-mode> (default)
 format = <label-state> <label-mode>
-
 ; Available tokens:
 ;   %mode%
 ; Default: %mode%
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #e60053
-
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
 ;ws-icon-0 = 1;♚
@@ -424,7 +377,6 @@ label-mode-background = #e60053
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
 ; NOTE: Icon will be available as the %icon% token inside label-*
-
 ; Available tokens:
 ;   %name%
 ;   %icon%
@@ -436,7 +388,6 @@ label-focused-foreground = #ffffff
 label-focused-background = #016239
 label-focused-underline = #1f1f1f
 label-focused-padding = 4
-
 ; Available tokens:
 ;   %name%
 ;   %icon%
@@ -445,7 +396,6 @@ label-focused-padding = 4
 ; Default: %icon%  %name%
 label-unfocused = %index%
 label-unfocused-padding = 4
-
 ; Available tokens:
 ;   %name%
 ;   %icon%
@@ -455,7 +405,6 @@ label-unfocused-padding = 4
 label-visible = %index%
 label-visible-underline = #1f1f1f
 label-visible-padding = 4
-
 ; Separator in between workspaces
 label-separator = |
 label-separator-padding = 2
@@ -466,22 +415,18 @@ type = internal/alsa
 speaker-mixer = IEC958
 headphone-mixer = Headphone
 headphone-id = 9
-
 format-volume = <ramp-volume> <label-volume>
 label-muted =   muted
 label-muted-foreground = #66
-
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
 
-
 [module/wired-network]
 type = internal/network
 interface = net0
 interval = 3.0
-
 label-connected =    %{T3}%local_ip%%{T-}
 label-disconnected-foreground = #66
 
@@ -490,22 +435,18 @@ type = internal/network
 interface = net1
 interval = 3.0
 ping-interval = 10
-
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
 label-disconnected =    not connected
 label-disconnected-foreground = #66
-
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
 animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${bar/top.foreground}
 animation-packetloss-framerate = 500
-
 
