@@ -20,7 +20,7 @@ alias config='/usr/bin/git --git-dir=/home/kapper/.cfg/ --work-tree=/home/kapper
 
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
-export TERMINAL='urxvt -e tmux'
+export TERMINAL='urxvt -e tmux -u'
 export PROMPT_COMMAND="$TMUX_GITBAR_DIR/update-gitbar; $PROMPT_COMMAND"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
