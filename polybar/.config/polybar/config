@@ -15,8 +15,9 @@ font-0 = NotoSans-Regular:size=8;0
 font-1 = Font Awesome 5 Free Regular:size=8;0
 font-2 = Font Awesome 5 Free Solid:size=8;0
 font-3 = Font Awesome 5 Brands Regular:size=8;0
-;font-4 = Unifont:size=8;0
-font-4 = MaterialIcons:size=10;0
+font-4 = Unifont:size=8;0
+font-5 = MaterialIcons-Regular:size=10;0
+;font-5 = Icons:size=8;0
 modules-left = powermenu
 modules-center = ki3
 modules-right = keyboard volume wired-network clock
@@ -333,7 +334,7 @@ type = internal/i3
 pin-workspaces = true
 ; This will split the workspace name on ':'
 ; Default: false
-strip-wsnumbers = true
+strip-wsnumbers = false
 ; Sort the workspaces by index instead of the default
 ; sorting that groups the workspaces by output
 ; Default: false
@@ -355,7 +356,7 @@ reverse-scroll = false
 ; Example: code;♚ will apply the icon to all workspaces 
 ; containing 'code' in the label
 ; Default: false
-fuzzy-match = true
+fuzzy-match = false
 ; Available tags:
 ;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
 ;   <label-mode> (default)
@@ -368,12 +369,16 @@ label-mode-padding = 2
 label-mode-background = #e60053
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
-;ws-icon-0 = 1;♚
-;ws-icon-1 = 2;♛
-;ws-icon-2 = 3;♜
-;ws-icon-3 = 4;♝
-;ws-icon-4 = 5;♞
-;ws-icon-default = ♟
+ws-icon-0 = 1;❶
+ws-icon-1 = 2;❷
+ws-icon-2 = 3;❸
+ws-icon-3 = 4;❹
+ws-icon-4 = 5;❺
+ws-icon-5 = 6;❻
+ws-icon-6 = 7;❼
+ws-icon-7 = 8;❽
+ws-icon-8 = 9;❾
+;ws-icon-default =
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
 ; NOTE: Icon will be available as the %icon% token inside label-*
@@ -383,10 +388,10 @@ label-mode-background = #e60053
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %index%
-label-focused-foreground = #ffffff
-label-focused-background = #016239
-label-focused-underline = #1f1f1f
+label-focused = %icon%
+;label-focused-foreground = #ffffff
+;label-focused-background = #016239
+;label-focused-underline = #6e
 label-focused-padding = 4
 ; Available tokens:
 ;   %name%
@@ -394,16 +399,18 @@ label-focused-padding = 4
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-unfocused = %index%
+label-unfocused = %icon%
 label-unfocused-padding = 4
+label-unfocused-foreground = #3f3f3f
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-visible = %index%
-label-visible-underline = #1f1f1f
+label-visible = %icon%
+label-visible-foreground = #777777
+;label-visible-underline = #1f1f1f
 label-visible-padding = 4
 ; Separator in between workspaces
 label-separator = |
