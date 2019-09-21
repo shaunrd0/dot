@@ -40,6 +40,8 @@ set backspace=indent,eol,start
 " default Ctrl-W conflict - closes browser tabs
 nnoremap <C-e> <C-w>
 
+nnoremap <C-b> :!make -C build/
+
 " Vim Plugin Settings
 
 " set rtp+=/path/to/rtp/that/included/pathogen/vim " if needed
