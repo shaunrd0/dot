@@ -58,7 +58,6 @@ let g:airline_theme='kalisi'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -68,12 +67,12 @@ let g:syntastic_check_on_wq = 0
 " Spare the plugin some work and read: :h g:signify_vcs_list
 " Signify plugin settings
 " Diff gutter within Vim 
-let g:signify_vcs_list = ['git', 'hg']
-let g:signify_cursorhold_insert     = 1
-let g:signify_cursorhold_normal     = 1
-let g:signify_update_on_bufenter    = 0
-let g:signify_update_on_focusgained = 1
-
+" let g:signify_vcs_list = ['git', 'hg']
+" let g:signify_cursorhold_insert     = 1
+" let g:signify_cursorhold_normal     = 1
+" let g:signify_update_on_bufenter    = 0
+" let g:signify_update_on_focusgained = 1
+" 
 " Colorizer plugin settings
 " See :h colorizer in Vim for more info
 "let g:colorizer_colornames = 0 " Don't color literal names, like red, green, etc
