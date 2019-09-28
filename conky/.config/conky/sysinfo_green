@@ -45,7 +45,7 @@ ${voffset 3}$hr
 $color${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}RAM 
 ${goto 0}${color2}$alignc${memgraph 40,305}
 ${voffset 4}${goto 0}${alignc}${color2}${membar 10, 305}
-${color}${goto 10}${font}${memperc}%${alignr}${mem}/${memmax} 
+${color}${goto 10}${font}${memperc}%${alignr}${exec grep -w Active: /proc/meminfo | awk '{print $2 / 1024 / 1024}'}/${memmax} 
 ${voffset 3}${color}$hr
 # 
 # CPU Display
@@ -83,7 +83,12 @@ $hr
 #
 # Other information
 ${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}OTHER
+# MOBO temp, uptime
 $color${voffset 4}${font}Motherboard: ${goto 120}${acpitemp}F°${alignr}Uptime: ${uptime_short}
+# Domain status
+$color${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  http://knoats.com}s
+${font}Shaunreed: ${alignc}${exec curl -Is https://shaunreed.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  http://shaunreed.com}s
+#
 ${voffset 3}$hr
 #
 #
@@ -98,3 +103,4 @@ ${voffset 3}$hr
 # ${color2}${battery_bar}
 # $color${alignr}${if_match "$battery_time"=="unknown"}Charging...${else}Remain Time: ${battery_time}${endif}
 ]]
+
