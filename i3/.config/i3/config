@@ -1,6 +1,10 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Move to a new empty workspace
+#bindsym $mod+Ctrl+Left exec --no-startup-id i3empty.py prev
+bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/bin/i3scripts/i3empty.py
+
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
@@ -267,6 +271,8 @@ mode "$mode_gaps_outer" {
 # start a terminal
 # Uses $TERMINAL environment setting
 bindsym $mod+Return exec terminal
+# Open dropdown terminal using tilix quake mode
+bindsym $mod+a exec tilix -q
 
 # Firefox
 bindsym $mod+F2 exec firefox
@@ -456,7 +462,7 @@ bindsym $mod+space focus mode_toggle
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 #   System keybinds
 ###########################################
