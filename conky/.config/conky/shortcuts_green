@@ -6,11 +6,12 @@ conky.config = {
 	default_color = 'FFFFFF',
 	double_buffer = true,
 	font = 'Bitstream Vera Sans:size=8',
-	gap_x = 25,
-	gap_y = 45,
+	gap_x = 15,
+	gap_y = 40,
 	minimum_width = 200,
 	no_buffers = true,
 	own_window = true,
+  own_window_class = 'shortcuts_green',
 	own_window_type = 'override',
 	own_window_transparent = true,
 	update_interval = 2.0,
@@ -38,8 +39,13 @@ ${color2}power modes - ${color}mod+0
 ${color2}blur lock - ${color}mod+9
 
 ---------------Restart / Reload-----------
-${color2}restart polybars - ${color}mod+c
+
 ${color2}kill polybars - ${color}mod+p
+${color2}start polybars - ${color}mod+shift+p
+${color2}kill conky - ${color}mod+o
+${color2}start conky - ${color}mod+shift+o
+${color2}kill compton - ${color}mod+t
+${color2}start compton - ${color}mod+Shift+t
 ${color2}reload i3 - ${color}mod+Shift+c
 ${color2}restart i3 - ${color}mod+Shift+r
 

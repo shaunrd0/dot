@@ -100,11 +100,12 @@ exec --no-startup-id bitwarden
 exec --no-startup-id firefox
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec --no-startup-id start_konky
+exec --no-startup-id $HOME/.local/bin/i3scripts/start_konky
 exec --no-startup-id xautolock -time 10 -locker blurlock
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id manjaro-hello
@@ -298,10 +299,15 @@ bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 #   Restart, reload, kill keybinds
 ###########################################
 
-# Bind Mod+C to restart polybars
-bindsym $mod+c exec /home/kapper/.config/polybar/start-polybar.sh
+# Bind Mod+O to kill conky
+bindsym $mod+o exec pkill conky
+# Bind Mod+Shift+O to start conky
+bindsym $mod+Shift+o exec $HOME/.local/bin/i3scripts/start_konky
+
 # Bind Mod+P kill polybars
 bindsym $mod+p exec pkill -f polybar
+# Bind Mod+Shift+P to start polybars
+bindsym $mod+Shift+p exec /home/kapper/.config/polybar/start-polybar.sh
 
 # Reload the i3 configuration file
 bindsym $mod+Shift+c reload
@@ -311,12 +317,15 @@ bindsym $mod+Shift+r restart
 # Kill Compton window compositor
 bindsym $mod+t exec --no-startup-id pkill compton
 # Start Compton window compositor
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+t exec --no-startup-id compton -b
+
 # Kill, restart dunst
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+
 # Display cursor to select X window to kill
 # Misclicks can be dangerous
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
