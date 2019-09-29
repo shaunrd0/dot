@@ -332,6 +332,10 @@ bindsym $mod+Shift+q kill
 #   i3 system / menus keybinds
 ###########################################
 
+# Audio device settings
+bindsym $mod+Ctrl+a exec pavucontrol
+# Bluetooth device settings
+bindsym $mod+Ctrl+d exec blueman-manager
 # System config tool for i3
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 # start program launcher

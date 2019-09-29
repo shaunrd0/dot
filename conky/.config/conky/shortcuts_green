@@ -32,6 +32,8 @@ ${color2}image clip tool - ${color}mod+Shift+PrintScreen
 ${color2}screenshot active window - ${color}mod+PrintScreen
 
 ---------------Menus----------------------
+${color2}audio devices - ${color}mod+Ctrl+a
+${color2}bluetooth devices - ${color}mod+Ctrl+d
 ${color2}bmenu system settings - ${color}mod+Ctrl+b
 ${color2}dmenu app launcher - ${color}mod+d
 ${color2}morc_menu app menu - ${color}mod+z
