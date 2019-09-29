@@ -50,9 +50,13 @@ ${voffset 3}${color}$hr
 # 
 # CPU Display
 ${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}CPU 
-${alignr}${font}i7-3630QM@2.40GHz 
-${goto 0}${color2}${cpugraph 40}
+# Chipset
+${alignr}${font}${exec inxi |grep CPU | awk '{print $4" "$2" "$3" "$6}'}${exec lscpu |grep -w "Model name:"| awk '{print " - " $8}'}
+# CPU Grpah
+${voffset 4}${goto 0}${alignc}${color2}${cpugraph 40, 305}
+# Percentage / GHz utilized
 ${voffset 0}${goto 10}${color}${font}${hwmon temp 1}F°${alignr}${cpu}% - ${freq_g}GHz  
+# CPU Core Graphs
 ${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu1}%${goto 43}${color2}${cpubar cpu1 12,110} ${goto 170}${color}${cpu cpu2}%${goto 203}${color2}${cpubar cpu2 12,110}
 ${voffset 4}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu3}%${goto 43}${color2}${cpubar cpu3 12,110} ${goto 170}${color}${cpu cpu4}%${goto 203}${color2}${cpubar cpu4 12,110}
 ${voffset 4}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu5}%${goto 43}${color2}${cpubar cpu5 12,110} ${goto 170}${color}${cpu cpu6}%${goto 203}${color2}${cpubar cpu6 12,110}
@@ -86,8 +90,8 @@ ${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}OTHER
 # MOBO temp, uptime
 $color${voffset 4}${font}Motherboard: ${goto 120}${acpitemp}F°${alignr}Uptime: ${uptime_short}
 # Domain status
-$color${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  http://knoats.com}s
-${font}Shaunreed: ${alignc}${exec curl -Is https://shaunreed.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  http://shaunreed.com}s
+$color${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://knoats.com}s
+${font}Shaunreed: ${alignc}${exec curl -Is https://shaunreed.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://shaunreed.com}s
 #
 ${voffset 3}$hr
 #
