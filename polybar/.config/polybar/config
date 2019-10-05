@@ -17,10 +17,10 @@ font-2 = Font Awesome 5 Free Solid:size=8;0
 font-3 = Font Awesome 5 Brands Regular:size=8;0
 font-4 = Unifont:size=8;0
 font-5 = MaterialIcons-Regular:size=10;0
-;font-5 = Icons:size=8;0
-modules-left = powermenu
+font-6 = Weather Icons:size=8;0
+modules-left = powermenu weather
 modules-center = ki3
-modules-right = keyboard volume wired-network clock
+modules-right = info-hackspeed keyboard volume wired-network clock
 
 [bar/bottom]
 monitor = ${env:MONITOR}
@@ -42,14 +42,25 @@ font-1 = Font Awesome 5 Free Regular:size=10;0
 font-2 = Font Awesome 5 Free Solid:size=10;0
 font-3 = Font Awesome 5 Brands Regular:size=10;0
 font-4 = unifont:size=6;0
-;font-0 = NotoSans-Regular:size=8;0
-;font-1 = unifont:size=6;0
-;font-2 = Font Awesome 5 Free Regular:size=10;0
-;font-3 = Font Awesome 5 Free Solid:size=10;0
-;font-4 = Font Awesome 5 Brands Regular:size=10;0
 modules-left = temp-cpu cpu
 modules-center = network filesystem
-modules-right = temp-gpu memory
+modules-right = info-idle caffeine temp-gpu memory
+
+[module/weather]
+type = custom/script
+exec = ~/.local/bin/i3scripts/weathermap
+interval = 600
+;label-font = Font Awesome 5 Free Solid:size=40;0
+
+[module/info-hackspeed]
+type = custom/script
+exec = ~/.local/bin/i3scripts/info-hackspeed
+tail = true
+
+[module/info-idle]
+type = custom/script
+exec = ~/.local/bin/i3scripts/info-idle
+tail = true
 
 [module/filesystem]
 type = internal/fs
@@ -248,21 +259,25 @@ menu-0-1-exec = i3 restart
 menu-0-2 = " Reboot   " 
 menu-0-2-foreground = #fba922
 menu-0-2-exec = sudo /sbin/reboot
-menu-0-3 =  Power off
+menu-0-3 = " Power off   "
 menu-0-3-foreground = #fba922
 menu-0-3-exec = sudo poweroff
-menu-1-0 = Cancel
-menu-1-0-foreground = #fba922
-menu-1-0-exec = menu_open-0
-menu-1-1 = Reboot
-menu-1-1-foreground = #fff
-menu-1-1-exec = xterm
-menu-2-0 = Power off
-menu-2-0-foreground = #fba922
-menu-2-0-exec = sudo poweroff
-menu-2-1 = Cancel
-menu-2-1-foreground = #ffffff
-menu-2-1-exec = menu_open-0
+menu-0-4 = " Lock   "
+menu-0-4-foreground = #fba922
+menu-0-4-exec = i3lock -c 000000
+
+[module/caffeine]
+type = custom/menu
+format = <menu> <label-toggle>
+label-open = 
+label-close = 
+label-open-padding = 0
+label-close-padding = 1
+label-separator = " "
+menu-0-0 = 
+menu-0-0-exec = source /home/kapper/.local/bin/i3scripts/xoffee enable
+menu-0-1 = 
+menu-0-1-exec = source /home/kapper/.local/bin/i3scripts/xoffee disable
 
 [module/cpu]
 type = internal/cpu
