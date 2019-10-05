@@ -13,7 +13,7 @@ module-margin = 4
 font-0 = NotoSans-Regular:size=8;0
 ; Symbols fonts
 font-1 = Font Awesome 5 Free Regular:size=8;0
-font-2 = Font Awesome 5 Free Solid:size=8;0
+font-2 = Font Awesome 5 Free Solid:size=10;0
 font-3 = Font Awesome 5 Brands Regular:size=8;0
 font-4 = Unifont:size=8;0
 font-5 = MaterialIcons-Regular:size=10;0
@@ -43,7 +43,7 @@ font-2 = Font Awesome 5 Free Solid:size=10;0
 font-3 = Font Awesome 5 Brands Regular:size=10;0
 font-4 = unifont:size=6;0
 modules-left = temp-cpu cpu
-modules-center = network filesystem
+modules-center = clock-utc network filesystem
 modules-right = info-idle caffeine temp-gpu memory
 
 [module/weather]
@@ -308,6 +308,11 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
+
+[module/clock-utc]
+type = custom/script
+exec = TZ=UTC date +"UTC: %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}"
+interval = 30
 
 [module/clock]
 type = internal/date

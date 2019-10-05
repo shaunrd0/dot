@@ -72,9 +72,9 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
-        trend="" # Arrow, down-right slant
+        trend="" # Arrow, down-right slant
     elif [ "$forecast_temp" -gt "$current_temp" ]; then
-        trend="" # Arrow, up-right slant
+        trend="" # Arrow, up-right slant
     else
         trend="" # Arrow, left-to-right
     fi
