@@ -21,11 +21,13 @@ conky.text = [[
 
 ---------------Applications---------------
 ${color2}open new terminal - ${color}mod+Enter
-${color2}open dropdown terminal - ${color}mod+a
+${color2}open dropdown tilix terminal - ${color}mod+a
 ${color2}Firefox - ${color}mod+F2
-${color2}Signal - ${color}mod+F3
-${color2}Bitwarden - ${color}mod+F4
-${color2}PCManfm filemanager - ${color}mod+Shift+F3
+${color2}Geary - ${color}mod+F3
+${color2}Discord - ${color}mod+F4
+${color2}Signal - ${color}mod+F5
+${color2}Bitwarden - ${color}mod+F6
+${color2}PCManfm filemanager - ${color}mod+F8
 
 ---------------Screenshots----------------
 ${color2}image clip tool - ${color}mod+Shift+PrintScreen
@@ -59,7 +61,8 @@ ${color2}show scratchpad - ${color}mod+minus
 ${color2}modify gaps - ${color}mod+Shift+g
 ${color2}resize mode - ${color}mod+r
 ${color2}toggle split direction - ${color}mod+q
-${color2}kill focused - ${color}mod+Shift+q
+${color2}kill cursor selection - ${color}mod+Ctrl+q
+${color2}kill active window - ${color}mod+Shift+q
 
 ---------------Workspace--------------------
 ${color2}move to empty workspace - ${color}mod+Shift+z
