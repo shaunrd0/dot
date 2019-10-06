@@ -43,8 +43,14 @@ font-2 = Font Awesome 5 Free Solid:size=10;0
 font-3 = Font Awesome 5 Brands Regular:size=10;0
 font-4 = unifont:size=6;0
 modules-left = temp-cpu cpu
-modules-center = clock-utc network filesystem
+modules-center = popup-utc network filesystem
 modules-right = info-idle caffeine temp-gpu memory
+
+[module/popup-utc]
+type = custom/script
+exec = ~/.local/bin/i3scripts/popup-calendar
+interval = 5
+click-left = ~/.local/bin/i3scripts/popup-calendar --popup
 
 [module/weather]
 type = custom/script
