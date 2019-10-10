@@ -45,11 +45,18 @@
 *.colorUL:      #528b8b
 
 ! Can use backup fonts -> 1,2,3,etc..
-URxvt.font: xft:Source Code Pro:size=10,xft:Code2000:size=10,xft:Powerline Consolas:size=10
+!URxvt.font: xft:Source Code Pro:size=10,xft:Code2000:size=10,xft:Powerline Consolas:size=10,xft:Icons:size=10,xft:Inconsolata Nerd Font Mono:size=15
 
-!URxvt.font: xft:Hack Regular:size=10
+! Fix the fonts
+!URxvt.font: xft:SauceCodePro\ NF:size=10
+!,xft:Powerline Consolas:size=10
+!URxvt.font: xft:InconsolataNerdFont
+URxvt.font: xft:Source Code Pro:size=10,xft:Inconsolata Nerd Font Mono:size=15
+!URxvt.letterSpace: -1 
+
 URxvt.depth:                      32
 URxvt*scrollBar:                  false
-URxvt*mouseWheelScrollPage:       false
-URxvt*cursorBlink:                tru
+URxvt*mouseWheelScrollPage:       true
+URxvt*cursorBlink:                true
+*URxvt.perl-ext-common:           extosc-xterm-clipboard
 
