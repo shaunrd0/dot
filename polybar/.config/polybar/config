@@ -1,73 +1,108 @@
+;                      Polybars
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 [bar/top]
+
+; Polybar Position
 monitor = ${env:MONITOR}
 width = 100%
 height = 34
+
+; Polybar Color
 background = #000000
 foreground = #00c24a
 line-color = ${bar/bottom.background}
 line-size = 16
 spacing = 2
+
+; Polybar Padding
+padding-left = 0
 padding-right = 5
+
+; Margin Between Modules
 module-margin = 4
+
 ; Type font
 font-0 = NotoSans-Regular:size=8;0
-; Symbols fonts
-font-1 = Font Awesome 5 Free Regular:size=8;0
-font-2 = Font Awesome 5 Free Solid:size=10;0
-font-3 = Font Awesome 5 Brands Regular:size=8;0
-font-4 = Unifont:size=8;0
-font-5 = MaterialIcons-Regular:size=10;0
-font-6 = Weather Icons:size=8;0
+font-1 = Inconsolata Nerd Font:size=12;0
+font-2 = Unifont:size=8;0
+
+; Modules
 modules-left = powermenu weather
 modules-center = ki3
 modules-right = info-hackspeed keyboard volume wired-network clock
 
 [bar/bottom]
+; Position, size of polybar
 monitor = ${env:MONITOR}
 bottom = true
 width = 100%
 height = 27
+
+; Use top bar colors
 background = ${bar/top.background}
 foreground = ${bar/top.foreground}
 line-color = ${bar/top.background}
 line-size = 2
 spacing = 3
-padding-right = 4
-module-margin-left = 0
+
+; Polybar padding
+padding-left = 6
+padding-right = 6
+
+; Margins between modules
+module-margin-left = 4
 module-margin-right = 6
-; Typeface font
+
+; Font ssettings, order matters
+; Top font takes priority over following
+;font-0 = Source Code Pro:size=10;0
 font-0 = NotoSans-Regular:size=8;0
-; Symbols fonts
-font-1 = Font Awesome 5 Free Regular:size=10;0
-font-2 = Font Awesome 5 Free Solid:size=10;0
-font-3 = Font Awesome 5 Brands Regular:size=10;0
-font-4 = unifont:size=6;0
+font-1 = Inconsolata Nerd Font:size=12;0
+font-2 = Unifont:size=8;0
+
+; Modules
 modules-left = temp-cpu cpu
-modules-center = popup-utc network filesystem
+modules-center = popup-utc network public-ip filesystem
 modules-right = info-idle caffeine temp-gpu memory
 
+
+;                     Modules
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;    Pop-up Calendar
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/popup-utc]
 type = custom/script
 exec = ~/.local/bin/i3scripts/popup-calendar
 interval = 5
 click-left = ~/.local/bin/i3scripts/popup-calendar --popup
 
+;    Weather
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/weather]
 type = custom/script
 exec = ~/.local/bin/i3scripts/weathermap
 interval = 600
 ;label-font = Font Awesome 5 Free Solid:size=40;0
 
+;    Type Speed
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/info-hackspeed]
 type = custom/script
 exec = ~/.local/bin/i3scripts/info-hackspeed
 tail = true
 
+;    System Idle Time
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/info-idle]
 type = custom/script
 exec = ~/.local/bin/i3scripts/info-idle
 tail = true
 
+;    Disk Space
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/filesystem]
 type = internal/fs
 ; Mountpoints to display
@@ -96,18 +131,20 @@ format-mounted = <label-mounted>
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted =  : %total%
+label-mounted =  : %total%
 ; Spacing between entries
 ; Default: 2
 spacing = 4
 
+;    Network Status
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/network]
 type = internal/network
 interface = enp0s31f6
 ; Available tags:
 ;   <label-connected> (default)
 ;   <ramp-signal>
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 ; Available tags:
 ;   <label-disconnected> (default)
 format-disconnected = <label-disconnected>
@@ -117,7 +154,7 @@ format-disconnected = <label-disconnected>
 ;   <animation-packetloss>
 format-packetloss = <animation-packetloss> <label-connected>
 ; Default: %ifname% %local_ip%
-label-connected = %upspeed%    /   %downspeed:9%       %linkspeed%    %local_ip%
+label-connected =  %upspeed%    /   %downspeed:9%     龍   %linkspeed%          %local_ip%
 label-connected-foreground =#00c24a 
 ; Default: (none)
 label-disconnected = not connected
@@ -126,19 +163,19 @@ label-disconnected-foreground = #d00
 ;label-packetloss = %essid%
 ;label-packetloss-foreground = #eefafafa
 ; Only applies if <ramp-signal> is used
-ramp-signal-0 = 😱
-ramp-signal-1 = 😠
-ramp-signal-2 = 😒
-ramp-signal-3 = 😊
-ramp-signal-4 = 😃
-ramp-signal-5 = 😈
+;ramp-signal-0 = 😱
+;ramp-signal-1 = 😠
+;ramp-signal-2 = 😒
+;ramp-signal-3 = 😊
+;ramp-signal-4 = 😃
+;ramp-signal-5 = 😈
 ; Only applies if <animation-packetloss> is used
-animation-packetloss-0 = ⚠
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 📶
-animation-packetloss-1-foreground = #000000
+;animation-packetloss-0 = ⚠
+;animation-packetloss-0-foreground = #ffa64c
+;animation-packetloss-1 = 📶
+;animation-packetloss-1-foreground = #000000
 ; Framerate in milliseconds
-animation-packetloss-framerate = 500
+;animation-packetloss-framerate = 500
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 3.0
@@ -161,6 +198,15 @@ accumulate-stats = true
 ; Default: false
 unknown-as-up = true
 
+;    Show Public IP
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/public-ip]
+type = custom/script
+exec = curl -s ifconfig.me
+interval = 600
+
+;    CPU Temp
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/temp-cpu]
 type = internal/temperature
 ; Seconds to sleep between updates
@@ -187,7 +233,7 @@ warn-temperature = 60
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label =   %temperature-f%
+label =     %temperature-f%
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
@@ -195,6 +241,8 @@ label =   %temperature-f%
 label-warn = %temperature-f%
 label-warn-foreground = #f00
 
+;    GPU Temp
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/temp-gpu]
 type = internal/temperature
 ; Seconds to sleep between updates
@@ -221,7 +269,7 @@ warn-temperature = 60
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label =   %temperature-f%
+label = ﲅ     %temperature-f%
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
@@ -229,14 +277,17 @@ label =   %temperature-f%
 label-warn = %temperature-f%
 label-warn-foreground = #f00
 
+;    Keyboard Status
+;    Locale, Caps, Numlock
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/keyboard]
 type = internal/xkeyboard
 ; List of indicators to ignore
 blacklist-1 = scroll lock
 label-indicator-on-capslock = Caps 
-label-indicator-off-capslock = Caps 
+label-indicator-off-capslock =
 label-indicator-on-numlock = Num 
-label-indicator-off-numlock = Num 
+label-indicator-off-numlock =
 format = <label-indicator> <label-layout>
 ; layout-icon-[0-9]+ = layout;icon
 ; Assign each layout an icon that will be available as %icon% token for the
@@ -245,46 +296,48 @@ label-layout = %name% %icon%
 ;layout-icon-default = 
 ;layout-icon-1 = us;
 
+;    System Menus
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/powermenu]
 type = custom/menu
-format-padding = 5
+format-padding = 0 
 format = <label-toggle> <menu> 
-;label-open = ䷡  
-label-open = 
-;label-open = 
-;label-open = 
-;label-close = Ⓧ  
-label-close = 
-menu-0-0 = "  pkill poly   " 
+label-open = "   " 
+label-close = "   "
+menu-0-0 = "      pkill poly   " 
 menu-0-0-foreground = #fba922
 menu-0-0-exec = pkill -f polybar
-menu-0-1 = "  i3 restart   "
+menu-0-1 = "    i3 restart   "
 menu-0-1-foreground = #fba922
 ;menu-0-1-background = #141414
 menu-0-1-exec = i3 restart
-menu-0-2 = " Reboot   " 
+menu-0-2 = "   Reboot   " 
 menu-0-2-foreground = #fba922
 menu-0-2-exec = sudo /sbin/reboot
-menu-0-3 = " Power off   "
+menu-0-3 = "   Power off   "
 menu-0-3-foreground = #fba922
 menu-0-3-exec = sudo poweroff
-menu-0-4 = " Lock   "
+menu-0-4 = "     Lock   "
 menu-0-4-foreground = #fba922
 menu-0-4-exec = i3lock -c 000000
 
+;    Pseudo-Caffeine
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/caffeine]
 type = custom/menu
 format = <menu> <label-toggle>
-label-open = 
-label-close = 
+label-open = "  "
+label-close = "   " 
 label-open-padding = 0
 label-close-padding = 1
 label-separator = " "
-menu-0-0 = 
+menu-0-0 = " ﮣ "
 menu-0-0-exec = source /home/kapper/.local/bin/i3scripts/xoffee enable
-menu-0-1 = 
+menu-0-1 = " ﮤ "
 menu-0-1-exec = source /home/kapper/.local/bin/i3scripts/xoffee disable
 
+;    CPU Core Usages
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/cpu]
 type = internal/cpu
 interval = 5
@@ -315,26 +368,34 @@ ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
 
+;    UTC Date / Time
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/clock-utc]
 type = custom/script
 exec = TZ=UTC date +"UTC: %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}"
 interval = 30
 
+;    Network Status
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/clock]
 type = internal/date
 interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
+;    Local Date / Time
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/date]
 type = internal/date
 date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
 
+;    Memory Usage
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/memory]
 type = internal/memory
 format = <label> <bar-used>
-label = RAM
+label =  
 bar-used-width = 30
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
@@ -349,6 +410,8 @@ bar-used-empty = -
 bar-used-empty-font = 6
 bar-used-empty-foreground = #444444
 
+;    I3 Workspace Display
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/ki3]
 type = internal/i3
 ; Only show workspaces defined on the same output as the bar
@@ -395,15 +458,15 @@ label-mode-padding = 2
 label-mode-background = #e60053
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
-ws-icon-0 = 1;❶
-ws-icon-1 = 2;❷
-ws-icon-2 = 3;❸
-ws-icon-3 = 4;❹
-ws-icon-4 = 5;❺
-ws-icon-5 = 6;❻
-ws-icon-6 = 7;❼
-ws-icon-7 = 8;❽
-ws-icon-8 = 9;❾
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
 ;ws-icon-default =
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
@@ -440,9 +503,11 @@ label-visible-foreground = #777777
 label-visible-padding = 4
 ; Separator in between workspaces
 label-separator = |
-label-separator-padding = 2
+label-separator-padding = 1
 label-separator-foreground = #ffb52a
 
+;    Volume Status
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/volume]
 type = internal/alsa
 speaker-mixer = IEC958
@@ -451,35 +516,8 @@ headphone-id = 9
 format-volume = <ramp-volume> <label-volume>
 label-muted =   muted
 label-muted-foreground = #66
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-
-[module/wired-network]
-type = internal/network
-interface = net0
-interval = 3.0
-label-connected =    %{T3}%local_ip%%{T-}
-label-disconnected-foreground = #66
-
-[module/wireless-network]
-type = internal/network
-interface = net1
-interval = 3.0
-ping-interval = 10
-format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
-label-disconnected =    not connected
-label-disconnected-foreground = #66
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+ramp-volume-3 = 
 

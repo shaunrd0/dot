@@ -2,23 +2,23 @@
 
 get_icon() {
     case $1 in
-        01d) icon="";; # Sun clear
-        01n) icon="";; # Moon clear
-        02d) icon="";; # Sun cloudy
-        02n) icon="";; # Moon cloudy
-        03*) icon="";; # Cloud
-        04*) icon="";; # Clouds
-        09d) icon="";; # Day, cloud, rain, wind
-        09n) icon="";; # Night, cloud, rain, wind
-        10d) icon="";; # Day rain
-        10n) icon="";; # Night rain
-        11d) icon="";; # Day, rain, lightning
-        11n) icon="";; # Night, rain, lightning
-        13d) icon="";; # Day, snow
-        13n) icon="";; # Night, snow
-        50d) icon="";; # Day, fog
-        50n) icon="";; # Night, fog
-        *) icon=""; # Sun clear, default icon
+        01d) icon="滛";; # Sun clear
+        01n) icon="";; # Moon clear
+        02d) icon="";; # Sun cloudy
+        02n) icon="";; # Moon cloudy
+        03*) icon="";; # Cloud
+        04*) icon="";; # Clouds
+        09d) icon="";; # Day, cloud, rain, wind
+        09n) icon="";; # Night, cloud, rain, wind
+        10d) icon="";; # Day rain
+        10n) icon="";; # Night rain
+        11d) icon="";; # Day, rain, lightning
+        11n) icon="";; # Night, rain, lightning
+        13d) icon="";; # Day, snow
+        13n) icon="";; # Night, snow
+        50d) icon="";; # Day, fog
+        50n) icon="";; # Night, fog
+        *) icon=""; # Sun clear, default icon
     esac
 
     echo $icon
@@ -72,11 +72,11 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
 
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
-        trend="" # Arrow, down-right slant
+        trend="" # Arrow, down-right slant
     elif [ "$forecast_temp" -gt "$current_temp" ]; then
         trend="" # Arrow, up-right slant
     else
-        trend="" # Arrow, left-to-right
+        trend="壟" # Arrow, left-to-right
     fi
 
 
@@ -85,12 +85,12 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     now=$(date +%s)
 
     if [ "$sun_rise" -gt "$now" ]; then
-        daytime=" $(get_duration "$((sun_rise-now))")" # Sun rise
+        daytime="   $(get_duration "$((sun_rise-now))")" # Sun rise
     elif [ "$sun_set" -gt "$now" ]; then
-        daytime=" $(get_duration "$((sun_set-now))")" # Sun set
+        daytime="   $(get_duration "$((sun_set-now))")" # Sun set
     else
-        daytime=" $(get_duration "$((sun_rise-now))")" # Unknown
+        daytime="   $(get_duration "$((sun_rise-now))")" # Unknown
     fi
 
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL   $daytime"
+    echo "$(get_icon "$current_icon")     $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon")   $forecast_temp$SYMBOL   $daytime"
 fi
