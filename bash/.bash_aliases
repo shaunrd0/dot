@@ -18,9 +18,12 @@ alias gitkapp='git config --global user.name "Shaun Reed" && git config --global
 
 alias config='/usr/bin/git --git-dir=/home/kapper/.cfg/ --work-tree=/home/kapper'
 
+#export FONT='xft:InconsolataNerdFont'
+#export TERMINAL='urxvt -fn '$FONT' -e tmux -u'
+export TERMINAL='urxvt -e tmux -u'
+
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
-export TERMINAL='urxvt -e tmux -u'
 export PROMPT_COMMAND="$TMUX_GITBAR_DIR/update-gitbar; $PROMPT_COMMAND"
 export PATH=$PATH":$HOME/.local/bin/i3scripts"
 
