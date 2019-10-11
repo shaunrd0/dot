@@ -44,13 +44,8 @@
 *.colorBD:      #d3d3d3
 *.colorUL:      #528b8b
 
-! Can use backup fonts -> 1,2,3,etc..
-!URxvt.font: xft:Source Code Pro:size=10,xft:Code2000:size=10,xft:Powerline Consolas:size=10,xft:Icons:size=10,xft:Inconsolata Nerd Font Mono:size=15
-
-! Fix the fonts
-!URxvt.font: xft:SauceCodePro\ NF:size=10
-!,xft:Powerline Consolas:size=10
-!URxvt.font: xft:InconsolataNerdFont
+! Can use backup fonts -> 1,2,3 etc..
+! Top font takes priority over following fonts
 URxvt.font: xft:Source Code Pro:size=10,xft:Inconsolata Nerd Font Mono:size=15
 !URxvt.letterSpace: -1 
 
