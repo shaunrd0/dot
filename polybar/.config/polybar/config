@@ -456,6 +456,8 @@ format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #e60053
+
+
 ; ws-icon-[0-9]+ = label;icon
 ; NOTE: The label needs to match the name of the i3 workspace
 ws-icon-0 = 1;
@@ -467,7 +469,12 @@ ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
-;ws-icon-default =
+ws-icon-9 = 99;
+ws-icon-10 = 98;
+ws-icon-11 = 97;
+ws-icon-12 = 96;爵
+ws-icon-13 = 95;
+ws-icon-default = 
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
 ; NOTE: Icon will be available as the %icon% token inside label-*
