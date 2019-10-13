@@ -131,7 +131,7 @@ format-mounted = <label-mounted>
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted =  : %total%
+label-mounted =   %free%
 ; Spacing between entries
 ; Default: 2
 spacing = 4
