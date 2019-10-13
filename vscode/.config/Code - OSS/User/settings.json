@@ -1,4 +1,4 @@
 {
     "cmake.configureOnOpen": true,
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Powerline Consolas'"
+    "editor.fontFamily": "'Inconsolata Nerd Font Mono'"
 }
