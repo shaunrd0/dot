@@ -22,34 +22,34 @@ conky.text = [[
 #
 # Date
 ${alignr}${color1}
-${goto 120}${voffset 8}$color2${font Bitstream Vera Sans:size=16}${time %A}$font\
-${goto 120}${voffset -8}$alignr$color${font Bitstream Vera Sans:size=38}${time %e}$font
-${goto 120}$color${voffset -30}$color${font Bitstream Vera Sans:size=18}${time %b}$font\
-${voffset -3} $color${font Bitstream Vera Sans:size=20}${time %Y}$font$color2$hr
+${goto 120}${voffset 8}${color2}${font Bitstream Vera Sans:size=16}${time %A}$font\
+${goto 120}${voffset -8}$alignr${color}${font Bitstream Vera Sans:size=38}${time %e}$font
+${goto 120}${color}${voffset -30}${color}${font Bitstream Vera Sans:size=18}${time %b}$font\
+${voffset -3} ${color}${font Bitstream Vera Sans:size=20}${time %Y}$font${color2}$hr
 # 
 # Process list, load average
 # 1m / 5m / 15m format for lad avg
-$color${voffset 35}${alignr}${font Bitstream Vera Sans:size=10}Proccesses
-$color${alignr}${font Bitstream Vera Sans:size=8}Load Average: $font$alignr${loadavg}
+${color2}${voffset 35}${alignr}${font Bitstream Vera Sans:size=10}Proccesses${color}
+${color}${alignr}${font Bitstream Vera Sans:size=8}Load Average: $font$alignr${loadavg}
 #
 # Process list CPU / RAM utilization table
 ${font}CPU${goto 170}RAM
-${voffset 3}$font$color2${top name 1}${goto 120}$color${top cpu 1}%${goto 170}$color2${top_mem name 1}$color${alignr}${top_mem mem_res 1}
-$color2${top name 2}${goto 120}$color${top cpu 2}%${goto 170}$color2${top_mem name 2}$color${alignr}${top_mem mem_res 2}
-$color2${top name 3}${goto 120}$color${top cpu 3}%${goto 170}$color2${top_mem name 3}$color${alignr}${top_mem mem_res 3}
-$color2${top name 4}${goto 120}$color${top cpu 4}%${goto 170}$color2${top_mem name 4}$color${alignr}${top_mem mem_res 4}
-$color2${top name 5}${goto 120}$color${top cpu 5}%${goto 170}$color2${top_mem name 5}$color${alignr}${top_mem mem_res 5}
+${voffset 3}$font${color2}${top name 1}${goto 120}${color}${top cpu 1}%${goto 170}${color2}${top_mem name 1}${color}${alignr}${top_mem mem_res 1}${color}
+${color2}${top name 2}${goto 120}${color}${top cpu 2}%${goto 170}${color2}${top_mem name 2}${color}${alignr}${top_mem mem_res 2}${color}
+${color2}${top name 3}${goto 120}${color}${top cpu 3}%${goto 170}${color2}${top_mem name 3}${color}${alignr}${top_mem mem_res 3}${color}
+${color2}${top name 4}${goto 120}${color}${top cpu 4}%${goto 170}${color2}${top_mem name 4}${color}${alignr}${top_mem mem_res 4}${color}
+${color2}${top name 5}${goto 120}${color}${top cpu 5}%${goto 170}${color2}${top_mem name 5}${color}${alignr}${top_mem mem_res 5}${color}
 ${voffset 3}$hr
 # 
 # RAM Display
-$color${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}RAM 
-${goto 0}${color2}$alignc${memgraph 40,305}
+${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}RAM ${color}
+${goto 0}${color2}$alignc${memgraph 40,305}${color}
 ${voffset 4}${goto 0}${alignc}${color2}${membar 10, 305}
 ${color}${goto 10}${font}${memperc}%${alignr}${exec grep -w Active: /proc/meminfo | awk '{print $2 / 1024 / 1024}'}/${memmax} 
 ${voffset 3}${color}$hr
 # 
 # CPU Display
-${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}CPU 
+${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}CPU ${color}
 # Chipset
 ${alignr}${font}${exec inxi |grep CPU | awk '{print $4" "$2" "$3" "$6}'}${exec lscpu |grep -w "Model name:"| awk '{print " - " $8}'}
 # CPU Grpah
@@ -64,33 +64,39 @@ ${voffset 4}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu7}%${go
 ${voffset 3}${color}$hr
 #
 # Network display
-$color${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}NETWORK 
+${color2}${font}${alignr}NETWORK${color}
+${color}${voffset 4}${font}Interface: ${gw_iface} ${font}${alignr}Gateway IP: ${gw_ip}
 ${font}${alignr}${if_match "$wireless_essid"=="off/any"}Déconnecté${else}${wireless_essid}${endif} 
-${font}${goto 5}Down${goto 160}Up
-${goto 5}${color2}${downspeedgraph wlp3s0 40,153}${goto 160}${upspeedgraph wlp3s0 40,155} 
+${font}${goto 5}Down${alignr}Up
+${goto 5}${color2}${downspeedgraph enp0s31f6 40,153}${goto 160}${upspeedgraph enp0s31f6 40,155} 
 # Uncomment next line for wireless
 # ${goto 5}${color}${downspeedf wlp3s0} Kb/s - ${totaldown wlp3s0}${goto 160}${upspeedf wlp3s0} Kb/s - ${totalup wlp3s0}
 # Ethernet network display
-${goto 5}${color}${downspeedf enp0s31f6} Kb/s - ${totaldown enp0s31f6}${goto 160}${upspeedf enp0s31f6} Kb/s - ${totalup enp0s31f6}
+${goto 5}${color}${downspeedf enp0s31f6} Kb/s - ${totaldown enp0s31f6}${alignr}${upspeedf enp0s31f6} Kb/s - ${totalup enp0s31f6}
 ${voffset 4}${color}$hr
 #
 # HDDisk Display
-${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}DISKS
-${voffset 2}${font}${alignr}System
-${color2}${fs_bar 8 /} 
-${color}${font}${exec sudo hddtemp /dev/sdb -u F | awk '{print $NF}'}${alignr}${fs_used}/${fs_size} 
-${voffset 6}${font}${alignr}Data
-${color2}${fs_bar 8 /run/media/thib/Data} 
+${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}DISKS${color}
+#
+# Root Filesystem Display
+${voffset 2}${font}${exec sudo hddtemp /dev/sdb3 -u F | awk '{print $NF}'}${goto 45} /dev/sdb3 - /${font}${alignr}System: ${fs_used /} / ${fs_size /}  
+${color2}${diskiograph /dev/sdb3}${color}
+${color2}${fs_bar 8 /}${color} 
+# 
+# Home Filesystem Display
+${voffset 6}${font}${exec sudo hddtemp /dev/sdb5 -u F | awk '{print $NF}'}${goto 45}/dev/sdb5 - /home/${font}${alignr}Data: ${fs_used /home/} / ${fs_size /home/} 
+${color2}${diskiograph /dev/sdb5}${color}
+${color2}${fs_bar 8 sdb2} ${color}
 # Optinal drive display, specify path to check mount
-${if_mounted /run/media/thib/Data}${color}${font}${exec sudo hddtemp /dev/sdb -u F | awk '{print $NF}'}${alignr}${fs_used /run/media/thib/Data}/${fs_size /run/media/thib/Data}${else}${color}${font}${alignr}Unmounted${endif}
+#${if_mounted /run/media/thib/Data}${color}${font}${exec sudo hddtemp /dev/sdb -u F | awk '{print $NF}'}${alignr}${fs_used /run/media/thib/Data}/${fs_size /run/media/thib/Data}${else}${color}${font}${alignr}Unmounted${endif}
 $hr
 #
 # Other information
-${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}OTHER
+${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}OTHER${color}
 # MOBO temp, uptime
-$color${voffset 4}${font}Motherboard: ${goto 120}${acpitemp}F°${alignr}Uptime: ${uptime_short}
+${color}${voffset 4}${font}Motherboard: ${goto 120}${acpitemp}F°${alignr}Uptime: ${uptime_short}
 # Domain status
-$color${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://knoats.com}s
+${color}${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://knoats.com}s
 ${font}Shaunreed: ${alignc}${exec curl -Is https://shaunreed.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://shaunreed.com}s
 #
 ${voffset 3}$hr
