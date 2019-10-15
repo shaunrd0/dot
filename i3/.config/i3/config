@@ -31,8 +31,11 @@ font xft:URWGothic-Book 11
 ################################################################
 
 # Set workspace monitor startup location
-#workspace 2 output HDMI-1
-#workspace 3 output DP-2
+workspace $ws99 output DP-2
+workspace $ws98 output DP-2
+workspace $ws97 output DP-2
+workspace $ws96 output DP-2
+workspace $ws95 output DP-2
 
 # To add a workspace, just create a bind below
 # Workspace binds
@@ -68,6 +71,19 @@ set $ws97 97
 set $ws96 96
 set $ws95 95
 
+# Move only the container to workspace
+bindsym $mod+Ctrl+backslash move container to workspace $ws99
+bindsym $mod+Ctrl+bracketright move container to workspace $ws98 
+bindsym $mod+Ctrl+apostrophe move container to workspace $ws97
+bindsym $mod+Ctrl+slash move container to workspace $ws96
+bindsym $mod+Ctrl+period move container to workspace $ws95
+# Move to workspace with focused container
+bindsym $mod+Shift+backslash move container to workspace $ws99; workspace $ws99
+bindsym $mod+Shift+bracketright move container to workspace $ws98; workspace $ws98
+bindsym $mod+Shift+apostrophe move container to workspace $ws97; workspace $ws97
+bindsym $mod+Shift+slash move container to workspace $ws96; workspace $ws96
+bindsym $mod+Shift+period move container to workspace $ws95; workspace $ws95
+
 # Custom named workspace keybinds
 # To get keysymbols, run 'xmodmap -pke'
 bindsym $mod+backslash workspace number $ws99 # Chat
@@ -82,11 +98,13 @@ bindsym $mod+period workspace number $ws95 # Terminal
 #assign [class="Geary"] $ws98
 #assign [class="Bitwarden"] $ws97
 #assign [class="Firefox"] $ws96
-exec --no-startup-id i3-msg 'exec geary'
-for_window [class="Geary"] move to workspace number $ws98
-for_window [class="Geary"] floating enable
-for_window [class="Geary"] resize set width 500
-for_window [class="Geary"] move position center
+
+# Mail Client
+#exec --no-startup-id i3-msg 'exec geary'
+#for_window [class="Geary"] move to workspace number $ws98
+#for_window [class="Geary"] floating enable
+#for_window [class="Geary"] resize set width 500
+#for_window [class="Geary"] move position center
 
 exec --no-startup-id i3-msg 'exec signal-desktop'
 assign [class="Signal"] $ws99
@@ -103,7 +121,7 @@ for_window [class="Bitwarden"] move position center
 
 # 'xprop' and click the window to get window information output to terminal
 exec --no-startup-id i3-msg 'exec firefox'
-for_window [class="Firefox"] move to workspace number $ws96
+for_window [class="firefox"] move to workspace number $ws96
 
 # Passing -n to urxvt forces Xorg to default the WM_NAME to tmux
 # Only this instance of urxvt will have that WM_NAME
