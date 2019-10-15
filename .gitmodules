@@ -19,3 +19,9 @@
 [submodule "vim/.vim/bundle/vim-signify"]
 	path = vim/.vim/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify
+[submodule "tmux/.tmux-gitbar"]
+	path = tmux/.tmux-gitbar
+	url = https://github.com/arl/tmux-gitbar
+[submodule "tmux/.tmux/plugins/tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
