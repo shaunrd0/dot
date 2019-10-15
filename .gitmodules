@@ -1,9 +1,21 @@
+[submodule "vim/.vim/bundle/clang_complete"]
+	path = vim/.vim/bundle/clang_complete
+	url = https://github.com/xavierd/clang_complete
+[submodule "vim/.vim/bundle/Colorizer"]
+	path = vim/.vim/bundle/Colorizer
+	url = https://github.com/chrisbra/Colorizer
 [submodule "vim/.vim/bundle/supertab"]
 	path = vim/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab
 [submodule "vim/.vim/bundle/unicode.vim"]
 	path = vim/.vim/bundle/unicode.vim
 	url = https://github.com/chrisbra/unicode.vim
-[submodule "vim/.vim/bundle/clang_complete"]
-	path = vim/.vim/bundle/clang_complete
-	url = https://github.com/xavierd/clang_complete
+[submodule "vim/.vim/bundle/vim-airline"]
+	path = vim/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/.vim/bundle/vim-airline-themes"]
+	path = vim/.vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "vim/.vim/bundle/vim-signify"]
+	path = vim/.vim/bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify
