@@ -6,6 +6,9 @@ vscode/.config/Code - OSS/logs/*
 vscode/.config/Code - OSS/machineid
 vscode/.config/Code - OSS/storage.json
 vscode/.config/Code - OSS/User/*Storage/*
+vscode/.config/Code - OSS/User/Workspaces/*
+vscode/.config/Code - OSS/rapid_render.json
+vscode/.config/Code - OSS/Network*
 
 # Byte-compiled / optimized / DLL files
 *__pycache__/

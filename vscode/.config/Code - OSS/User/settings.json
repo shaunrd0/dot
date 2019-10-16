@@ -1,5 +1,7 @@
 {
     "cmake.configureOnOpen": true,
     "editor.fontFamily": "'Inconsolata Nerd Font Mono'",
-    "C_Cpp.updateChannel": "Insiders"
+    "C_Cpp.updateChannel": "Insiders",
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
 }
