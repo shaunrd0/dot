@@ -13,3 +13,5 @@ stow bash # Install bash settings
 # ... etc ...
 ```
 
+Note that the `dot/packages/` directory is for reference and is the only directory included not meant to be used with stow. If this directory is stowed there will be no real change to the system - you will still need to install the package lists manually.
+
