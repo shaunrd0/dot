@@ -314,7 +314,7 @@ menu-0-1-foreground = #fba922
 menu-0-1-exec = i3 restart
 menu-0-2 = "   Reboot   " 
 menu-0-2-foreground = #fba922
-menu-0-2-exec = sudo /sbin/reboot
+menu-0-2-exec = sudo reboot
 menu-0-3 = "   Power off   "
 menu-0-3-foreground = #fba922
 menu-0-3-exec = sudo poweroff
@@ -475,6 +475,7 @@ ws-icon-10 = 98;
 ws-icon-11 = 97;
 ws-icon-12 = 96;爵
 ws-icon-13 = 95;
+ws-icon-14 = 94;
 ws-icon-default = 
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.

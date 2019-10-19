@@ -36,6 +36,7 @@ workspace $ws98 output DP-2
 workspace $ws97 output DP-2
 workspace $ws96 output DP-2
 workspace $ws95 output DP-2
+workspace $ws94 output DP-2
 
 # To add a workspace, just create a bind below
 # Workspace binds
@@ -70,6 +71,7 @@ set $ws98 98
 set $ws97 97
 set $ws96 96
 set $ws95 95
+set $ws94 94
 
 # Move only the container to workspace
 bindsym $mod+Ctrl+backslash move container to workspace $ws99
@@ -77,12 +79,14 @@ bindsym $mod+Ctrl+bracketright move container to workspace $ws98
 bindsym $mod+Ctrl+apostrophe move container to workspace $ws97
 bindsym $mod+Ctrl+slash move container to workspace $ws96
 bindsym $mod+Ctrl+period move container to workspace $ws95
+bindsym $mod+Ctrl+comma move container to workspace $ws94
 # Move to workspace with focused container
 bindsym $mod+Shift+backslash move container to workspace $ws99; workspace $ws99
 bindsym $mod+Shift+bracketright move container to workspace $ws98; workspace $ws98
 bindsym $mod+Shift+apostrophe move container to workspace $ws97; workspace $ws97
 bindsym $mod+Shift+slash move container to workspace $ws96; workspace $ws96
 bindsym $mod+Shift+period move container to workspace $ws95; workspace $ws95
+bindsym $mod+Shift+comma move container to workspace $ws94; workspace $ws94
 
 # Custom named workspace keybinds
 # To get keysymbols, run 'xmodmap -pke'
@@ -91,6 +95,7 @@ bindsym $mod+bracketright workspace number $ws98 # Mail
 bindsym $mod+apostrophe workspace number $ws97 # Sec
 bindsym $mod+slash workspace number $ws96 # Web
 bindsym $mod+period workspace number $ws95 # Terminal
+bindsym $mod+comma workspace number $ws94 # Musak
 
 # Open applications on specific workspaces
 #assign [class="Signal"] $ws99
@@ -112,6 +117,13 @@ assign [class="Signal"] $ws99
 exec --no-startup-id i3-msg 'exec discord'
 assign [class="discord"] $ws99
 
+exec_always --no-startup-id i3-msg 'exec spotify'
+for_window [class="Spotify"] move to workspace number $ws94
+for_window [class="Spotify"] floating enable
+for_window [class="Spotify"] resize set width 1200
+for_window [class="Spotify"] resize set height 850
+for_window [class="Spotify"] move position center
+
 exec --no-startup-id i3-msg 'exec bitwarden'
 for_window [class="Bitwarden"] move to workspace number $ws97
 for_window [class="Bitwarden"] floating enable
@@ -126,7 +138,7 @@ for_window [class="firefox"] move to workspace number $ws96
 # Passing -n to urxvt forces Xorg to default the WM_NAME to tmux
 # Only this instance of urxvt will have that WM_NAME
 # Prevents for_window from acting on new terminals
-exec_always --no-startup-id i3-msg 'exec urxvt -n sterm -e tmux -u'
+exec --no-startup-id i3-msg 'exec urxvt -n sterm -e tmux -u'
 for_window [title="tmux"] move to workspace number $ws95
 for_window [title="tmux"] floating enable
 for_window [title="tmux"] resize set height 700
@@ -134,6 +146,7 @@ for_window [title="tmux"] resize set width 1000
 for_window [title="tmux"] move position center
 
 # Enable popup calendar floating window for polybar
+# This only works properly on the primary Xdisplay?
 for_window [class="Yad"] floating enable
 
 ###############################################################
