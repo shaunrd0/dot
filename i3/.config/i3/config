@@ -117,7 +117,7 @@ assign [class="Signal"] $ws99
 exec --no-startup-id i3-msg 'exec discord'
 assign [class="discord"] $ws99
 
-exec_always --no-startup-id i3-msg 'exec spotify'
+exec --no-startup-id i3-msg 'exec spotify'
 for_window [class="Spotify"] move to workspace number $ws94
 for_window [class="Spotify"] floating enable
 for_window [class="Spotify"] resize set width 1200
