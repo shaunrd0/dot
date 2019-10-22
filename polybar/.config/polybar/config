@@ -108,7 +108,7 @@ tail = true
 type = internal/fs
 ; Mountpoints to display
 mount-0 = /
-;mount-1 = /home
+mount-1 = /home
 ;mount-2 = /var
 ; Seconds to sleep between updates
 ; Default: 30
@@ -132,7 +132,7 @@ format-mounted = <label-mounted>
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted =   %free%
+label-mounted = %mountpoint%  %free%
 ; Spacing between entries
 ; Default: 2
 spacing = 4
@@ -223,7 +223,7 @@ thermal-zone = 0
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
 ; Base temperature for where to start the ramp (in degrees celsius)
 ; Default: 0
 base-temperature = 20
