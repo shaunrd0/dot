@@ -1,9 +1,3 @@
-[submodule "tmux/.tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-[submodule "tmux/.tmux-gitbar"]
-	path = .tmux-gitbar
-	url = https://github.com/arl/tmux-gitbar
 [submodule ".config/powerline-shell/powerline-shell"]
 	path = .config/powerline-shell/powerline-shell
 	url = https://github.com/b-ryan/powerline-shell
@@ -28,3 +22,9 @@
 [submodule ".vim/bundle/vim-signify"]
 	path = .vim/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".tmux-gitbar"]
+	path = .tmux-gitbar
+	url = https://github.com/arl/tmux-gitbar
