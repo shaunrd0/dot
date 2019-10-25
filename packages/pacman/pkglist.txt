@@ -23,6 +23,7 @@ btrfs-progs
 bzip2
 cantarell-fonts
 chromium
+clang
 clipit
 cmake
 cmatrix
@@ -106,6 +107,7 @@ ipw2200-fw
 java-openjfx
 jfsutils
 jq
+kdeconnect
 kvantum-manjaro
 less
 lib32-flex
@@ -186,6 +188,7 @@ palemoon-bin
 pamac-gtk
 patch
 patchutils
+pavucontrol
 pciutils
 pcmanfm
 pepper-flash
@@ -199,6 +202,7 @@ powerline-fonts
 powertop
 procps-ng
 psmisc
+pycharm-community-edition
 pygtk
 pyside2
 qt5-3d
@@ -257,9 +261,11 @@ syslog-ng
 systemd-fsck-silent
 systemd-sysvcompat
 tar
+tcpdump
 terminus-font
 texinfo
 tilix
+tldr
 tlp
 tmux
 tree
