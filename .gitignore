@@ -18,7 +18,6 @@ vscode/.config/Code - OSS/Network*
 *.so
 
 # Distribution / packaging
-bin/
 build/
 develop-eggs/
 dist/

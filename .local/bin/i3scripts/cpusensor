@@ -18,6 +18,5 @@ do
 done
 
 temp=$(cat $CPU_SENSOR)
-imperial=$(((9/5)+32))
-echo $(((temp/10000)*imperial))
+echo "scale=2;((9/5) * $(cat $CPU_SENSOR)/1000) + 32"|bc
 
