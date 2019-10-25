@@ -1,0 +1,23 @@
+#!/bin/bash
+## Author: Shaun Reed | Contact: shaunrd0@gmail.com | URL: www.shaunreed.com ##
+##                                                                           ##
+## A script to find and return the CPU package temp sensor                   ##
+###############################################################################
+# bash.sh
+
+for i in /sys/class/hwmon/hwmon*/temp*_input; do 
+  sensors+=("$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null   || echo $(basename ${i%_*})) $(readlink -f $i)");
+done
+
+for i in "${sensors[@]}"
+do
+  if [[ $i =~ ^coretemp:.Package.* ]]
+  then
+    export CPU_SENSOR=${i#*0}
+  fi
+done
+
+temp=$(cat $CPU_SENSOR)
+imperial=$(((9/5)+32))
+echo $(((temp/10000)*imperial))
+

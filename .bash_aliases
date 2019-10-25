@@ -26,6 +26,7 @@ export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
 export PROMPT_COMMAND="$TMUX_GITBAR_DIR/update-gitbar; $PROMPT_COMMAND"
 export PATH=$PATH":$HOME/.local/bin/i3scripts"
+source cpusensor
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
