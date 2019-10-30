@@ -135,15 +135,17 @@ for_window [class="Bitwarden"] move position center
 exec --no-startup-id i3-msg 'exec firefox'
 for_window [class="firefox"] move to workspace number $ws96
 
-# Passing -n to urxvt forces Xorg to default the WM_NAME to tmux
-# Only this instance of urxvt will have that WM_NAME
+# Passing -n to urxvt forces Xorg to default the WM_ICON_NAME to tmux
+# Only this instance of urxvt will have that WM_ICON_NAME
 # Prevents for_window from acting on new terminals
-exec --no-startup-id i3-msg 'exec urxvt -n sterm -e tmux -u'
-for_window [title="tmux"] move to workspace number $ws95
-for_window [title="tmux"] floating enable
-for_window [title="tmux"] resize set height 700
-for_window [title="tmux"] resize set width 1000
-for_window [title="tmux"] move position center
+# Passing -T to urxvt sets WM_NAME and WM_ICON_NAME, if not set in a later argument
+# Use -T below to title the startup terminal and assign properties to it
+exec --no-startup-id i3-msg 'exec urxvt -T origin -e tmux -u'
+for_window [title="origin"] move to workspace number $ws95
+for_window [title="origin"] floating enable
+for_window [title="origin"] resize set height 700
+for_window [title="origin"] resize set width 1000
+for_window [title="origin"] move position center
 
 # Enable popup calendar floating window for polybar
 # This only works properly on the primary Xdisplay?
