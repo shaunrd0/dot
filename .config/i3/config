@@ -132,8 +132,9 @@ for_window [class="Bitwarden"] resize set height 700
 for_window [class="Bitwarden"] move position center
 
 # 'xprop' and click the window to get window information output to terminal
-exec --no-startup-id i3-msg 'exec firefox'
-for_window [class="firefox"] move to workspace number $ws96
+# Ensures browser shown on startup within ws96, but future browsers will be left alone
+# Prevents i3 from moving new browsers around when not wanted
+exec --no-startup-id i3-msg 'workspace $ws96;exec firefox'
 
 # Passing -n to urxvt forces Xorg to default the WM_ICON_NAME to tmux
 # Only this instance of urxvt will have that WM_ICON_NAME
