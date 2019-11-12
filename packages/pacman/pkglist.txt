@@ -48,12 +48,14 @@ downgrade
 e2fsprogs
 ecryptfs-utils
 efibootmgr
+elinks
 epdfview
 exfat-utils
 f2fs-tools
 fakeroot
 ffmpeg
 ffmpegthumbnailer
+figlet
 file
 filesystem
 findutils
@@ -177,6 +179,7 @@ networkmanager-vpnc
 nfs-utils
 nss-mdns
 ntfs-3g
+ntop
 ntp
 open-fuse-iso
 openresolv
@@ -243,6 +246,7 @@ qt5-xmlpatterns
 qt5ct
 ranger
 reiserfsprogs
+rpmextract
 rsync
 s-nail
 sbxkb
@@ -284,7 +288,6 @@ vi
 vibrancy-icons-teal
 viewnior
 vim
-vlc
 volumeicon
 vulkan-intel
 vulkan-radeon
@@ -323,7 +326,6 @@ xorg-xkill
 xorg-xprop
 xprintidle
 xterm
-yad
 yay
 zensu
 zsh
