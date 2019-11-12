@@ -26,6 +26,9 @@ ${goto 120}${voffset 8}${color2}${font Bitstream Vera Sans:size=16}${time %A}$fo
 ${goto 120}${voffset -8}$alignr${color}${font Bitstream Vera Sans:size=38}${time %e}$font
 ${goto 120}${color}${voffset -30}${color}${font Bitstream Vera Sans:size=18}${time %b}$font\
 ${voffset -3} ${color}${font Bitstream Vera Sans:size=20}${time %Y}$font${color2}$hr
+# Report public IP to dev box for remote access
+# Public IP found in dev box nginx access.log (conky-curl is the requester)
+${font}${alignc}- Public IP reporting to kapp.ga -${alignc}${curl https://kapp.ga 10}${alignr}
 # 
 # Process list, load average
 # 1m / 5m / 15m format for lad avg
@@ -96,8 +99,9 @@ ${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}OTHER${color}
 # MOBO temp, uptime
 ${color}${voffset 4}${font}Motherboard: ${goto 120}${acpitemp}F°${alignr}Uptime: ${uptime_short}
 # Domain status
-${color}${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://knoats.com}s
-${font}Shaunreed: ${alignc}${exec curl -Is https://shaunreed.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://shaunreed.com}s
+# ${color}${voffset 4}${font}Knoats: ${alignc}${exec curl -Is https://knoats.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://knoats.com}s
+# ${font}Shaunreed: ${alignc}${exec curl -Is https://shaunreed.com | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://shaunreed.com}s
+# ${font}dv: ${alignc}${exec curl -Is https://kapp.ga | grep HTTP | awk '{print $1 " - " $2}'}${alignr}${exec curl -o /dev/null -s -w %{time_total}\\n  https://kapp.ga}s
 #
 ${voffset 3}$hr
 #
