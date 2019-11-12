@@ -105,11 +105,11 @@ bindsym $mod+comma workspace number $ws94 # Musak
 #assign [class="Firefox"] $ws96
 
 # Mail Client
-#exec --no-startup-id i3-msg 'exec geary'
-#for_window [class="Geary"] move to workspace number $ws98
-#for_window [class="Geary"] floating enable
-#for_window [class="Geary"] resize set width 500
-#for_window [class="Geary"] move position center
+exec --no-startup-id i3-msg 'exec geary'
+for_window [class="Geary"] move to workspace number $ws98
+for_window [class="Geary"] floating enable
+for_window [class="Geary"] resize set width 500
+for_window [class="Geary"] move position center
 
 exec --no-startup-id i3-msg 'exec signal-desktop'
 assign [class="Signal"] $ws99
