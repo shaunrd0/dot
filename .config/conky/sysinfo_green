@@ -26,8 +26,10 @@ ${goto 120}${voffset 8}${color2}${font Bitstream Vera Sans:size=16}${time %A}$fo
 ${goto 120}${voffset -8}$alignr${color}${font Bitstream Vera Sans:size=38}${time %e}$font
 ${goto 120}${color}${voffset -30}${color}${font Bitstream Vera Sans:size=18}${time %b}$font\
 ${voffset -3} ${color}${font Bitstream Vera Sans:size=20}${time %Y}$font${color2}$hr
-# Report public IP to dev box for remote access
-# Public IP found in dev box nginx access.log (conky-curl is the requester)
+# CAUTION: These configs use conky to report your public IP to a remote server owned by the author
+# Remove the following line or change the URL below if you are cloning or copying these configs
+# Report public IP to webserver when online for remote access
+# Public IP found in nginx access.log (conky-curl is the requester)
 ${font}${alignc}- Public IP reporting to kapp.ga -${alignc}${curl https://kapp.ga 10}${alignr}
 # 
 # Process list, load average
