@@ -1,12 +1,12 @@
 # dots
 
-A place for backing up my dotfiles.
+A place for backing up my dotfiles. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
 
 
 These configs were created and tested on Manjaro Linux using i3wm, and should only be used on similar systems. Easiest installation is to clone repository into home directory - 
 
 ```bash
-git clone https://github.com/shaunrd0/dot ~/dot
+git clone --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow .
 ```
@@ -14,7 +14,7 @@ stow .
 If you'd rather clone elsewhere - 
 
 ```bash
-git clone https://github.com/shaunrd0/dot /path/to/dot
+git clone --recursive https://github.com/shaunrd0/dot /path/to/dot
 cd /path/to/dot/
 stow -t ~ .
 ```
