@@ -4,6 +4,7 @@
 # Move to a new empty workspace
 #bindsym $mod+Ctrl+Left exec --no-startup-id i3empty.py prev
 bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/bin/i3scripts/i3empty.py
+border_radius 5
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4

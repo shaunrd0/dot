@@ -1,1 +1,2 @@
 conky-git
+i3-gaps-rounded-git
