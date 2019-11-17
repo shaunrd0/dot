@@ -179,7 +179,7 @@ label-disconnected-foreground = #d00
 ;animation-packetloss-framerate = 500
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 3.0
+interval = 5.0
 ; Test connectivity every Nth update
 ; A value of 0 disables the feature
 ; NOTE: Experimental (needs more testing)
@@ -212,7 +212,7 @@ interval = 600
 type = custom/script
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 0.5
+interval = 5.0
 ; Full path of temperature sysfs path
 ; Use `sensors` to find preferred temperature source, then run
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
@@ -229,7 +229,7 @@ label =      %output% F°
 type = internal/temperature
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 0.5
+interval = 5.0
 ; Thermal zone to use
 ; To list all the zone types, run 
 ; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
@@ -357,14 +357,14 @@ type = custom/script
 exec = TZ=UTC date +"UTC: %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}"
 interval = 30
 
-;    Network Status
+;    Local Date / Time
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/clock]
 type = internal/date
-interval = 2
+interval = 30
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
-;    Local Date / Time
+;    Local Date
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/date]
 type = internal/date
