@@ -113,20 +113,20 @@ for_window [class="Geary"] resize set width 1250
 for_window [class="Geary"] resize set height 1000
 for_window [class="Geary"] move position center
 
-exec --no-startup-id i3-msg 'exec signal-desktop'
+#exec --no-startup-id i3-msg 'exec signal-desktop'
 assign [class="Signal"] $ws99
 
-exec --no-startup-id i3-msg 'exec discord'
+#exec --no-startup-id i3-msg 'exec discord'
 assign [class="discord"] $ws99
 
-exec --no-startup-id i3-msg 'exec spotify'
+#exec --no-startup-id i3-msg 'exec spotify'
 for_window [class="Spotify"] move to workspace number $ws94
 for_window [class="Spotify"] floating enable
 for_window [class="Spotify"] resize set width 1200
 for_window [class="Spotify"] resize set height 850
 for_window [class="Spotify"] move position center
 
-exec --no-startup-id i3-msg 'exec bitwarden'
+#exec --no-startup-id i3-msg 'exec bitwarden'
 for_window [class="Bitwarden"] move to workspace number $ws97
 for_window [class="Bitwarden"] floating enable
 for_window [class="Bitwarden"] resize set width 1000
@@ -136,14 +136,15 @@ for_window [class="Bitwarden"] move position center
 # 'xprop' and click the window to get window information output to terminal
 # Ensures browser shown on startup within ws96, but future browsers will be left alone
 # Prevents i3 from moving new browsers around when not wanted
-exec --no-startup-id i3-msg 'workspace $ws96;exec chromium'
+exec --no-startup-id i3-msg 'workspace $ws96;exec firefox'
+#for_window [class="firefox"] move to workspace number $ws96
 
 # Passing -n to urxvt forces Xorg to default the WM_ICON_NAME to tmux
 # Only this instance of urxvt will have that WM_ICON_NAME
 # Prevents for_window from acting on new terminals
 # Passing -T to urxvt sets WM_NAME and WM_ICON_NAME, if not set in a later argument
 # Use -T below to title the startup terminal and assign properties to it
-exec --no-startup-id i3-msg 'exec urxvt -T origin -e tmux -u'
+exec --no-startup-id i3-msg 'exec urxvt -T origin -e tmux -u -c htop'
 for_window [title="origin"] move to workspace number $ws95
 for_window [title="origin"] floating enable
 for_window [title="origin"] resize set height 700
@@ -199,11 +200,11 @@ for_window [urgent=latest] focus
 # Initialize display settings
 exec --no-startup-id autorandr.sh --change --default ~/.autorandr/kapp/config
 # Startup apps
-#exec --no-startup-id signal-desktop
-#exec --no-startup-id discord
-#exec --no-startup-id geary
+exec --no-startup-id signal-desktop
+exec --no-startup-id discord
+exec --no-startup-id geary
 #exec --no-startup-id bitwarden
-#exec --no-startup-id chromium
+#exec --no-startup-id firefox
 # i3 default execs
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
@@ -383,7 +384,7 @@ bindsym $mod+Return exec terminal
 bindsym $mod+a exec tilix -q
 
 # Firefox
-bindsym $mod+F2 exec chromium
+bindsym $mod+F2 exec firefox
 # Start Geary email client
 bindsym $mod+F3 exec geary
 # Start Discord

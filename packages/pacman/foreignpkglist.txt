@@ -1,2 +1,4 @@
 conky-git
 i3-gaps-rounded-git
+signal-desktop-bin
+spotify
