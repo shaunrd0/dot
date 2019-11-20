@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/kapper/Downloads/bgs/anomaly.jpg' 
