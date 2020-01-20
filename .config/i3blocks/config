@@ -28,16 +28,16 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=20
 markup=none
 
+[nm-tray]
+#label=
+command=nm-tray
+interval=once
+
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
-
-[nm-tray]
-#label=
-command=nm-tray
-interval=once
 
 [volume]
 # DEPENDS: sudo apt install volumeicon-alsa
@@ -110,6 +110,13 @@ separator=false
 [bandwidth]
 #instance=eth0
 interval=5
+
+[backlight]
+label=BRI
+command=xbacklight
+separator=true
+interval=1
+
 
 # Battery indicator
 #
