@@ -18,14 +18,21 @@ conky.config = {
 	use_xft = true,
 }
 conky.text = [[
-
+#
+# Date
+${alignr}${color1}
+${goto 20}${voffset 8}${color2}${font Bitstream Vera Sans:size=16}${time %A}$font\
+${goto 140}${voffset -8}${color}${font Bitstream Vera Sans:size=38}${time %e}$font
+${goto 20}${color}${voffset -30}${color}${font Bitstream Vera Sans:size=18}${time %b}$font\
+${goto 60}${voffset -3} ${color}${font Bitstream Vera Sans:size=20}${time %Y}$font${color2}$hr
+#
 ---------------Applications---------------
 ${color2}open new terminal - ${color}mod+Enter
 ${color2}open dropdown yakuake terminal - ${color}F4
 ${color2}Firefox - ${color}mod+Shift+f
 
 ---------------Screenshots----------------
-${color2}image clip tool - ${color}mod+Shift+PrintScreen
+${color2}image clip tool - ${color}mod+Shift+p
 
 ---------------Menus----------------------
 ${color2}audio devices - ${color}mod+Ctrl+a

@@ -19,19 +19,7 @@ conky.config = {
   temperature_unit = 'fahrenheit',
 }
 conky.text = [[
-#
-# Date
-${alignr}${color1}
-${goto 120}${voffset 8}${color2}${font Bitstream Vera Sans:size=16}${time %A}$font\
-${goto 120}${voffset -8}$alignr${color}${font Bitstream Vera Sans:size=38}${time %e}$font
-${goto 120}${color}${voffset -30}${color}${font Bitstream Vera Sans:size=18}${time %b}$font\
-${voffset -3} ${color}${font Bitstream Vera Sans:size=20}${time %Y}$font${color2}$hr
-# CAUTION: These configs use conky to report your public IP to a remote server owned by the author
-# Remove the following line or change the URL below if you are cloning or copying these configs
-# Report public IP to webserver when online for remote access
-# Public IP found in nginx access.log (conky-curl is the requester)
-${font}${alignc}- Public IP reporting to kapp.ga -${alignc}${curl https://kapp.ga 10}${alignr}
-# 
+ 
 # Process list, load average
 # 1m / 5m / 15m format for lad avg
 ${color2}${voffset 35}${alignr}${font Bitstream Vera Sans:size=10}Proccesses${color}
@@ -83,9 +71,9 @@ ${color2}${diskiograph /dev/sda}${color}
 ${color2}${fs_bar 8 /}${color} 
 # 
 # Home Filesystem Display
-${voffset 6}${font}${goto 45}/dev/sda1 - /home/${font}${alignr}Data: ${fs_used /home/} / ${fs_size /home/} 
-${color2}${diskiograph /dev/sda1}${color}
-${color2}${fs_bar 8 /home/} ${color}
+#${voffset 6}${font}${goto 45}/dev/sda1 - /home/${font}${alignr}Data: ${fs_used /home/} / ${fs_size /home/} 
+#${color2}${diskiograph /dev/sda1}${color}
+#${color2}${fs_bar 8 /home/} ${color}
 # Optinal drive display, specify path to check mount
 #${if_mounted /run/media/thib/Data}${color}${font}${exec sudo hddtemp /dev/sdb -u F | awk '{print $NF}'}${alignr}${fs_used /run/media/thib/Data}/${fs_size /run/media/thib/Data}${else}${color}${font}${alignr}Unmounted${endif}
 $hr

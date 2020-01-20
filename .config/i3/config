@@ -191,6 +191,11 @@ bindsym $mod+0 workspace $ws10
 # for_window [title="origin"] resize set width 1000
 # for_window [title="origin"] move position center
 
+bindsym $mod+Ctrl+a exec "pavucontrol"
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set height 400
+for_window [class="Pavucontrol"] resize set width 600
+for_window [class="Pavucontrol"] move position center
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -221,12 +226,9 @@ bindsym $mod+Shift+f exec firefox
 bindsym $mod+Ctrl+d exec blueman-manager
 ##   Screenshot keybinds
 ###########################################
-# Screenshot all displays
-bindsym Print exec --no-startup-id i3-scrot
-# Screenshot active window
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 # Screenshot marquee tool
-bindsym $mod+Shift+p --release exec --no-startup-id i3-scrot -s
+bindsym $mod+Shift+p --release exec --no-startup-id scrot -s
+
 #   Restart, reload, kill keybinds
 ###########################################
 
