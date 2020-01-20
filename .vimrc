@@ -15,6 +15,8 @@ set autoindent
 " mouse=a allows for mouse interaction with vim when supported
 set mouse=a
 
+set number
+
 " Use Powerline symbols
 "let g:airline_powerline_fonts = 1
 

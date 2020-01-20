@@ -1,5 +1,7 @@
 # Tilix configuration error - backup tilix configs
 # tmux class in i3 config snaps firefox to terminal WS when googling 'tmux tpm etc..'
+# Useful commands to clean memory usage
+# Visit Firefox URL: about:memory -> click minimize memory usage
 
 # Pip installs
 sudo pip install powerline-shell

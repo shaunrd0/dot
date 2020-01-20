@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/kapper/Downloads/bgs/anomaly.jpg' 
+feh --bg-tile '/home/kapper/Downloads/use_your_illusion/use_your_illusion.png' 

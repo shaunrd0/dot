@@ -21,17 +21,11 @@ conky.text = [[
 
 ---------------Applications---------------
 ${color2}open new terminal - ${color}mod+Enter
-${color2}open dropdown tilix terminal - ${color}mod+a
-${color2}Firefox - ${color}mod+F2
-${color2}Geary - ${color}mod+F3
-${color2}Discord - ${color}mod+F4
-${color2}Signal - ${color}mod+F5
-${color2}Bitwarden - ${color}mod+F6
-${color2}PCManfm filemanager - ${color}mod+F8
+${color2}open dropdown yakuake terminal - ${color}F4
+${color2}Firefox - ${color}mod+Shift+f
 
 ---------------Screenshots----------------
 ${color2}image clip tool - ${color}mod+Shift+PrintScreen
-${color2}screenshot active window - ${color}mod+PrintScreen
 
 ---------------Menus----------------------
 ${color2}audio devices - ${color}mod+Ctrl+a
@@ -44,8 +38,6 @@ ${color2}blur lock - ${color}mod+9
 
 ---------------Restart / Reload-----------
 
-${color2}kill polybars - ${color}mod+p
-${color2}start polybars - ${color}mod+shift+p
 ${color2}kill conky - ${color}mod+o
 ${color2}start conky - ${color}mod+shift+o
 ${color2}kill compton - ${color}mod+t
@@ -73,5 +65,5 @@ ${color2}toggle floating - ${color}mod+Shift+Space
 ${color2}exit - ${color}mod+0
 
 ${color2}help - ${color}mod+Shift+h
-${color2}mod key - ${color}<Super>
+${color2}mod key - ${color}<Alt>
 ]]

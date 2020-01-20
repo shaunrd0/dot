@@ -7,7 +7,7 @@ conky.config = {
   double_buffer = true,
 	font = 'Bitstream Vera Sans:size=8',
 	gap_x = 15,
-	gap_y = 48,
+	gap_y = -5,
 	minimum_width = 200,
 	no_buffers = true,
 	own_window = true,
@@ -41,9 +41,6 @@ ${color}${alignr}${font Bitstream Vera Sans:size=8}Load Average: $font$alignr${l
 ${font}CPU${goto 170}RAM
 ${voffset 3}$font${color2}${top name 1}${goto 120}${color}${top cpu 1}%${goto 170}${color2}${top_mem name 1}${color}${alignr}${top_mem mem_res 1}${color}
 ${color2}${top name 2}${goto 120}${color}${top cpu 2}%${goto 170}${color2}${top_mem name 2}${color}${alignr}${top_mem mem_res 2}${color}
-${color2}${top name 3}${goto 120}${color}${top cpu 3}%${goto 170}${color2}${top_mem name 3}${color}${alignr}${top_mem mem_res 3}${color}
-${color2}${top name 4}${goto 120}${color}${top cpu 4}%${goto 170}${color2}${top_mem name 4}${color}${alignr}${top_mem mem_res 4}${color}
-${color2}${top name 5}${goto 120}${color}${top cpu 5}%${goto 170}${color2}${top_mem name 5}${color}${alignr}${top_mem mem_res 5}${color}
 ${voffset 3}$hr
 # 
 # RAM Display
@@ -63,9 +60,6 @@ ${voffset 4}${goto 0}${alignc}${color2}${cpugraph 40, 305}
 ${voffset 0}${goto 10}${color}${font}${hwmon temp 1}F°${alignr}${cpu}% - ${freq_g}GHz  
 # CPU Core Graphs
 ${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu1}%${goto 43}${color2}${cpubar cpu1 12,110} ${goto 170}${color}${cpu cpu2}%${goto 203}${color2}${cpubar cpu2 12,110}
-${voffset 4}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu3}%${goto 43}${color2}${cpubar cpu3 12,110} ${goto 170}${color}${cpu cpu4}%${goto 203}${color2}${cpubar cpu4 12,110}
-${voffset 4}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu5}%${goto 43}${color2}${cpubar cpu5 12,110} ${goto 170}${color}${cpu cpu6}%${goto 203}${color2}${cpubar cpu6 12,110}
-${voffset 4}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu7}%${goto 43}${color2}${cpubar cpu7 12,110} ${goto 170}${color}${cpu cpu8}%${goto 203}${color2}${cpubar cpu8 12,110}
 ${voffset 3}${color}$hr
 #
 # Network display
@@ -84,14 +78,14 @@ ${voffset 4}${color}$hr
 ${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}DISKS${color}
 #
 # Root Filesystem Display
-${voffset 2}${font}${exec sudo hddtemp /dev/sdb3 -u F | awk '{print $NF}'}${goto 45} /dev/sdb3 - /${font}${alignr}System: ${fs_used /} / ${fs_size /}  
-${color2}${diskiograph /dev/sdb3}${color}
+${voffset 2}${font}${goto 45} /dev/sda - /${font}${alignr}System: ${fs_used /} / ${fs_size /}  
+${color2}${diskiograph /dev/sda}${color}
 ${color2}${fs_bar 8 /}${color} 
 # 
 # Home Filesystem Display
-${voffset 6}${font}${exec sudo hddtemp /dev/sdb5 -u F | awk '{print $NF}'}${goto 45}/dev/sdb5 - /home/${font}${alignr}Data: ${fs_used /home/} / ${fs_size /home/} 
-${color2}${diskiograph /dev/sdb5}${color}
-${color2}${fs_bar 8 sdb2} ${color}
+${voffset 6}${font}${goto 45}/dev/sda1 - /home/${font}${alignr}Data: ${fs_used /home/} / ${fs_size /home/} 
+${color2}${diskiograph /dev/sda1}${color}
+${color2}${fs_bar 8 /home/} ${color}
 # Optinal drive display, specify path to check mount
 #${if_mounted /run/media/thib/Data}${color}${font}${exec sudo hddtemp /dev/sdb -u F | awk '{print $NF}'}${alignr}${fs_used /run/media/thib/Data}/${fs_size /run/media/thib/Data}${else}${color}${font}${alignr}Unmounted${endif}
 $hr
