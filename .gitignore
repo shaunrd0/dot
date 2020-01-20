@@ -9,6 +9,7 @@
 .config/Code/User/Workspaces/*
 .config/Code/rapid_render.json
 .config/Code/Network*
+**/.config/.brightness
 
 # Byte-compiled / optimized / DLL files
 *__pycache__/
