@@ -25,7 +25,6 @@ export TERMINAL='urxvt -e tmux -u'
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
 export PATH=$PATH":$HOME/.local/bin/i3scripts"
-source cpusensor
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
