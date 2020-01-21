@@ -4,7 +4,37 @@
 # Visit Firefox URL: about:memory -> click minimize memory usage
 
 # Pip installs
-sudo pip install powerline-shell
+sudo pip3 install powerline-shell
+
+# Install Gitmux
+go get -u github.com/arl/gitmux
+
+# May need to add the following line to `/etc/sddm.conf` to show users with Uid > 999 in login screen
+MaximumUid=99999
+HideUsers=nobody
+
+# Add the following for xbacklight control on Toshiba 2 Chromebook
+# `/etc/X11/xorg.conf`
+Section "Device"
+  Identifier  "Intel Graphics"
+  Driver      "intel"
+  Option      "Backlight"  "intel_backlight"
+EndSection
+# Reboot
+# xbacklight -dec 10
+# xbacklight -inc 10
+
+# Add the following for tap-to-click on Toshiba 2 Chromebook
+# `/etc/X11/xorg.conf.d/30-touchpad.conf`
+Section "InputClass"   
+  Identifier "touchpad"  
+  Driver "libinput"  
+  MatchIsTouchpad "on"  
+  Option "Tapping" "on"  
+EndSection
+
+
+
 
 #vscode extensions
 CMake
