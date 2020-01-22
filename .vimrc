@@ -67,6 +67,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Clang_complete settings
+let g:clang_library_path='/usr/lib/llvm-8/lib/'
+
 " Understand how the plugin works: :h signify-modus-operandi
 " Spare the plugin some work and read: :h g:signify_vcs_list
 " Signify plugin settings
