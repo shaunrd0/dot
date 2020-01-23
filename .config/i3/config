@@ -14,6 +14,8 @@ focus_follows_mouse no
 
 for_window [class="yakuake"] floating enable
 
+
+
 # Move to a new empty workspace
 #bindsym $mod+Ctrl+Left exec --no-startup-id i3empty.py prev
 bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/bin/i3scripts/i3empty.py
@@ -196,6 +198,12 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set height 400
 for_window [class="Pavucontrol"] resize set width 600
 for_window [class="Pavucontrol"] move position center
+
+for_window [class="Wicd-client.py"] floating enable
+for_window [class="Wicd-client.py"] resize set height 400
+for_window [class="Wicd-client.py"] resize set width 600
+for_window [class="Wicd-client.py"] move position center
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
