@@ -1,6 +1,0 @@
-#!/bin/bash
-
-conky -c $HOME/.config/conky/shortcuts_green &&
-conky -c $HOME/.config/conky/sysinfo_green &&
-
-exit 0
