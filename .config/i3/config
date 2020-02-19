@@ -22,7 +22,8 @@ bindsym $mod+Shift+z exec --no-startup-id $HOME/.local/bin/i3scripts/i3empty.py
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Inconsolata Nerd Font Mono 10
+#font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -198,6 +199,12 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Pavucontrol"] resize set height 400
 for_window [class="Pavucontrol"] resize set width 600
 for_window [class="Pavucontrol"] move position center
+
+for_window [class="Bitwarden"] floating enable
+for_window [class="Bitwarden"] resize set height 600
+for_window [class="Bitwarden"] resize set width 800
+for_window [class="Bitwarden"] move position center
+
 
 for_window [class="Wicd-client.py"] floating enable
 for_window [class="Wicd-client.py"] resize set height 400

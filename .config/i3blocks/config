@@ -28,9 +28,17 @@ command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=20
 markup=none
 
-[nm-tray]
+[weather]
+command=sh $HOME/.local/bin/i3scripts/weathermap
+align=right
+color=#ffaf00
+interval=1800
+
+
+
+[wicd-wifi]
 #label=
-command=nm-tray
+command=sudo pkill wicd-client && wicd-client -t
 interval=once
 
 # Volume indicator
