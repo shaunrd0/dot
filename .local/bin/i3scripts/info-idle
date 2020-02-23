@@ -1,6 +1,6 @@
 #!/bin/bash
 ## Author: Shaun Reed | Contact: shaunrd0@gmail.com | URL: www.shaunreed.com ##
-##                                                                           ##
+## Depends on xprintidle package                                             ##
 ## A script to track system idle time within a polybar menu                  ##
 ###############################################################################
 # info-idle.sh

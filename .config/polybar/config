@@ -54,7 +54,7 @@ padding-right = 6
 module-margin-left = 4
 module-margin-right = 6
 
-; Font ssettings, order matters
+; Font settings, order matters
 ; Top font takes priority over following
 ;font-0 = Source Code Pro:size=10;0
 font-0 = NotoSans-Regular:size=8;0
@@ -108,7 +108,7 @@ tail = true
 type = internal/fs
 ; Mountpoints to display
 mount-0 = /
-mount-1 = /home
+;mount-1 = /home
 ;mount-2 = /var
 ; Seconds to sleep between updates
 ; Default: 30
@@ -308,15 +308,16 @@ menu-0-4-exec = i3lock -c 000000
 [module/caffeine]
 type = custom/menu
 format = <menu> <label-toggle>
-label-open = "  "
-label-close = "   " 
+label-open = "    "
+label-close = "    "
 label-open-padding = 0
 label-close-padding = 1
 label-separator = " "
-menu-0-0 = " ﮣ "
-menu-0-0-exec = source /home/kapper/.local/bin/i3scripts/xoffee enable
-menu-0-1 = " ﮤ "
-menu-0-1-exec = source /home/kapper/.local/bin/i3scripts/xoffee disable
+
+menu-0-0 = " ON "
+menu-0-0-exec = sh /home/kapper/.local/bin/i3scripts/xoffee disable
+menu-0-1 = " OFF "
+menu-0-1-exec = sh /home/kapper/.local/bin/i3scripts/xoffee enable
 
 ;    CPU Core Usages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
