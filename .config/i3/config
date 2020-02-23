@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+# Mod1 = Alt
+#set $mod Mod1
 focus_follows_mouse no
 
 for_window [class="yakuake"] floating enable
@@ -224,6 +226,8 @@ exec --no-startup-id xbindkeys --poll-rc
 exec --no-startup-id $HOME/.local/bin/i3scripts/start_konky
 exec --no-startup-id sh ~/.fehbg
 exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id wicd-client -t
+exec --no-startup-id xfce4-power-manager
 
 
 #   Application keybinds
