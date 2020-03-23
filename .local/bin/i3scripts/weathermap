@@ -84,15 +84,16 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     sun_set=$(echo "$current" | jq ".sys.sunset")
     now=$(date +%s)
 
+    # Format of sunset/rise display and icons
     if [ "$sun_rise" -gt "$now" ]; then
-        daytime=" $(get_duration "$((sun_rise-now))")" # Sun rise
+        daytime="   $(get_duration "$((sun_rise-now))")" # Sun rise
     elif [ "$sun_set" -gt "$now" ]; then
-        daytime=" $(get_duration "$((sun_set-now))")" # Sun set
+        daytime="   $(get_duration "$((sun_set-now))")" # Sun set
     else
-        daytime=" $(get_duration "$((sun_rise-now))")" # Unknown
+        daytime="   $(get_duration "$((sun_rise-now))")" # Unknown
     fi
 
-
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL $trend $(get_icon "$forecast_icon") $forecast_temp$SYMBOL $daytime"
+    # Format of resulting forecast
+    echo "$(get_icon "$current_icon")   $current_temp$SYMBOL $trend $(get_icon "$forecast_icon")    $forecast_temp$SYMBOL$daytime"
     #echo "$(get_icon "$current_icon") $current_temp$SYMBOL $trend $(get_icon "$forecast_icon") $forecast_temp$SYMBOL $daytime"
 fi

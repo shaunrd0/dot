@@ -2,25 +2,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [bar/top]
-
 ; Polybar Position
 monitor = ${env:MONITOR}
 width = 100%
-height = 34
+height = 30
 
 ; Polybar Color
-background = #000000
+; Depreciated..
+;tray-transparent = true
+; Transparent adds 2 leading values to color (2+hex)
+background = #00000000
+; Opaque is hex color (hex)
 foreground = #00c24a
 line-color = ${bar/bottom.background}
 line-size = 16
 spacing = 2
+tray-background = #00111111
 
 ; Polybar Padding
 padding-left = 0
 padding-right = 5
 
 ; Margin Between Modules
-module-margin = 4
+module-margin = 2
 
 ; Type font
 font-0 = NotoSans-Regular:size=8;0
@@ -30,14 +34,18 @@ font-2 = Noto Sans Mono:size=8;0
 ; Modules
 modules-left = powermenu weather
 modules-center = ki3
-modules-right = info-hackspeed keyboard volume wired-network clock
+modules-right = volume date
+
+; Set the cursor to display pointer / resize is interaction available
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 [bar/bottom]
 ; Position, size of polybar
 monitor = ${env:MONITOR}
 bottom = true
 width = 100%
-height = 27
+height = 20
 
 ; Use top bar colors
 background = ${bar/top.background}
@@ -51,8 +59,8 @@ padding-left = 6
 padding-right = 6
 
 ; Margins between modules
-module-margin-left = 4
-module-margin-right = 6
+module-margin-left = 1
+module-margin-right = 2
 
 ; Font settings, order matters
 ; Top font takes priority over following
@@ -61,12 +69,14 @@ font-0 = NotoSans-Regular:size=8;0
 font-1 = Inconsolata Nerd Font:size=12;0
 font-2 = Noto Sans Mono:size=8;0
 
-
 ; Modules
-modules-left = temp-cpu cpu
+modules-left = temp-cpu cpu memfree memory
 modules-center = popup-utc network public-ip filesystem
-modules-right = info-idle caffeine temp-gpu memory
+modules-right = keyboard info-hackspeed info-idle 
 
+; Set the cursor to display pointer / resize is interaction available
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 ;                     Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -218,10 +228,10 @@ interval = 5.0
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-exec = exec ~/.local/bin/i3scripts/cpusensor
+exec = cat /sys/class/thermal/thermal_zone2/temp | awk '{print ( ( ( (9/5) * $1) / 1000) + 32) "°F" }'
 format = <label>
 tail = true
-label =      %output% F°
+label = CPU: %output%
 
 ;    GPU Temp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -369,25 +379,34 @@ date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/date]
 type = internal/date
-date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
-date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+date = %%{F#aaa}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+date-alt = %%{F#aaa}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+
+;    Memory Free MiB
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/memfree]
+type = custom/script
+exec = grep -w MemAvailable: /proc/meminfo | awk '{print $2 / 1024 "MiB"}'
+interval = 5
+label =  RAM: %output%
 
 
 ;    Memory Usage
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/memory]
 type = internal/memory
-format = <label> <bar-used>
-label =  
-bar-used-width = 30
+format = <bar-used>
+label =  RAM:
+bar-used-width = 15
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
 bar-used-foreground-2 = #fba922
 bar-used-foreground-3 = #ff5555
-bar-used-indicator = |
+bar-used-indicator = 
 bar-used-indicator-font = 6
 bar-used-indicator-foreground = #ff
-bar-used-fill = ─
+
+bar-used-fill = 
 bar-used-fill-font = 6
 bar-used-empty = -
 bar-used-empty-font = 6
@@ -501,11 +520,11 @@ label-separator-foreground = #ffb52a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/volume]
 type = internal/alsa
-speaker-mixer = IEC958
-headphone-mixer = Headphone
-headphone-id = 9
+;speaker-mixer = 
+;headphone-mixer = Headphone
+;headphone-id = 9
 format-volume = <ramp-volume> <label-volume>
-label-muted =   muted
+label-muted = muted
 label-muted-foreground = #66
 ramp-volume-0 = 奄
 ramp-volume-1 = 奔

@@ -7,7 +7,7 @@
 
 
 METRIC=sec
-FORMAT="   %d $METRIC"
+FORMAT="   %d $METRIC"
 INTERVAL=2
 
 case "$METRIC" in

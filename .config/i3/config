@@ -155,12 +155,12 @@ bindsym $mod+Shift+slash move container to workspace $ws96; workspace $ws96
 bindsym $mod+Shift+period move container to workspace $ws95; workspace $ws95
 bindsym $mod+Shift+comma move container to workspace $ws94; workspace $ws94
 # Move to workspace
-bindsym $mod+backslash workspace number $ws99 # Chat
-bindsym $mod+bracketright workspace number $ws98 # Mail
-bindsym $mod+apostrophe workspace number $ws97 # Sec
-bindsym $mod+slash workspace number $ws96 # Web
-bindsym $mod+period workspace number $ws95 # Terminal
-bindsym $mod+comma workspace number $ws94 # Musak
+bindsym $mod+backslash workspace number $ws99
+bindsym $mod+bracketright workspace number $ws98
+bindsym $mod+apostrophe workspace number $ws97
+bindsym $mod+slash workspace number $ws96
+bindsym $mod+period workspace number $ws95
+bindsym $mod+comma workspace number $ws94
 
 
 # Switch to workspace
@@ -206,6 +206,10 @@ for_window [class="Pavucontrol"] resize set height 400
 for_window [class="Pavucontrol"] resize set width 600
 for_window [class="Pavucontrol"] move position center
 
+for_window [class="Yad"] floating enable
+for_window [class="Yad"] resize set height 400
+for_window [class="Yad"] resize set width 600
+
 for_window [class="Bitwarden"] floating enable
 for_window [class="Bitwarden"] resize set height 600
 for_window [class="Bitwarden"] resize set width 800
@@ -241,8 +245,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start a terminal
 # Uses $TERMINAL environment setting
 # bindsym $mod+Return exec terminal
-# Open dropdown terminal using tilix quake mode
-bindsym $mod+t exec tilix -q
+# Start / kill conky
+bindsym $mod+t exec pkill compton
+bindsym $mod+Shift+t exec compton
 # Firefox
 bindsym $mod+Shift+f exec firefox
 # Bluetooth device settings
@@ -359,11 +364,15 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Use polybar installed
+exec_always --no-startup-id /home/kapper/.config/polybar/start-polybar.sh
+exec_always --no-startup-id compton
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3blocks
-}
+#bar {
+#
+#        status_command i3blocks
+#}
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border

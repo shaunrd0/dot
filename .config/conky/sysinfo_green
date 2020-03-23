@@ -35,17 +35,17 @@ ${voffset 3}$hr
 ${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}RAM ${color}
 ${goto 0}${color2}$alignc${memgraph 40,305}${color}
 ${voffset 4}${goto 0}${alignc}${color2}${membar 10, 305}
-${color}${goto 10}${font}${memperc}%${alignr}${exec grep -w Active: /proc/meminfo | awk '{print $2 / 1024 / 1024}'}/${memmax} 
+${color}${goto 10}${font}${memperc}%${alignr}${exec grep -w Active: /proc/meminfo | awk '{print $2 / 1024 }'}MiB /${memmax} 
 ${voffset 3}${color}$hr
 # 
 # CPU Display
 ${color2}${voffset 4}${alignr}${font Bitstream Vera Sans:size=10}CPU ${color}
 # Chipset
 ${alignr}${font}${exec inxi |grep CPU | awk '{print $4" "$2" "$3" "$6}'}${exec lscpu |grep -w "Model name:"| awk '{print " - " $8}'}
-# CPU Grpah
+# CPU Graph
 ${voffset 4}${goto 0}${alignc}${color2}${cpugraph 40, 305}
 # Percentage / GHz utilized
-${voffset 0}${goto 10}${color}${font}${hwmon temp 1}F°${alignr}${cpu}% - ${freq_g}GHz  
+${voffset 0}${goto 10}${color}${font}${exec cat /sys/class/thermal/thermal_zone2/temp | awk '{print ( ( ( (9/5) * $1) / 1000) + 32) "°F" }'}${alignr}${cpu}% - ${freq_g}GHz
 # CPU Core Graphs
 ${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu1}%${goto 43}${color2}${cpubar cpu1 12,110} ${goto 170}${color}${cpu cpu2}%${goto 203}${color2}${cpubar cpu2 12,110}
 ${voffset 3}${color}$hr
