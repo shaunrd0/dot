@@ -376,9 +376,9 @@ exec_always --no-startup-id compton
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #01e110 #000000 #80FFF9 #01e110
+  client.focused          #01e110 #01e110 #80FFF9 #01e110
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #000000 #000000 #1ABC9C #000000
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
