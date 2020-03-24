@@ -586,7 +586,7 @@ ws-icon-10 = 98;
 ws-icon-11 = 97;
 ws-icon-12 = 96;爵
 ws-icon-13 = 95;
-ws-icon-14 = 94;
+ws-icon-14 = 94;
 ws-icon-default = 
 ; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
 ; you must also define a ws-icon-5.
