@@ -72,7 +72,7 @@ font-2 = Noto Sans Mono:size=8;0
 ; Modules
 modules-left = temp-cpu cpu memfree memory
 modules-center = popup-utc network public-ip filesystem
-modules-right = battery 
+modules-right = vpn battery 
 
 ; Set the cursor to display pointer / resize is interaction available
 cursor-click = pointer
@@ -81,6 +81,13 @@ cursor-scroll = ns-resize
 ;                     Modules
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;   VPN Status
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/vpn]
+type = custom/script
+exec = mullvad status | awk '{print "VPN: "$3}'
+interval = 10
 
 ;    Pop-up Calendar
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
