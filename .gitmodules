@@ -26,3 +26,6 @@
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/dense-analysis/ale.git

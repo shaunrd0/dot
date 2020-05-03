@@ -24,7 +24,7 @@ export TERMINAL='urxvt -e tmux -u'
 
 export EDITOR='/usr/bin/vim'
 export VISUAL='/usr/bin/vim'
-export PATH=$PATH":$HOME/.local/bin/i3scripts"
+export PATH=$PATH":$HOME/.local/bin/i3scripts:/opt/"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
