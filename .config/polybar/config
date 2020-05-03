@@ -70,9 +70,9 @@ font-1 = Inconsolata Nerd Font:size=12;3
 font-2 = Noto Sans Mono:size=8;0
 
 ; Modules
-modules-left = temp-cpu cpu memfree memory
+modules-left = temp-cpu cpu memory
 modules-center = popup-utc network public-ip filesystem
-modules-right = vpn battery 
+modules-right = vpn battery
 
 ; Set the cursor to display pointer / resize is interaction available
 cursor-click = pointer
@@ -96,6 +96,15 @@ type = custom/script
 exec = ~/.local/bin/i3scripts/popup-calendar
 interval = 5
 click-left = ~/.local/bin/i3scripts/popup-calendar --popup
+click-right = ~/.local/bin/i3scripts/popup-calendar-local
+
+;    Local Date
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/date]
+type = internal/date
+date = %%{F#aaa}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+date-alt = %%{F#aaa}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+click-right = exec notify-send hi
 
 ;    Weather
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -110,6 +119,19 @@ interval = 600
 [module/info-hackspeed]
 type = custom/script
 exec = ~/.local/bin/i3scripts/info-hackspeed
+tail = true
+
+; Polybar Break Timer
+[module/breaktimer]
+type = custom/script
+format-prefix = "   "
+;format-foreground = ${colors.verdeclaro}
+exec = polybar-break-timer $HOME/.config/polybar/.env/break-timer
+click-left = echo left >> $HOME/.config/polybar/.env/break-timer
+click-middle = echo middle >> $HOME/.config/polybar/.env/break-timer
+click-right = echo right >> $HOME/.config/polybar/.env/break-timer
+scroll-up = echo scrollUp >> $HOME/.config/polybar/.env/break-timer
+scroll-down = echo scrollDown >> $HOME/.config/polybar/.env/break-timer
 tail = true
 
 ;    System Idle Time
@@ -138,7 +160,7 @@ fixed-values = true
  ;   <bar-free>
  ;   <bar-used>
  ;   <ramp-capacity>
-format-mounted = <label-mounted> 
+format-mounted = <label-mounted>
 ; Available tokens:
 ;   %mountpoint%
 ;   %type%
@@ -173,7 +195,7 @@ format-disconnected = <label-disconnected>
 format-packetloss = <animation-packetloss> <label-connected>
 ; Default: %ifname% %local_ip%
 label-connected =  %upspeed%    /   %downspeed:9%     龍   %linkspeed%          %local_ip%
-label-connected-foreground =#00c24a 
+label-connected-foreground =#00c24a
 ; Default: (none)
 label-disconnected = not connected
 label-disconnected-foreground = #d00
@@ -211,7 +233,7 @@ udspeed-minwidth = 5
 ; Default: false
 accumulate-stats = true
 ; Consider an `UNKNOWN` interface state as up.
-; Some devices like USB network adapters have 
+; Some devices like USB network adapters have
 ; an unknown state, even when they're running
 ; Default: false
 unknown-as-up = true
@@ -248,7 +270,7 @@ type = internal/temperature
 ; Default: 1
 interval = 5.0
 ; Thermal zone to use
-; To list all the zone types, run 
+; To list all the zone types, run
 ; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
 ; Default: 0
 thermal-zone = 2
@@ -299,18 +321,18 @@ label-layout = %name% %icon%
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/powermenu]
 type = custom/menu
-format-padding = 0 
-format = <label-toggle> <menu> 
-label-open = "   " 
+format-padding = 0
+format = <label-toggle> <menu>
+label-open = "   "
 label-close = "   "
-menu-0-0 = "      pkill poly   " 
+menu-0-0 = "      pkill poly   "
 menu-0-0-foreground = #fba922
 menu-0-0-exec = pkill -f polybar
 menu-0-1 = "    i3 restart   "
 menu-0-1-foreground = #fba922
 ;menu-0-1-background = #141414
 menu-0-1-exec = i3 restart
-menu-0-2 = "   Reboot   " 
+menu-0-2 = "   Reboot   "
 menu-0-2-foreground = #fba922
 menu-0-2-exec = sudo reboot
 menu-0-3 = "   Power off   "
@@ -341,7 +363,7 @@ menu-0-1-exec = sh /home/kapper/.local/bin/i3scripts/xoffee enable
 [module/cpu]
 type = internal/cpu
 interval = 5
-format = <ramp-coreload> <label> 
+format = <ramp-coreload> <label>
 label = %percentage-cores%
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
@@ -382,13 +404,6 @@ type = internal/date
 interval = 30
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
-;    Local Date
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-[module/date]
-type = internal/date
-date = %%{F#aaa}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
-date-alt = %%{F#aaa}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
-
 ;    Memory Free MiB
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/memfree]
@@ -400,10 +415,37 @@ label =  RAM: %output%
 
 ;    Memory Usage
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Available tags:
+;   <label> (default)
+;   <bar-used>
+;   <bar-free>
+;   <ramp-used>
+;   <ramp-free>
+;   <bar-swap-used>
+;   <bar-swap-free>
+;   <ramp-swap-used>
+;   <ramp-swap-free>
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
 [module/memory]
 type = internal/memory
-format = <bar-used>
-label =  RAM:
+format = <label> <bar-used>
+label = SWAP:%mb_swap_free% RAM: %mb_free%
 bar-used-width = 15
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #fba922
@@ -556,12 +598,12 @@ enable-scroll = true
 ; Wrap around when reaching the first/last workspace
 ; Default: true
 wrapping-scroll = true
-; Set the scroll cycle direction 
+; Set the scroll cycle direction
 ; Default: true
 reverse-scroll = false
-; Use fuzzy (partial) matching on labels when assigning 
+; Use fuzzy (partial) matching on labels when assigning
 ; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces 
+; Example: code;♚ will apply the icon to all workspaces
 ; containing 'code' in the label
 ; Default: false
 fuzzy-match = false
@@ -637,7 +679,7 @@ label-separator-foreground = #ffb52a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/volume]
 type = internal/alsa
-;speaker-mixer = 
+;speaker-mixer =
 ;headphone-mixer = Headphone
 ;headphone-id = 9
 format-volume = <ramp-volume> <label-volume>
