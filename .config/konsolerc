@@ -1,0 +1,15 @@
+[Desktop Entry]
+DefaultProfile=Default Powerline.profile
+
+[Favorite Profiles]
+Favorites=Default Powerline.profile
+
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+
+[MainWindow]
+Height 768=719
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAApQAAAKjAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1366=679

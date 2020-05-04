@@ -215,6 +215,11 @@ for_window [class="Bitwarden"] resize set height 600
 for_window [class="Bitwarden"] resize set width 800
 for_window [class="Bitwarden"] move position center
 
+for_window [class="Gpick"] floating enable
+for_window [class="Gpick"] resize set height 500
+for_window [class="Gpick"] resize set width 700
+for_window [class="Gpick"] move position center
+
 for_window [class="discord"] floating enable
 for_window [class="discord"] resize set height 600
 for_window [class="discord"] resize set width 800
@@ -245,7 +250,7 @@ exec --no-startup-id google-drive-ocamlfuse ~/gdrive
 
 #   Application keybinds
 ###########################################
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec konsole -e tmux
 
 # start a terminal
 # Uses $TERMINAL environment setting
@@ -381,7 +386,7 @@ exec_always --no-startup-id compton
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #01e110 #01e110 #80FFF9 #FF0100
+  client.focused          #005F00 #005F00 #80FFF9 #AFD700
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #000000 #000000 #1ABC9C #000000
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
@@ -408,7 +413,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
