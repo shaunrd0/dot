@@ -5,7 +5,7 @@ A place for backing up my dotfiles. Be sure to clone recursively if you want to 
 These configs were created and tested on default Ubuntu 20.04, and should only be used on similar systems. Easiest installation is to clone repository into home directory - 
 
 ```bash
-git clone -b i3-debian --recursive https://github.com/shaunrd0/dot ~/dot
+git clone -b ubuntu-focal --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow .
 ```
@@ -13,7 +13,7 @@ stow .
 If you'd rather clone elsewhere - 
 
 ```bash
-git clone -b i3-debian --recursive https://github.com/shaunrd0/dot /path/to/dot
+git clone -b ubuntu-focal --recursive https://github.com/shaunrd0/dot /path/to/dot
 cd /path/to/dot/
 stow -t ~ .
 ```
