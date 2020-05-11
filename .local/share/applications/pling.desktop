@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pling
+Exec=/opt/pling
+Type=Application
+StartupNotify=true
+Icon=/home/kapper/Pictures/Icons/pling.ico
+

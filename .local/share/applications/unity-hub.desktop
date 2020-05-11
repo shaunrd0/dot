@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Unity Hub
+Exec=/opt/unity-hub
+Type=Application
+StartupNotify=true
+Icon=/home/kapper/Pictures/Icons/unity.ico
+Categories=Application;Development;Graphics;IDE;
+

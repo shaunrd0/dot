@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Bitwarden
+Exec=/opt/bitwarden
+Type=Application
+StartupNotify=true
+Icon=/home/kapper/Pictures/Icons/bitwarden.ico
+

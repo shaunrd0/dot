@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=2.1.01
+Encoding=UTF-8
+Name=Dell Linux Assistant
+Type=Application
+Terminal=false
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=false
+Exec=dell-linux-assistant --reminder
+Icon=dell-linux-assistant
+Categories=System;Settings

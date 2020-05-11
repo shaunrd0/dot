@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=kdeconnect-indicator
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=false
+Name[en_US]=kdeconnect indicator
+Name=kdeconnect indicator
+Comment[en_US]=
+Comment=
