@@ -9,7 +9,7 @@ Media keys work for backlight, volume, and yakuake drop-down toggle. Alt is mod 
 Easiest installation is to clone repository into home directory - 
 
 ```bash
-git clone -b i3-debian --recursive https://github.com/shaunrd0/dot ~/dot
+git clone -b master --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow .
 ```
@@ -17,7 +17,7 @@ stow .
 If you'd rather clone elsewhere - 
 
 ```bash
-git clone -b i3-debian --recursive https://github.com/shaunrd0/dot /path/to/dot
+git clone -b master --recursive https://github.com/shaunrd0/dot /path/to/dot
 cd /path/to/dot/
 stow -t ~ .
 ```
