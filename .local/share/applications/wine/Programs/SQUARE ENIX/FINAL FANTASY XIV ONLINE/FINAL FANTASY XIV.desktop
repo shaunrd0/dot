@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FINAL FANTASY XIV
+Exec=env WINEPREFIX="/home/kapper/Games/final-fantasy-xiv-a-realm-reborn" /home/ubuntu/buildbot/runners/wine/lutris-5.6-2-x86_64/bin/wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/kapper/Games/final-fantasy-xiv-a-realm-reborn/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/SQUARE\\ ENIX/FINAL\\ FANTASY\\ XIV\\ ONLINE/FINAL\\ FANTASY\\ XIV.lnk
+Type=Application
+StartupNotify=true
+Path=/home/kapper/Games/final-fantasy-xiv-a-realm-reborn/dosdevices/c:/Program Files (x86)/SquareEnix/FINAL FANTASY XIV - A Realm Reborn/boot/
+Icon=420A_FFXIV.0
+StartupWMClass=ffxivboot.exe

@@ -1,0 +1,24 @@
+
+.activitiesiconmenu-box
+{
+    spacing: 32px;
+}
+
+.activitiesiconmenu-button > StIcon
+{
+    icon-size: 64px;
+}
+
+.activitiesiconmenu-button
+{
+    -st-icon-style: symbolic;
+    border-radius: 32px;
+    padding: 10px;
+}
+
+.activitiesiconmenu-button:hover,
+.activitiesiconmenu-button:focus
+{
+    border: none;
+    padding: 11px;
+}
