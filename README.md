@@ -9,7 +9,7 @@ Media keys work for backlight, volume, and yakuake drop-down toggle. Alt is mod 
 Easiest installation is to clone repository into home directory - 
 
 ```bash
-git clone -b master --recursive https://github.com/shaunrd0/dot ~/dot
+git clone -b focal-lubuntu --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow .
 ```
@@ -17,9 +17,17 @@ stow .
 If you'd rather clone elsewhere - 
 
 ```bash
-git clone -b master --recursive https://github.com/shaunrd0/dot /path/to/dot
+git clone -b focal-lubuntu --recursive https://github.com/shaunrd0/dot /path/to/dot
 cd /path/to/dot/
 stow -t ~ .
+```
+I use the `libclang-10-dev` package for clang completion. You can use whichever version you want, as the `.vimrc` configuration hosted here uses an environment variable `$LIBCLANG` which is set using the output of `sudo find / -name libclang.so.1`. To use the same version as I do, simply run `sudo apt install libclang-10-dev`
+
+In all cases, you will need to run the two commands below or otherwise set the path to `libclang.so.1` using the commands below
+
+```
+echo "export LIBCLANG=\""$(sudo find / -name libclang.so.1)"\"" >> ~/.bash_aliases
+echo "let g:clang_library_path=$LIBCLANG" >> ~/.vimrc
 ```
 
 Note that the `dot/packages/` directory is for reference and is the only directory included not meant to be used with stow. If this directory is stowed there will be no real change to the system - you will still need to install the package lists manually.
