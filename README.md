@@ -18,7 +18,7 @@ cd /path/to/dot/
 stow -t ~ .
 ```
 
-Note that the `dot/packages/` directory is for reference and is the only directory included not meant to be used with stow. If this directory is stowed there will be no real change to the system - you will still need to install the package lists manually.
+I use the `libclang-10-dev` package for clang completion. You can use whichever version you want, as the `.vimrc` configuration hosted here uses an environment variable `$LIBCLANG` which is set using the output of `sudo find / -name libclang.so.1`. To use the same version as I do, simply run `sudo apt install libclang-10-dev`
 
 `stow --adopt .` can be used to install conflicting files, but doing so will result in the loss of your local configurations. If you want to keep them, back up the conflicting files output in the error message before running this command.
 

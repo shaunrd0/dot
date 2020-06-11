@@ -20,3 +20,6 @@
 	path = .vim/bundle/vim-signify
 	url = https://github.com/mhinz/vim-signify
 
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/dense-analysis/ale
