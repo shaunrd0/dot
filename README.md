@@ -29,7 +29,7 @@ I use the `libclang-10-dev` package for clang completion. You can use whichever 
 In all cases, you will need to run the two commands below or otherwise set the path to `libclang.so.1` on your system.
 
 ```
-echo "export LIBCLANG=\""$(sudo find / -name libclang.so.1)"\"" >> ~/.bash_aliases
+printf "export LIBCLANG=\""$(find / -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_aliases
 echo "let g:clang_library_path=$LIBCLANG" >> ~/.vimrc
 ```
 
