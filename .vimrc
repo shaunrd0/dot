@@ -89,9 +89,6 @@ highlight ALEError ctermfg=DarkRed
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Clang_complete settings
-let g:clang_library_path = $LIBCLANG
-
 
 " Colorizer plugin settings
 " See :h colorizer in Vim for more info
@@ -135,4 +132,7 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+" Clang_complete settings
+"let g:clang_library_path = $LIBCLANG
 

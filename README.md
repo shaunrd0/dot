@@ -18,7 +18,13 @@ cd /path/to/dot/
 stow -t ~ .
 ```
 
-I use the `libclang-10-dev` package for clang completion. You can use whichever version you want, as the `.vimrc` configuration hosted here uses an environment variable `$LIBCLANG` which is set using the output of `sudo find / -name libclang.so.1`. To use the same version as I do, simply run `sudo apt install libclang-10-dev`
+I use the `libclang-10-dev` package for clang completion. You can use whichever version you want, but to use the same version as I do, run the following commands.
+
+```bash
+sudo apt install libclang-10-dev
+printf "export LIBCLANG=\""$(find / -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_aliases
+echo "let g:clang_library_path=$LIBCLANG" >> ~/.vimrc
+```
 
 `stow --adopt .` can be used to install conflicting files, but doing so will result in the loss of your local configurations. If you want to keep them, back up the conflicting files output in the error message before running this command.
 
