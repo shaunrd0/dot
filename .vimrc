@@ -134,5 +134,5 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " Clang_complete settings
-"let g:clang_library_path = $LIBCLANG
+let g:clang_library_path = $LIBCLANG
 
