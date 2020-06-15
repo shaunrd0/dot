@@ -22,7 +22,7 @@ I use the `libclang-10-dev` package for clang completion. You can use whichever 
 
 ```bash
 sudo apt install libclang-10-dev
-printf "export LIBCLANG=\""$(find / -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_aliases
+printf "export LIBCLANG=\""$(find /usr/ -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_aliases
 echo "let g:clang_library_path=$LIBCLANG" >> ~/.vimrc
 ```
 
