@@ -1,4 +1,4 @@
-# dots
+# dot
 
 A place for backing up my dotfiles. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
 
@@ -24,7 +24,7 @@ cd /path/to/dot/
 stow --adopt -t ~ .
 ```
 
-**Warning:** Since `--adopt` is used to force linking to conflicting files, but doing so could result in the loss of some configs within your local copy of the repository. After running `stow --adopt .`, be sure to check `git status` is clean. If a file has been modified or deleted, restore the file or otherwise discard the local changes to be up-to-date with `origin/master` and it will immediately be restored on your system as well, since the files are now linked.
+**Warning:** `--adopt` is used to link conflicting files, but doing so could result in the loss of some configs within your local copy of the repository. After running `stow --adopt .`, be sure to check `git status` is clean. If a file has been modified, discard the local changes to be up-to-date with `origin/master` and it will be restored on your system as well, since the files are now linked.
 
 We could run the following commands to restore changed files
 ```bash
