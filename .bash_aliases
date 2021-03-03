@@ -22,5 +22,5 @@ export PATH=$PATH:/opt/
 
 # Example path for autocompletion using libclang-9-dev package, obtained by the following command
 # find /usr/ -name libclang.so.1 2>/dev/null
-#export LIBCLANG="/usr/lib/llvm-9/lib/libclang.so.1"
+export LIBCLANG="/usr/lib/llvm-10/lib/libclang.so.1"
 

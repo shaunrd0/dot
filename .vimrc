@@ -3,7 +3,33 @@
 
 " General Vim Settings
 
+" Highlight the column cursor is on
+" May slow screen redraw time, so off by default
+""set cursorcolumn
 
+" Keep the bottom / top of the page n lines from the cursor
+set scrolloff=5
+
+" Persistant undo
+" :help undo-persistence
+set undodir=~/.vim/undodir
+set undofile
+
+" Combine vim clipboard with global clipboard buffer
+" Allows using y and p to copy into CTRL-C buffer, vice versa
+" :help 'clipboard'
+set clipboard+=unnamed
+
+" Allows true colors in vim (> 8 bit colors)
+" :help termguicolors
+set termguicolors
+
+" Custom formatting based on filetype
+" :help autocmd 
+"" autocmd FileType yaml set tabstop=2 shiftwidth=2
+
+" Highlight column 80 in c and cpp files
+autocmd FileType cpp,c set colorcolumn=80
 
 " Define function in vim to remove whitespace
 fun! TrimWhitespace()
@@ -33,7 +59,7 @@ set mouse=a
 set number
 
 " Use Powerline symbols
-"let g:airline_powerline_fonts = 1
+""let g:airline_powerline_fonts = 1
 
 " Enable Syntax Highlighting in Vim
 syntax on
@@ -46,18 +72,22 @@ set nocp
 set backspace=indent,eol,start
 
 " Set terminal title when opening file
-" autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
-" set title
+"" autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+"" set title
 
 " Custom Vim Keybindings
 
 " nnoremap <C-e> <C-w> " Modify and remove leading quotation
+" :help mappings
 
 " Set window jump to custom binding
 " default Ctrl-W conflict - closes browser tabs
 nnoremap <C-e> <C-w>
 
-nnoremap <C-b> :!make -C build/
+" Build and run keybinds
+"" nnoremap <C-b> :!make -C build/
+nnoremap <C-b> :!cmake -S . -B ./build/ && cmake --build ./build
+nnoremap <C-d> :!./build/scrap
 
 " Vim Plugin Settings
 
@@ -77,8 +107,10 @@ let g:airline_theme='kalisi'
 let g:ale_hover_to_preview = 1
 " Hover detail info in balloons
 ""let g:ale_set_balloons = 1
-let g:ale_sign_error = '🗙'
-let g:ale_sign_warning = '⚠'
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '?'
+""let g:ale_sign_error = '🗙'
+""let g:ale_sign_warning = '⚠'
 highlight ALEWarningSign ctermbg=Yellow
 highlight ALEWarningSign ctermfg=Black
 highlight ALEWarning ctermbg=DarkYellow
@@ -93,9 +125,9 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Colorizer plugin settings
 " See :h colorizer in Vim for more info
 "let g:colorizer_colornames = 0 " Don't color literal names, like red, green, etc
-let g:colorizer_auto_color = 1
-"let g:colorizer_skip_comments = 1
-"let g:colorizer_auto_filetype ='css,html,vim'
+let g:colorizer_auto_color = 0
+""let g:colorizer_skip_comments = 1
+""let g:colorizer_auto_filetype ='css,html,vim'
 nnoremap <C-c> :ColorToggle<CR>
 
 " Symbols important to vim / terminal layouts
@@ -124,20 +156,46 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
+" TODO: Add condition to toggle unicode / airline symbols
+" By default use unicode for compatability on all systems
+
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+""let g:airline_left_sep = ''
+""let g:airline_left_alt_sep = ''
+""let g:airline_right_sep = ''
+""let g:airline_right_alt_sep = ''
+""let g:airline_symbols.branch = ''
+""let g:airline_symbols.readonly = ''
+""let g:airline_symbols.linenr = ''
 
+
+" Clang completeion settings
+
+" If this is set, clang_complete will not be loaded at all
+""let g:clang_complete_loaded=1
+" Required clang library path
 let g:clang_library_path=$LIBCLANG
+" Clang user option settings examples
+""let g:clang_user_options='-std=c++11 stdlib=libc++'
+""let g:clang_user_options='-include malloc.h'
+
+" The algo used to sort results (priority, alpha, none)
+let g:clang_sort_algo="priority"
 let g:clang_close_preview=1
-let g:clang_jumpto_declaration_key="<C-]>"
-let g:clang_jumpto_back_key="<C-O>"
+let g:clang_jumpto_declaration_in_preview_key="\\"
+let g:clang_jumpto_declaration_key="+"
+let g:clang_jumpto_back_key="_"
+
+" Whether or not clang should complete preprocessor patterns
+let g:clang_complete_macros=1
+" Whether or not clang should complete programming paterns (for, while, etc)
 let g:clang_complete_patterns=1
-
-
+" Following two lines allow clang to complete patterns using snippets
+let g:clang_snippets=1
+" Which completion engine to use (clang_complete, ultisnips, snipmate)
+let g:clang_snippets_engine='clang_complete'
+" Should clang use placeholders for insertion within snippets
+" This allows parameters, typenames, etc to be inserted
+" Use <TAB> in normal mode to move to next param
+let g:clang_trailing_placeholder=1
 

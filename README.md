@@ -6,6 +6,7 @@ Once installed, editing source code in vim supports features displayed in the sc
 
 ![Vim screenshot](VimScreenshot.png)
 
+
 ### Install Dotfiles
 
 Easiest installation is to clone repository into home directory - 
@@ -51,17 +52,16 @@ Submodule path '.vim/bundle/vim-signify': checked out '16eee41d2b267523b84bd4ac1
 
 ### Install Clang Completion
 
-**These configurations require the installation and setup of libclang for clang completion**
+**These configurations require the installation of clang for clang completion**
 
 If you don't want clang completion, just remove the plugin directory from `~/.vim/bundle/`.
 
 If you don't remove clang completion and skip the following steps, vim will show errors when opening source code files. This is because these configurations use clang completion for source code auto completion and drop-down menus within vim.
 
-I use the `libclang-10-dev` package for this. You can use whichever version you want, but to use the same version as I do,  you could run the following commands.
 Note that the `printf` command may take some time to finish, since it is searching your system for a needed file.
 
 ```bash
-sudo apt install libclang-10-dev
+sudo apt install clang
 printf "export LIBCLANG=\""$(find /usr/ -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_aliases
 echo "let g:clang_library_path=\$LIBCLANG" >> ~/.vimrc
 source ~/.bashrc
