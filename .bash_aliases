@@ -1,3 +1,8 @@
+# Aliases to use the correct python version
+# + Because python doesn't know how to update.. :')
+alias python3='python3.9'
+alias pip3='python3.9 -m pip'
+
 alias gitkapp='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com"'
 
 # Default .bashrc aliases stored here

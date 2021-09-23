@@ -183,8 +183,8 @@ let g:clang_library_path=$LIBCLANG
 let g:clang_sort_algo="priority"
 let g:clang_close_preview=1
 let g:clang_jumpto_declaration_in_preview_key="\\"
-let g:clang_jumpto_declaration_key="+"
-let g:clang_jumpto_back_key="_"
+let g:clang_jumpto_declaration_key="]"
+let g:clang_jumpto_back_key="["
 
 " Whether or not clang should complete preprocessor patterns
 let g:clang_complete_macros=1

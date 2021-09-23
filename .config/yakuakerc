@@ -1,0 +1,20 @@
+[Desktop Entry]
+DefaultProfile=
+
+[Dialogs]
+FirstRun=false
+
+[Favorite Profiles]
+Favorites=
+
+[PrintOptions]
+PrinterFriendly=true
+ScaleOutput=true
+
+[Shortcuts]
+close-active-terminal=Ctrl+Shift+R;\s
+close-session=none
+
+[Window]
+Height=80
+Width=80
