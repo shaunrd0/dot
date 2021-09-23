@@ -1,3 +1,7 @@
+[Appearance]
+HideSkinBorders=true
+Skin=default
+
 [Desktop Entry]
 DefaultProfile=
 
@@ -7,14 +11,62 @@ FirstRun=false
 [Favorite Profiles]
 Favorites=
 
+[Global Shortcuts]
+toggle-window-state=Meta+`
+
 [PrintOptions]
 PrinterFriendly=true
 ScaleOutput=true
 
 [Shortcuts]
-close-active-terminal=Ctrl+Shift+R;\s
-close-session=none
-
-[Window]
 Height=80
 Width=80
+adjust-history=none
+clear-history=none
+clear-history-and-reset=Ctrl+Shift+K
+close-active-terminal=Ctrl+Shift+W; Ctrl+Shift+R
+close-session=none
+decrease-window-height=Alt+Shift+Up
+decrease-window-width=Alt+Shift+Left
+edit-current-profile=none
+edit-profile=none
+edit_copy=Ctrl+Shift+C
+edit_copy_contextmenu=none
+edit_find=Ctrl+Shift+F
+edit_find_next=F3
+edit_find_prev=Shift+F3
+edit_paste=Ctrl+Shift+V; Shift+Ins
+file_print=Ctrl+Shift+P
+file_quit=Ctrl+Shift+Q
+file_save_as=Ctrl+Shift+S
+grow-terminal-bottom=Ctrl+Alt+Down
+grow-terminal-left=Ctrl+Alt+Left
+grow-terminal-right=Ctrl+Alt+Right
+grow-terminal-top=Ctrl+Alt+Up
+help_about_app=none
+help_about_kde=none
+help_report_bug=none
+help_whats_this=Shift+F1
+increase-window-height=Alt+Shift+Down
+increase-window-width=Alt+Shift+Right
+keep-open=none
+manage-profiles=none
+move-session-left=Ctrl+Shift+Left
+move-session-right=Ctrl+Shift+Right
+new-session=Ctrl+Shift+T
+new-session-quad=none
+new-session-two-horizontal=none
+new-session-two-vertical=none
+next-session=Shift+Right
+next-terminal=Ctrl+Tab; Shift+Tab
+open-browser=none
+options_configure=Ctrl+Shift+,
+options_configure_keybinding=none
+options_configure_notifications=none
+paste-selection=Ctrl+Shift+Ins
+previous-session=Shift+Left
+previous-terminal=Ctrl+Shift+Tab
+rename-session=Ctrl+Alt+S[Window]
+
+[Window]
+Height=40
