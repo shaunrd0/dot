@@ -8,8 +8,11 @@ Favorites=Default Powerline.profile
 ShowMenuBarByDefault=false
 
 [MainWindow]
-Height 768=719
+Height 1200=1127
+Height 1504=1431
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAApQAAAKjAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAARnAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1366=679
+Width 1920=960
+Width 2256=1128
+Window-Maximized 1200x1920=true

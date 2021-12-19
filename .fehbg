@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-tile '/home/kapper/screens/use_your_illusion.png' 
+feh --no-fehbg --bg-tile '/home/kapper/screens/use_your_illusion.png' 

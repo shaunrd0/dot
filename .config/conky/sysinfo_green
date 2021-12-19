@@ -47,7 +47,11 @@ ${voffset 4}${goto 0}${alignc}${color2}${cpugraph 40, 305}
 # Percentage / GHz utilized
 ${voffset 0}${goto 10}${color}${font}${exec cat /sys/class/thermal/thermal_zone2/temp | awk '{print ( ( ( (9/5) * $1) / 1000) + 32) "°F" }'}${alignr}${cpu}% - ${freq_g}GHz
 # CPU Core Graphs
-${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu1}%${goto 43}${color2}${cpubar cpu1 12,110} ${goto 170}${color}${cpu cpu2}%${goto 203}${color2}${cpubar cpu2 12,110}
+${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu1}%${goto 43}${color2}${cpubar cpu1 12,110} ${goto 170}${color}${cpu cpu2}%${goto 203}${color2}${cpubar cpu2 12,110} 
+${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu3}%${goto 43}${color2}${cpubar cpu3 12,110} ${goto 170}${color}${cpu cpu4}%${goto 203}${color2}${cpubar cpu4 12,110}
+${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu5}%${goto 43}${color2}${cpubar cpu5 12,110} ${goto 170}${color}${cpu cpu6}%${goto 203}${color2}${cpubar cpu6 12,110}
+${voffset 10}${color}${goto 10}${font Bitstream Vera Sans:size=8}${cpu cpu7}%${goto 43}${color2}${cpubar cpu7 12,110} ${goto 170}${color}${cpu cpu8}%${goto 203}${color2}${cpubar cpu8 12,110}
+
 ${voffset 3}${color}$hr
 #
 # Network display

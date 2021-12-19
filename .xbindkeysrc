@@ -26,39 +26,39 @@
 # m:xxx + c:xxx 
 # Shift+... 
 
-
-
-
 #keystate_numlock = enable
 #keystate_scrolllock = enable
 #keystate_capslock = enable
 
-
+# SETUP INSTRUCTIONS:
+# Run `xbindkeys --key` and press a key to get the output
+# Place the output under the correspondng action to trigger for that key press
+# Useful for configuring media keys for laptops; They all differ
+# These settings are for a Dell XPS 13 9310
 
 #Volume Up
 "pactl set-sink-volume @DEFAULT_SINK@ +10%"
-    m:0x0 + c:76
-    F10 
+    m:0x0 + c:123
+    XF86AudioRaiseVolume
 
 #Volume Down
 "pactl set-sink-volume @DEFAULT_SINK@ -10%"
-    m:0x0 + c:75
-    F9 
+    m:0x0 + c:122
+    XF86AudioLowerVolume
 
 #Toggle Audio
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    m:0x0 + c:74
-    F8 
+    m:0x0 + c:121
+    XF86AudioMute
 
 #Brightness Up
-"xbacklight -inc 9.99 && echo $(xbacklight) > $HOME/.config/.brightness"
-    m:0x0 + c:73
-    F7 
+"brightnessctl s +2.5%"
+    m:0x0 + c:233
+    XF86MonBrightnessUp
 
 #Brightness Down
-"xbacklight -dec 9.99 && echo $(xbacklight) > $HOME/.config/.brightness"
-    m:0x0 + c:72
-    F6 
+"brightnessctl s 2.5%-"
+    m:0x0 + c:232
+    XF86MonBrightnessDown
 
-#
 # End of xbindkeys configuration
