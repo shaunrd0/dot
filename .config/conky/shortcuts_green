@@ -1,0 +1,76 @@
+conky.config = {
+	alignment = 'top_left',
+	background = true,
+	color2 = '2ECC71',
+	cpu_avg_samples = 2,
+	default_color = 'FFFFFF',
+	double_buffer = true,
+	font = 'Bitstream Vera Sans:size=8',
+	gap_x = 15,
+	gap_y = 40,
+	minimum_width = 200,
+	no_buffers = true,
+	own_window = true,
+  own_window_class = 'shortcuts_green',
+	own_window_type = 'override',
+	own_window_transparent = true,
+	update_interval = 10.0,
+	use_xft = true,
+}
+conky.text = [[
+#
+# Date
+${alignr}${color1}
+${goto 20}${voffset 8}${color2}${font Bitstream Vera Sans:size=16}${time %A}$font\
+${goto 140}${voffset -8}${color}${font Bitstream Vera Sans:size=38}${time %e}$font
+${goto 20}${color}${voffset -30}${color}${font Bitstream Vera Sans:size=18}${time %b}$font\
+${goto 60}${voffset -3} ${color}${font Bitstream Vera Sans:size=20}${time %Y}$font${color2}$hr
+#
+---------------Applications---------------
+${color2}open new terminal - ${color}mod+Enter
+${color2}open dropdown yakuake terminal - ${color}F4
+${color2}Firefox - ${color}mod+Shift+f
+
+---------------Screenshots----------------
+${color2}image clip tool - ${color}mod+Shift+p
+
+---------------Menus----------------------
+${color2}audio devices - ${color}mod+Ctrl+a
+${color2}bluetooth devices - ${color}mod+Ctrl+d
+${color2}bmenu system settings - ${color}mod+Ctrl+b
+${color2}dmenu app launcher - ${color}mod+d
+${color2}morc_menu app menu - ${color}mod+z
+${color2}power modes - ${color}mod+0
+${color2}blur lock - ${color}mod+9
+
+---------------Restart / Reload-----------
+
+${color2}kill conky - ${color}mod+o
+${color2}start conky - ${color}mod+shift+o
+${color2}kill compton - ${color}mod+t
+${color2}start compton - ${color}mod+Shift+t
+${color2}reload i3 - ${color}mod+Shift+c
+${color2}restart i3 - ${color}mod+Shift+r
+
+---------------Scratchpad-----------------
+${color2}send to scratchpad - ${color}mod+Shift+minus
+${color2}show scratchpad - ${color}mod+minus
+
+---------------Windows--------------------
+${color2}modify gaps - ${color}mod+Shift+g
+${color2}resize mode - ${color}mod+r
+${color2}toggle split direction - ${color}mod+q
+${color2}kill cursor selection - ${color}mod+Ctrl+q
+${color2}kill active window - ${color}mod+Shift+q
+
+---------------Workspace--------------------
+${color2}move to empty workspace - ${color}mod+Shift+z
+${color2}switch to workspace 1-8 - ${color}mod+1-8
+${color2}send to workspace 1-8 - ${color}mod+Ctrl+1-8
+${color2}navigate workspaces - ${color}mod+Ctrl+arrowkeys
+${color2}toggle floating - ${color}mod+Shift+Space
+${color2}exit - ${color}mod+0
+
+${color2}help - ${color}mod+Shift+h
+${color2}mod key - ${color}<Alt>
+]]

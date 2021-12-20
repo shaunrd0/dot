@@ -1,0 +1,46 @@
+[Desktop Entry]
+DefaultProfile=Kapper.profile
+
+[Dialogs]
+FirstRun=false
+
+[Favorite Profiles]
+Favorites=Kapper.profile
+
+[KFileDialog Settings]
+Recent Files[$e]=yakuake.shortcuts,file:$HOME/.config/yakuake.shortcuts
+Recent URLs[$e]=file:$HOME/.config/
+detailViewIconSize=0
+
+[Shortcuts]
+close-session=none
+edit-profile=none
+help_about_app=none
+help_about_kde=none
+help_report_bug=none
+keep-open=none
+manage-profiles=none
+new-session-quad=none
+new-session-two-horizontal=none
+new-session-two-vertical=none
+next-terminal=Ctrl+Tab; Shift+Tab
+options_configure_keybinding=none
+options_configure_notifications=none
+previous-terminal=Ctrl+Shift+Tab
+rename-session=none
+switch-to-session-1=none
+switch-to-session-2=none
+switch-to-session-3=none
+switch-to-session-4=none
+switch-to-session-5=none
+switch-to-session-6=none
+switch-to-session-7=none
+switch-to-session-8=none
+switch-to-session-9=none
+toggle-session-keyboard-input=none
+toggle-session-prevent-closing=none
+toggle-window-state=Meta+z
+
+[Window]
+Height=40
+Width=80
