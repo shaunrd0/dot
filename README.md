@@ -4,6 +4,8 @@ Be sure to clone recursively if you want to grab updated plugins / submodules in
 
 These configs were created and tested on Kubuntu 20.04 using i3-gaps, and should only be used on similar systems. Any Ubuntu derivative is probably fine, especially if you're already familiar with i3. If you get stuck in a terminal with no internet, check out [Linux Admin/Getting Started](https://knoats.com/link/62#bkmrk-connecting-to-wifi). 
 
+#### Install Dependencies and Dotfiles
+
 First, grab some packages used for status bar and desktop overlay
 ```bash
 sudo apt install conky golang-go inxi python3 python3-pip jq tmux xbindkeys xautolock pulsemixer
@@ -29,7 +31,7 @@ sudo usermod -aG video <YOUR_USERNAME>
 
 Then install i3-gaps from speed-ricer PPA 
 ```bash
-sudo add-apt-repository ppa:kgilmer/speed-rice
+sudo add-apt-repository ppa:kgilmer/speed-ricer
 sudo apt install i3-gaps
 ```
 
@@ -53,7 +55,30 @@ cd ~/dot/
 git submodule update --init
 ```
 
-To configure tap to click on laptop touchpads, run the following commands
+![desktop](screens/dtop-code.png)
+
+#### Additional Configuration
+
+`stow --adopt .` can be used to install conflicting files, but doing so will result in the loss of your local configurations. If you want to keep them, back up the conflicting files output in the error message before running this command.
+
+
+**Installation of clang for clang completion**
+
+If you don't want clang completion, just remove the plugin directory from `~/.vim/bundle/`.
+
+If you don't remove clang completion and skip the following steps, vim will show errors when   opening source code files. This is because these configurations use clang completion for so  urce code auto completion and drop-down menus within vim.
+
+Note that the `printf` command may take some time to finish, since it is searching your syst  em for a needed file.
+
+```bash
+sudo apt install clang
+printf "export LIBCLANG=\""$(find /usr/ -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_al  iases
+echo "let g:clang_library_path=\$LIBCLANG" >> ~/.vimrc
+source ~/.bashrc
+```
+
+
+**To configure tap to click on laptop touchpads**, run the following commands
 ```bash
 sudo mkdir /etc/X11/xorg.conf.d
 sudoedit /etc/X11/xorg.conf.d/90-touchpad.conf
@@ -69,7 +94,7 @@ Section "InputClass"
 EndSection
 ```
 
-Optionally, you can also modify the following keybinds in `.xbindkeysrc`. I wrote some addiitonal comments in the file and also you can check out [Linux Admin/i3](https://knoats.com/books/linux-admin/page/i3#bkmrk-xkeybinds) for more help if needed.
+**Optionally, you can also modify the following keybinds in `.xbindkeysrc`.** I wrote some addiitonal comments in the file and also you can check out [Linux Admin/i3](https://knoats.com/books/linux-admin/page/i3#bkmrk-xkeybinds) for more help if needed.
 ```
 # SETUP INSTRUCTIONS:
 # Run `xbindkeys --key` and press a key to get the output
@@ -79,34 +104,27 @@ Optionally, you can also modify the following keybinds in `.xbindkeysrc`. I wrot
 
 #Volume Up
 "pactl set-sink-volume @DEFAULT_SINK@ +10%"
-    m:0x0 + c:123
-    XF86AudioRaiseVolume
+  m:0x0 + c:123
+  XF86AudioRaiseVolume
 
 #Volume Down
 "pactl set-sink-volume @DEFAULT_SINK@ -10%"
-    m:0x0 + c:122
-    XF86AudioLowerVolume
+  m:0x0 + c:122
+  XF86AudioLowerVolume
 
 #Toggle Audio
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    m:0x0 + c:121
-    XF86AudioMute
+  m:0x0 + c:121
+  XF86AudioMute
 
 #Brightness Up
 "brightnessctl s +2.5%"
-    m:0x0 + c:233
-    XF86MonBrightnessUp
+  m:0x0 + c:233
+  XF86MonBrightnessUp
 
 #Brightness Down
 "brightnessctl s 2.5%-"
-    m:0x0 + c:232
-    XF86MonBrightnessDown
+  m:0x0 + c:232
+  XF86MonBrightnessDown
 ```
-
-
-
-
-`stow --adopt .` can be used to install conflicting files, but doing so will result in the loss of your local configurations. If you want to keep them, back up the conflicting files output in the error message before running this command.
-
-![desktop](screens/dtop-code.png)
 
