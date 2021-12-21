@@ -243,9 +243,9 @@ exec --no-startup-id xbindkeys --poll-rc
 exec --no-startup-id $HOME/.local/bin/i3scripts/start_konky
 exec --no-startup-id sh ~/.fehbg
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec --no-startup-id wicd-client -t
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id google-drive-ocamlfuse ~/gdrive
+#exec --no-startup-id wicd-client -t
+#exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id google-drive-ocamlfuse ~/gdrive
 
 
 #   Application keybinds

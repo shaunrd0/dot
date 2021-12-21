@@ -34,7 +34,7 @@ font-2 = Noto Sans Mono:size=10;0
 ; Modules
 modules-left = powermenu weather
 modules-center = ki3
-modules-right = volume date
+modules-right = brightness volume date
 
 ; Set the cursor to display pointer / resize is interaction available
 cursor-click = pointer
@@ -113,6 +113,14 @@ type = custom/script
 exec = ~/.local/bin/i3scripts/weathermap
 interval = 600
 ;label-font = Font Awesome 5 Free Solid:size=40;0
+
+;    Brightness
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/brightness]
+type = custom/script
+exec = echo "  $(brightnessctl -P g)%"
+tail = true
+
 
 ;    Type Speed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -325,20 +333,20 @@ format-padding = 0
 format = <label-toggle> <menu>
 label-open = "   "
 label-close = "   "
-menu-0-0 = "      pkill poly   "
+menu-0-0 = "    Restart i3   |"
 menu-0-0-foreground = #fba922
-menu-0-0-exec = pkill -f polybar
-menu-0-1 = "    i3 restart   "
+;menu-0-0-background = #141414
+menu-0-0-exec = i3 restart
+menu-0-1 = "    Logout   |"
 menu-0-1-foreground = #fba922
-;menu-0-1-background = #141414
-menu-0-1-exec = i3 restart
-menu-0-2 = "   Reboot   "
+menu-0-1-exec = pkill -KILL -u kapper
+menu-0-2 = "   Reboot   |"
 menu-0-2-foreground = #fba922
-menu-0-2-exec = sudo reboot
-menu-0-3 = "   Power off   "
+menu-0-2-exec = reboot
+menu-0-3 = "   Power off   |"
 menu-0-3-foreground = #fba922
-menu-0-3-exec = sudo poweroff
-menu-0-4 = "     Lock   "
+menu-0-3-exec = poweroff
+menu-0-4 = "     Lock   |"
 menu-0-4-foreground = #fba922
 menu-0-4-exec = i3lock -c 000000
 

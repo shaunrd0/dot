@@ -37,12 +37,12 @@
 # These settings are for a Dell XPS 13 9310
 
 #Volume Up
-"amixer set Master 5%+"
+"pulsemixer --change-volume +5 --max-volume 125"
     m:0x0 + c:123
     XF86AudioRaiseVolume
 
 #Volume Down
-"amixer set Master 1%-"
+"pulsemixer --change-volume -5"
     m:0x0 + c:122
     XF86AudioLowerVolume
 

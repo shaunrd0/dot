@@ -40,7 +40,3 @@ switch-to-session-9=none
 toggle-session-keyboard-input=none
 toggle-session-prevent-closing=none
 toggle-window-state=Meta+z
-
-[Window]
-Height=40
-Width=80

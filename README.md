@@ -6,7 +6,7 @@ These configs were created and tested on Kubuntu 20.04 using i3-gaps, and should
 
 First, grab some packages used for status bar and desktop overlay
 ```bash
-sudo apt install conky golang-go inxi python3 python3-pip jq tmux xbindkeys
+sudo apt install conky golang-go inxi python3 python3-pip jq tmux xbindkeys xautolock pulsemixer
 sudo pip3 install powerline-shell
 go get -u github.com/arl/gitmux
 ```
@@ -27,7 +27,49 @@ sudo ./configure && sudo make install
 sudo usermod -aG video <YOUR_USERNAME>
 ```
 
-Optionally, you can modify the following keybinds in `.xbindkeysrc`. I wrote some addiitonal comments in the file and also you can check out [Linux Admin/i3](https://knoats.com/books/linux-admin/page/i3#bkmrk-xkeybinds) for more help if needed.
+Then install i3-gaps from speed-ricer PPA 
+```bash
+sudo add-apt-repository ppa:kgilmer/speed-rice
+sudo apt install i3-gaps
+```
+
+Last, install these dotfiles to configure all of these applications by cloning repository into home directory and running `stow .` - 
+```bash
+git clone -b kubuntu-i3 --recursive https://github.com/shaunrd0/dot ~/dot
+cd ~/dot/
+stow .
+```
+
+If you'd rather clone elsewhere you can
+```bash
+git clone -b kubuntu-i3 --recursive https://github.com/shaunrd0/dot /path/to/dot
+cd /path/to/dot/
+stow -t ~ .
+```
+
+If you forgot to clone recursively
+```bash
+cd ~/dot/
+git submodule update --init
+```
+
+To configure tap to click on laptop touchpads, run the following commands
+```bash
+sudo mkdir /etc/X11/xorg.conf.d
+sudoedit /etc/X11/xorg.conf.d/90-touchpad.conf
+```
+
+And input the following lines into the `90-touchpad.conf` file. Save, exit, then run `sudo pkill -KILL -u <YOUR_USERNAME>` to logout of your user and log back in to apply the changes.
+```
+Section "InputClass"
+  Identifier "touchpad"
+  MatchIsTouchpad "on"
+  Driver "libinput"
+  Option "Tapping" "on"
+EndSection
+```
+
+Optionally, you can also modify the following keybinds in `.xbindkeysrc`. I wrote some addiitonal comments in the file and also you can check out [Linux Admin/i3](https://knoats.com/books/linux-admin/page/i3#bkmrk-xkeybinds) for more help if needed.
 ```
 # SETUP INSTRUCTIONS:
 # Run `xbindkeys --key` and press a key to get the output
@@ -61,47 +103,8 @@ Optionally, you can modify the following keybinds in `.xbindkeysrc`. I wrote som
     XF86MonBrightnessDown
 ```
 
-Then install i3-gaps from speed-ricer PPA 
-```bash
-sudo add-apt-repository ppa:kgilmer/speed-rice
-sudo apt install i3-gaps
-```
 
-Last, install these dotfiles to configure all of these applications by cloning repository into home directory and running `stow .` - 
-```bash
-git clone -b ubuntu-i3 --recursive https://github.com/shaunrd0/dot ~/dot
-cd ~/dot/
-stow .
-```
 
-If you'd rather clone elsewhere you can
-```bash
-git clone -b ubuntu-i3 --recursive https://github.com/shaunrd0/dot /path/to/dot
-cd /path/to/dot/
-stow -t ~ .
-```
-
-If you forgot to clone recursively
-```bash
-cd ~/dot/
-git submodule update --init
-```
-
-To configure tap to click on laptop touchpads, run the following commands
-```bash
-sudo mkdir /etc/X11/xorg.conf.d
-sudoedit /etc/X11/xorg.conf.d/90-touchpad.conf
-```
-
-And input the following lines into the `90-touchpad.conf` file. Save, exit, then run `sudo pkill -KILL -u <YOUR_USERNAME>` to logout of your user and log back in to apply the changes.
-```
-Section "InputClass"
-  Identifier "touchpad"
-  MatchIsTouchpad "on"
-  Driver "libinput"
-  Option "Tapping" "on"
-EndSection
-```
 
 `stow --adopt .` can be used to install conflicting files, but doing so will result in the loss of your local configurations. If you want to keep them, back up the conflicting files output in the error message before running this command.
 

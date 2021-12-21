@@ -20,3 +20,4 @@ TrimTrailingSpacesInSelectedText=true
 [Scrolling]
 HistoryMode=2
 ScrollBarPosition=2
+ScrollFullPage=1
