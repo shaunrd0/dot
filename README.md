@@ -1,11 +1,10 @@
-# dot
+# Headless
 
-A place for backing up my dotfiles. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
+Dotfiles configurations for headless Ubuntu 20.04 linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
 
 Once installed, editing source code in vim supports features displayed in the screenshot below
 
 ![Vim screenshot](VimScreenshot.png)
-
 
 ### Install Dotfiles
 
@@ -38,7 +37,7 @@ git restore .
 
 If you forget to clone recursively
 ```bash
-git submodule update
+git submodule update --init
 Submodule path '.vim/bundle/Colorizer': checked out '53ada285f0acc171acda4280b6144e468dded89f'
 Submodule path '.vim/bundle/ale': checked out '7265ceb6d050d1a4642741d248f11e4f2abd37e1'
 Submodule path '.vim/bundle/clang_complete': checked out '0b98d7533ad967aac3fc4c1a5b0508dafa8a676f'
