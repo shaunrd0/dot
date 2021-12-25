@@ -55,7 +55,7 @@ cd ~/dot/
 git submodule update --init
 ```
 
-![desktop](screens/dtop-code.png)
+![desktop](Pictures/screenshots/dtop-code.png)
 
 #### Additional Configuration
 

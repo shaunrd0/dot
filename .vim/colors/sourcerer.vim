@@ -21,7 +21,7 @@ let colors_name = "sourcerer"
 
 
 "  █▓▒░ GUI colors
-hi Normal       guifg=#c2c2b0 guibg=#000000 gui=NONE
+hi Normal       guifg=#c2c2b0 guibg=#222222 gui=NONE
 hi ColorColumn  guifg=NONE    guibg=#1c1c1c
 hi Cursor       guifg=NONE    guibg=#626262 gui=NONE
 hi CursorColumn guibg=#2d2d2d

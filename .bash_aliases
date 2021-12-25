@@ -1,5 +1,4 @@
 # Aliases to use the correct python version
-# + Because python doesn't know how to update.. :')
 alias python3='python3.9'
 alias pip3='python3.9 -m pip'
 

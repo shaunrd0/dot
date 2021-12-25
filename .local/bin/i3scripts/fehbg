@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-tile '/home/kapper/Pictures/backgrounds/use_your_illusion.png' 

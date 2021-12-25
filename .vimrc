@@ -17,8 +17,10 @@ set undofile
 
 " Combine vim clipboard with global clipboard buffer
 " Allows using y and p to copy into CTRL-C buffer, vice versa
-" :help 'clipboard'
-set clipboard+=unnamed
+" :help clipboard
+" :help registers
+""set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Allows true colors in vim (> 8 bit colors)
 " :help termguicolors
@@ -61,10 +63,11 @@ set number
 " Use Powerline symbols
 ""let g:airline_powerline_fonts = 1
 
-" Enable Syntax Highlighting in Vim
-syntax on
 " Use Sourcerer color scheme by Xero
 colorscheme sourcerer
+""colorscheme darcula
+" Enable Syntax Highlighting in Vim
+syntax on
 
 " Fix plugin compatibility issues
 set nocp
@@ -92,7 +95,7 @@ nnoremap <C-e> <C-w>
 nnoremap <C-b> :!cmake -S . -B ./build/ && cmake --build ./build
 nnoremap <C-d> :!./build/scrap
 
-nnoremap <C-b> :!make -C build/
+nnoremap <C-m> :!make -C build/
 
 " Vim Plugin Settings
 
@@ -103,7 +106,7 @@ filetype plugin indent on
 
 " Set Vim Airline theme
 " base16 soda base16_pop laederon  night_owl kalisi* ayu_mirage* raven
-let g:airline_theme='kalisi'
+"let g:airline_theme='kalisi'
 
 " Gitgutter installed for + -  diffs in gutters within repo files
 
@@ -112,11 +115,11 @@ let g:airline_theme='kalisi'
 let g:ale_hover_to_preview = 1
 " Hover detail info in balloons
 ""let g:ale_set_balloons = 1
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '?'
-""let g:ale_sign_error = '🗙'
-""let g:ale_sign_warning = '⚠'
-let g:ale_sign_warning = ''
+""let g:ale_sign_error = 'X'
+""let g:ale_sign_warning = '?'
+let g:ale_sign_error = '🗙'
+let g:ale_sign_warning = '⚠'
+""let g:ale_sign_warning = ''
 highlight ALEWarningSign ctermbg=Yellow
 highlight ALEWarningSign ctermfg=Black
 highlight ALEWarning ctermbg=DarkYellow
