@@ -1,3 +1,6 @@
+# Alias to restart plasmashell for Kubuntu Plasma session
+alias kapp-plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
+
 # Aliases to use the correct python version
 alias python3='python3.9'
 alias pip3='python3.9 -m pip'

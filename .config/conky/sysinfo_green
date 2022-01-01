@@ -63,11 +63,11 @@ conky.text = [[
   ${color}${voffset 4}${font}Interface: ${gw_iface} ${font}${alignr}Gateway IP: ${gw_ip}
   ${font}${alignr}${if_match "$wireless_essid"=="off/any"}Déconnecté${else}${wireless_essid}${endif} 
   ${font}${goto 5}Down${alignr}Up
-  ${goto 5}${color2}${downspeedgraph enp0s31f6 40,153}${goto 160}${upspeedgraph enp0s31f6 40,155} 
+  ${goto 10}${color2}${downspeedgraph wlp0s20f3 40,160}${goto 180}${upspeedgraph wlp0s20f3 40,160}
 # Uncomment next line for wireless
-# ${goto 5}${color}${downspeedf wlp3s0} Kb/s - ${totaldown wlp3s0}${goto 160}${upspeedf wlp3s0} Kb/s - ${totalup wlp3s0}
+# ${goto 10}${color}${downspeedf wlp0s20f3} Kb/s - ${totaldown wlp0s20f3}${goto 180}${upspeedf wlp0s20f3} Kb/s - ${totalup wlp0s20f3}
 # Ethernet network display
-  ${goto 5}${color}${downspeedf enp0s31f6} Kb/s - ${totaldown enp0s31f6}${alignr}${upspeedf enp0s31f6} Kb/s - ${totalup enp0s31f6}
+  ${goto 10}${color}${downspeedf wlp0s20f3} Kb/s - ${totaldown wlp0s20f3}${alignr}${upspeedf wlp0s20f3} Kb/s - ${totalup wlp0s20f3}
   ${voffset 4}${color}$hr
 
 #
