@@ -8,7 +8,7 @@ These configs were created and tested on Kubuntu 20.04 using i3-gaps, and should
 
 First, grab some packages used for status bar and desktop overlay
 ```bash
-sudo apt install conky golang-go inxi python3 python3-pip jq tmux xbindkeys xautolock pulsemixer
+sudo apt install conky golang-go inxi python3 python3-pip jq tmux xbindkeys xautolock pulsemixer xsel
 sudo pip3 install powerline-shell
 go get -u github.com/arl/gitmux
 ```
@@ -53,6 +53,12 @@ If you forgot to clone recursively
 ```bash
 cd ~/dot/
 git submodule update --init
+```
+
+*After* the dotfiles have been installed using `stow`, you should run `tpm` to ensure tmux plugins are all installed according to the `tmux.conf` settings provided. Assuming you don't want to face errors for dependencies related to tmux shortcuts defined in `.tmux.conf`, this is a required step to configure these dotfiles. Alternatively, you could provide your own `.tmux.conf` that does not use plugins to avoid this step, or just use the default `.tmux.conf` instead.
+
+```bash
+ ~/.tmux/plugins/tpm/bin/install_plugins
 ```
 
 ![desktop](Pictures/screenshots/dtop-code.png)
