@@ -46,3 +46,31 @@ fi
 # + Execute tmux on start
 export TERMINAL='konsole --profile Kapper -e tmux'
 
+# Less colors for man pages
+export PAGER=less
+default=$(tput sgr0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+purple=$(tput setaf 5)
+orange=$(tput setaf 9)
+# Begin blinking
+export LESS_TERMCAP_mb=$red
+# Begin bold
+export LESS_TERMCAP_md=$orange
+# End mode
+export LESS_TERMCAP_me=$default
+# End standout-mode
+export LESS_TERMCAP_se=$default
+# Begin standout-mode - info box
+export LESS_TERMCAP_so=$purple
+# End underline
+export LESS_TERMCAP_ue=$default
+# Begin underline
+export LESS_TERMCAP_us=$green
+# Allow mouse wheel movement for less output (manpages, diffs)
+export LESS='--mouse --wheel-lines 2'
+# Set additional flags for less
+# + -R for raw control characters
+# + -w to highlight first unread line when jumping N>1 lines down
+# + -#2 to shift 2 columns horizontally when right / left arrow is pressed
+export LESS="$LESS -R -w -#2"
