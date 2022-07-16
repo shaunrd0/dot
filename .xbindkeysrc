@@ -42,6 +42,11 @@
 "xbindkeys_show" 
   control+shift + q
 
+# Disables middle-mouse button
+# + If this doesn't work, try to remove '+ Release'
+#"echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys"  
+#  b:2 + Release
+
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4

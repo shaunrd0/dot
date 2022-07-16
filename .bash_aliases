@@ -3,7 +3,7 @@ alias python3='python3.9'
 alias pip3='python3.9 -m pip'
 
 # Alias to restart plasmashell for Kubuntu Plasma session
-alias kapp-plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
+alias kapp-plasmashell='sudo pkill plasmashell && sleep 1 && (plasmashell --replace &> /dev/null &)'
 # Alias to clear swap
 alias kapp-swap='sudo swapoff -a && sudo swapon -a'
 # Alias to initialize github user
