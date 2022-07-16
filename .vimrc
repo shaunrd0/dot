@@ -22,7 +22,7 @@ set clipboard+=unnamed
 
 " Allows true colors in vim (> 8 bit colors)
 " :help termguicolors
-set termguicolors
+"set termguicolors
 
 " Custom formatting based on filetype
 " :help autocmd 

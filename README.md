@@ -67,3 +67,11 @@ source ~/.bashrc
 ```
 
 
+### Gitmux
+
+To enable the gitmux status bar in tmux sessions
+
+```bash
+sudo apt install golang-go
+go install github.com/arl/gitmux@latest
+```
