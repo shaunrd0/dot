@@ -1,9 +1,11 @@
 # For Rust stuff, uncomment this line
 #. "$HOME/.cargo/env"
 
-# Alias to restart plasmashell for Kubuntu Plasma session
+# Clear kscreen cached settings
+alias kapp-kscreen='rm -rf ~/.local/share/kscreen/*'
+# Restart plasmashell
 alias kapp-plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
-# Alias to clear swap
+# Clear swap
 alias kapp-swap='sudo swapoff -a && sudo swapon -a'
 alias kapp-git='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com"'
 alias kapp-update='sudo apt update -y && sudo apt upgrade -y && sudo apt upgrade --fix-broken --fix-missing --auto-remove'
@@ -24,11 +26,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 export EDITOR="vim"
 export VISUAL="vim"
 export LS_COLORS="di=1;34:ln=31;47:so=32:pi=33:ex=1;32:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
-export PATH=$PATH:/opt/:/home/kapper/.local/bin/
+export PATH=$PATH:/opt/:$HOME/.local/bin/:$HOME/.dotnet:$HOME/go/bin/
+export DOTNET_ROOT=$HOME/.dotnet
 
 # Example path for autocompletion using libclang-9-dev package, obtained by the following command
-# find /usr/ -name libclang.so.1 2>/dev/null
-export LIBCLANG="/usr/lib/llvm-10/lib/libclang.so.1"
+command -v clang &>/dev/null && export LIBCLANG="$(find /usr/ -name libclang.so.1 2>/dev/null)"
 
 # Source a top-secret alias file
 if [ -f ~/.bash_secrets ]; then

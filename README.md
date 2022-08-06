@@ -1,6 +1,6 @@
 # Headless
 
-Dotfiles configurations for headless Ubuntu 20.04 linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
+Dotfiles configurations for headless Ubuntu 22.04 linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
 
 Once installed, editing source code in vim supports features displayed in the screenshot below
 
@@ -8,15 +8,16 @@ Once installed, editing source code in vim supports features displayed in the sc
 
 ### Install Dotfiles
 
-Easiest installation is to clone repository into home directory - 
+Easiest installation is to clone repository into home directory -
 
 ```bash
+sudo apt install vim xsel xclip tmux
 git clone --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow --adopt .
 ```
 
-If you'd rather clone elsewhere - 
+If you'd rather clone elsewhere -
 
 ```bash
 git clone --recursive https://github.com/shaunrd0/dot /path/to/dot

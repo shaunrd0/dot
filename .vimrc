@@ -18,7 +18,8 @@ set undofile
 " Combine vim clipboard with global clipboard buffer
 " Allows using y and p to copy into CTRL-C buffer, vice versa
 " :help 'clipboard'
-set clipboard+=unnamed
+set clipboard=unnamed
+set clipboard+=unnamedplus
 
 " Allows true colors in vim (> 8 bit colors)
 " :help termguicolors
@@ -28,8 +29,9 @@ set clipboard+=unnamed
 " :help autocmd 
 "" autocmd FileType yaml set tabstop=2 shiftwidth=2
 
-" Highlight column 80 in c and cpp files
-autocmd FileType cpp,c set colorcolumn=80
+" Highlight characters past column N in source files based on file type
+autocmd FileType cpp,c match ErrorMsg '\%>80v.\+'
+autocmd FileType cs match ErrorMsg '\%>120v.\+'
 
 " Define function in vim to remove whitespace
 fun! TrimWhitespace()
@@ -38,8 +40,9 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 "Call this on every attempt to save a file of types defined below..
-autocmd BufWritePre *.cpp,*.h,*.c,*.php :call TrimWhitespace()
+autocmd BufWritePre *.cpp,*.h,*.c,*.php,*.cs,*.yml,*.txt,*.md :call TrimWhitespace()
 ""autocmd BufWritePre *.cpp,*.h,*.c,*.php :%s/\s\+$//ge
+
 " Set terminal title when opening file
 "" autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 "" set title
@@ -86,8 +89,8 @@ nnoremap <C-e> <C-w>
 
 " Build and run keybinds
 "" nnoremap <C-b> :!make -C build/
-nnoremap <C-b> :!cmake -S . -B ./build/ && cmake --build ./build
-nnoremap <C-d> :!./build/scrap
+"nnoremap <C-b> :!cmake -S . -B ./build/ && cmake --build ./build
+"nnoremap <C-d> :!./build/scrap
 
 " Vim Plugin Settings
 
