@@ -11,7 +11,7 @@ Once installed, editing source code in vim supports features displayed in the sc
 Easiest installation is to clone repository into home directory -
 
 ```bash
-sudo apt install vim xsel xclip tmux
+sudo apt install vim xsel xclip tmux ranger clang
 git clone --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow --adopt .
@@ -62,8 +62,6 @@ Note that the `printf` command may take some time to finish, since it is searchi
 
 ```bash
 sudo apt install clang
-printf "export LIBCLANG=\""$(find /usr/ -name libclang.so.1 2>/dev/null)"\"\n\n" >> .bash_aliases
-echo "let g:clang_library_path=\$LIBCLANG" >> ~/.vimrc
 source ~/.bashrc
 ```
 
