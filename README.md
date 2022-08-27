@@ -11,7 +11,7 @@ Once installed, editing source code in vim supports features displayed in the sc
 Easiest installation is to clone repository into home directory -
 
 ```bash
-sudo apt install vim xsel xclip tmux ranger clang
+sudo apt install vim xsel xclip tmux ranger clang yakuake
 git clone --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow --adopt .
@@ -25,7 +25,9 @@ cd /path/to/dot/
 stow --adopt -t ~ .
 ```
 
-**Warning:** `--adopt` is used to link conflicting files, but doing so could result in the loss of some configs within your local copy of the repository. After running `stow --adopt .`, be sure to check `git status` is clean. If a file has been modified, discard the local changes to be up-to-date with `origin/master` and it will be restored on your system as well, since the files are now linked.
+**Warning:** `--adopt` is used to link conflicting files, but doing so could result in the loss of some configs within your local copy of the repository and on your local system.
+After running `stow --adopt .`, be sure to check `git status` is clean.
+If a file has been modified, discard the local changes to be up-to-date with `origin/master` and it will be restored on your system as well, since the files are now linked.
 
 We could run the following commands to restore changed files
 ```bash
@@ -58,8 +60,6 @@ If you don't want clang completion, just remove the plugin directory from `~/.vi
 
 If you don't remove clang completion and skip the following steps, vim will show errors when opening source code files. This is because these configurations use clang completion for source code auto completion and drop-down menus within vim.
 
-Note that the `printf` command may take some time to finish, since it is searching your system for a needed file.
-
 ```bash
 sudo apt install clang
 source ~/.bashrc
@@ -74,3 +74,4 @@ To enable the gitmux status bar in tmux sessions
 sudo apt install golang-go
 go install github.com/arl/gitmux@latest
 ```
+

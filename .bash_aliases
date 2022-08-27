@@ -30,10 +30,10 @@ export PATH=$PATH:/opt/:$HOME/.local/bin/:$HOME/.dotnet:$HOME/go/bin/
 export DOTNET_ROOT=$HOME/.dotnet
 
 # Example path for autocompletion using libclang-9-dev package, obtained by the following command
-command -v clang &>/dev/null && export LIBCLANG="$(find /usr/ -name libclang.so.1 2>/dev/null)"
+export LIBCLANG="$(command -v clang &>/dev/null && ldconfig -p | sort | grep libclang-[0-9]. | awk -F "> " '{print$2}' | tail -n 1)"
 
 # Source a top-secret alias file
-if [ -f ~/.bash_secrets ]; then
+if [ -e ~/.bash_secrets ]; then
   . ~/.bash_secrets
 fi
 
@@ -41,9 +41,20 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
-# Set the default terminal to use konsole, with Kapper profile
+# Set the default terminal to use konsole, with kapper profile
 # + Execute tmux on start
-#export TERMINAL='konsole --profile Kapper -e tmux'
+if [ -e ~/.local/share/konsole/kapper.profile ]; then
+  if command -v tmux &>/dev/null; then
+    export TERMINAL='konsole --profile kapper -e tmux'
+  else
+    export TERMINAL='konsole --profile kapper'
+  fi
+fi
+
+# Conditionally enables font glyphs in .vimrc if available
+if [ -e ~/.local/share/fonts/sauce-code-pro.otf ]; then
+  export SAUCE=1
+fi
 
 # Less colors for man pages
 export PAGER=less
