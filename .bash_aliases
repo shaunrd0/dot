@@ -16,7 +16,7 @@ else
   # Restart plasmashell
   alias kapp-plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
   alias kapp-swap='sudo swapoff -a && sudo swapon -a'
-  alias kapp-vbox='ps aux www |grep 'VBoxClient --draganddrop' | awk '{print $2}' | xargs kill'
+  alias kapp-vbox="ps aux www |grep 'VBoxClient --draganddrop' | awk '{print $2}' | xargs kill"
 fi
 
 # Alias / export customizations
