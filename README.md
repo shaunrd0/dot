@@ -52,6 +52,24 @@ Submodule path '.vim/bundle/vim-signify': checked out '16eee41d2b267523b84bd4ac1
 ```
 
 
+### Docker
+
+You can run these dotfiles in a docker container -
+
+```bash
+git clone git@github.com:shaunrd0/dot.git
+cd dot
+docker build -t dot .
+docker run -it dot bash
+```
+
+This container has the following packages installed and uses `ubuntu:latest` as a base.
+
+```
+git stow vim tmux ranger clang wget curl golang-go
+```
+
+
 ### Install Clang Completion
 
 **These configurations require the installation of clang for clang completion**
