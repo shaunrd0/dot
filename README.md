@@ -11,7 +11,7 @@ Once installed, editing source code in vim supports features displayed in the sc
 Easiest installation is to clone repository into home directory -
 
 ```bash
-sudo apt install vim xsel xclip tmux ranger clang yakuake
+sudo apt install git stow vim xsel xclip tmux ranger clang yakuake wget curl
 git clone --recursive https://github.com/shaunrd0/dot ~/dot
 cd ~/dot/
 stow --adopt .
@@ -27,7 +27,7 @@ stow --adopt -t ~ .
 
 **Warning:** `--adopt` is used to link conflicting files, but doing so could result in the loss of some configs within your local copy of the repository and on your local system.
 After running `stow --adopt .`, be sure to check `git status` is clean.
-If a file has been modified, discard the local changes to be up-to-date with `origin/master` and it will be restored on your system as well, since the files are now linked.
+If a file has been modified, discard the local changes to be up-to-date with `origin/master` and it will be restored on your system as well, since the files are now linked. **Your conflicting local system configurations will be lost** unless you back them up manually.
 
 We could run the following commands to restore changed files
 ```bash

@@ -2,6 +2,9 @@
 " Double-quotes are commented out code and can be removed or added
 
 " General Vim Settings
+let is_docker = filereadable(expand('/.dockerenv'))
+let has_sauce = filereadable(expand('~/.local/share/fonts/sauce-code-pro.otf'))
+let is_xorg = exists("$DISPLAY")
 
 " Highlight the column cursor is on
 " May slow screen redraw time, so off by default
@@ -138,15 +141,13 @@ nnoremap <C-c> :ColorToggle<CR>
 set termencoding=utf-8
 set encoding=utf-8
 
-" air-line
 let g:airline_powerline_fonts = 1
-
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-if (exists("$SAUCE"))
-  " airline symbols
+" Set glyphs based on font availability and environment (xorg / docker)
+if and(and(has_sauce, is_xorg), !is_docker)
   let g:airline_left_sep = ''
   let g:airline_left_alt_sep = ''
   let g:airline_right_sep = ''
@@ -154,20 +155,50 @@ if (exists("$SAUCE"))
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
-else
+elseif is_xorg
   " unicode symbols
   let g:airline_left_sep = '»'
   let g:airline_left_sep = '▶'
   let g:airline_right_sep = '«'
   let g:airline_right_sep = '◀'
-  let g:airline_symbols.linenr = '␊'
-  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.colnr = ' ㏇:'
+  let g:airline_symbols.colnr = ' ℅:'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.linenr = ' ␊:'
+  let g:airline_symbols.linenr = ' ␤:'
   let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.maxlinenr = '㏑'
   let g:airline_symbols.branch = '⎇'
   let g:airline_symbols.paste = 'ρ'
   let g:airline_symbols.paste = 'Þ'
   let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = 'Ɇ'
   let g:airline_symbols.whitespace = 'Ξ'
+else
+  " unicode symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_symbols.colnr = ''
+  let g:airline_symbols.colnr = ''
+  let g:airline_symbols.crypt = ''
+  let g:airline_symbols.linenr = ''
+  let g:airline_symbols.linenr = ''
+  let g:airline_symbols.linenr = ''
+  let g:airline_symbols.linenr = ''
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.paste = ''
+  let g:airline_symbols.paste = ''
+  let g:airline_symbols.paste = ''
+  let g:airline_symbols.spell = ''
+  let g:airline_symbols.notexists = ''
+  let g:airline_symbols.whitespace = ''
 endif
 
 " Clang completeion settings
