@@ -1,5 +1,3 @@
-# Headless
-
 Dotfiles configurations for headless Ubuntu 22.04 linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
 
 Once installed, editing source code in vim supports features displayed in the screenshot below

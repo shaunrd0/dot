@@ -1,22 +1,22 @@
 # For Rust stuff, uncomment this line
 #. "$HOME/.cargo/env"
 
-alias kapp-git='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com"'
+alias ,git='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com"'
 if [ -f /.dockerenv ]; then
   export DOT_PACKAGES='git stow vim tmux ranger clang wget curl'
-  alias kapp-update='apt update -y && apt upgrade -y && apt upgrade --fix-broken --fix-missing --auto-remove'
-  alias kapp-init='apt update -y && apt install $DOT_PACKAGES -y'
-  alias kapp-swap='swapoff -a && swapon -a'
+  alias ,update='apt update -y && apt upgrade -y && apt upgrade --fix-broken --fix-missing --auto-remove'
+  alias ,init='apt update -y && apt install $DOT_PACKAGES -y'
+  alias ,swap='swapoff -a && swapon -a'
 else
   export DOT_PACKAGES='git stow vim xsel xclip tmux ranger clang yakuake wget curl'
-  alias kapp-update='sudo apt update -y && sudo apt upgrade -y && sudo apt upgrade --fix-broken --fix-missing --auto-remove'
-  alias kapp-init='sudo apt update -y && sudo apt install $DOT_PACKAGES'
+  alias ,update='sudo apt update -y && sudo apt upgrade -y && sudo apt upgrade --fix-broken --fix-missing --auto-remove'
+  alias ,init='sudo apt update -y && sudo apt install $DOT_PACKAGES'
   # Clear kscreen cached settings
-  alias kapp-kscreen='rm -rf ~/.local/share/kscreen/*'
+  alias ,kscreen='rm -rf ~/.local/share/kscreen/*'
   # Restart plasmashell
-  alias kapp-plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
-  alias kapp-swap='sudo swapoff -a && sudo swapon -a'
-  alias kapp-vbox="ps aux www |grep 'VBoxClient --draganddrop' | awk '{print $2}' | xargs kill"
+  alias ,plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
+  alias ,swap='sudo swapoff -a && sudo swapon -a'
+  alias ,vbox="ps aux www |grep 'VBoxClient --draganddrop' | awk '{print $2}' | xargs kill"
 fi
 
 # Alias / export customizations
