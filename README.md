@@ -1,39 +1,23 @@
-Dotfiles configurations for headless Ubuntu 22.04 linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
+## Dotfiles
+
+Dotfiles configurations for headless Kubuntu linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
 
 Once installed, editing source code in vim supports features displayed in the screenshot below
 
 ![Vim screenshot](VimScreenshot.png)
 
-### Install Dotfiles
+### Install
 
-Easiest installation is to clone repository into home directory -
+If you don't install `vim-gtk3`, vim will not have access to your system clipboard, and your copy and paste buffers will not stay in sync.
 
-```bash
-sudo apt install git stow vim xsel xclip tmux ranger clang yakuake wget curl
-git clone --recursive https://github.com/shaunrd0/dot ~/dot
-cd ~/dot/
-stow --adopt .
-```
-
-If you'd rather clone elsewhere -
+Installation instructions -
 
 ```bash
-git clone --recursive https://github.com/shaunrd0/dot /path/to/dot
-cd /path/to/dot/
-stow --adopt -t ~ .
-```
-
-**Warning:** `--adopt` is used to link conflicting files, but doing so could result in the loss of some configs within your local copy of the repository and on your local system.
-After running `stow --adopt .`, be sure to check `git status` is clean.
-If a file has been modified, discard the local changes to be up-to-date with `origin/master` and it will be restored on your system as well, since the files are now linked. **Your conflicting local system configurations will be lost** unless you back them up manually.
-
-We could run the following commands to restore changed files
-```bash
-git checkout -- .vimrc
-# Or, to step through each change interactively using git..
-git checkout -p
-# Or restore the current directory
-git restore .
+git clone --recursive https://github.com/shaunrd0/dot
+cd dot/
+./setup.sh
+mv ~/.bashrc ~/.bashrc.backup
+stow . -t ~
 ```
 
 If you forget to clone recursively

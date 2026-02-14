@@ -1,4 +1,5 @@
 .bash_secrets
+.vim/.netrwhist
 .idea/
 .config/Code/Backups/*
 .config/Code/*Cache*/*

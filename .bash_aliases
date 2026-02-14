@@ -1,33 +1,30 @@
-# For Rust stuff, uncomment this line
-#. "$HOME/.cargo/env"
+# Source rust things if they exist
+if [ -f ~/.cargo/env ]; then
+  . ~/.cargo/env
+fi
 
 alias ,git='git config --global user.name "Shaun Reed" && git config --global user.email "shaunrd0@gmail.com"'
+# Some aliases don't make sense in the docker image, like shortcuts to fix plasmashell.
 if [ -f /.dockerenv ]; then
-  export DOT_PACKAGES='git stow vim tmux ranger clang wget curl'
+  export DOT_PACKAGES='git stow vim tmux ranger clang wget curl golang-go'
   alias ,update='apt update -y && apt upgrade -y && apt upgrade --fix-broken --fix-missing --auto-remove'
-  alias ,init='apt update -y && apt install $DOT_PACKAGES -y'
+  alias ,init='apt update -y && apt install -y $DOT_PACKAGES'
   alias ,swap='swapoff -a && swapon -a'
 else
-  export DOT_PACKAGES='git stow vim xsel xclip tmux ranger clang yakuake wget curl'
+  export DOT_PACKAGES='git stow vim vim-gtk3 xsel xclip tmux ranger clang yakuake wget curl golang-go'
   alias ,update='sudo apt update -y && sudo apt upgrade -y && sudo apt upgrade --fix-broken --fix-missing --auto-remove'
-  alias ,init='sudo apt update -y && sudo apt install $DOT_PACKAGES'
+  alias ,init='sudo apt update -y && sudo apt install -y $DOT_PACKAGES'
   # Clear kscreen cached settings
   alias ,kscreen='rm -rf ~/.local/share/kscreen/*'
   # Restart plasmashell
-  alias ,plasmashell='sudo pkill plasmashell && plasmashell --replace &> /dev/null &'
+  alias ,plasmashell='plasmashell --replace &> /dev/null &'
   alias ,swap='sudo swapoff -a && sudo swapon -a'
   alias ,vbox="ps aux www |grep 'VBoxClient --draganddrop' | awk '{print $2}' | xargs kill"
+  alias ,assistant="nohup $HOME/Qt/6.9.0/gcc_64/bin/assistant > /dev/null 2>&1 &"
 fi
-
-# Alias / export customizations
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -47,7 +44,9 @@ if [ -e ~/.bash_secrets ]; then
 fi
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+  if ! pstree -s $$ | grep -wq code; then
+    exec tmux >/dev/null 2>&1
+  fi
 fi
 
 # Set the default terminal to use konsole, with kapper profile
@@ -102,4 +101,13 @@ if ! [ command -v conda &>/dev/null ] && [ -e ~/Code/Clones/mambaforge/bin/conda
   echo "[dot] WARN: Ran \`conda init\`; Conda was installed but not initialized"
   source ~/.bashrc
 fi
+
+# For shared systems where history is not desired.
+# ln -sf /dev/null ~/.bash_history
+# HISTFILE=/dev/null
+
+# Avoid duplicates in bash history.
+HISTCONTROL=ignoredups:erasedups
+# When the shell exits, append to the history file instead of overwriting it.
+shopt -s histappend
 

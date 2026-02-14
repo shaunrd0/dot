@@ -1,7 +1,12 @@
 " Single-quote is a comment written to be read
 " Double-quotes are commented out code and can be removed or added
 
+"
 " General Vim Settings
+
+" Fix plugin compatibility issues
+set nocp
+
 let is_docker = filereadable(expand('/.dockerenv'))
 let has_sauce = filereadable(expand('~/.local/share/fonts/sauce-code-pro.otf'))
 let is_xorg = exists("$DISPLAY")
@@ -13,9 +18,14 @@ let is_xorg = exists("$DISPLAY")
 " Keep the bottom / top of the page n lines from the cursor
 set scrolloff=5
 
+" set paths for swap, backup, and undo files
+" :help directory
+set directory=~/.vim/swap//,~/tmp/,/var/tmp/,/tmp/,.
+" :help backupdir
+set backupdir=~/.vim/backup//,~/tmp/,/var/tmp/,/tmp/,.
 " Persistant undo
 " :help undo-persistence
-set undodir=~/.vim/undodir
+set undodir=~/.vim/undodir//,~/tmp/,/var/tmp/,/tmp/,.
 set undofile
 
 " Combine vim clipboard with global clipboard buffer
@@ -26,29 +36,7 @@ set clipboard+=unnamedplus
 
 " Allows true colors in vim (> 8 bit colors)
 " :help termguicolors
-"set termguicolors
-
-" Custom formatting based on filetype
-" :help autocmd
-"" autocmd FileType yaml set tabstop=2 shiftwidth=2
-
-" Highlight characters past column N in source files based on file type
-autocmd FileType cpp,c match ErrorMsg '\%>80v.\+'
-autocmd FileType cs match ErrorMsg '\%>120v.\+'
-
-" Define function in vim to remove whitespace
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
-"Call this on every attempt to save a file of types defined below..
-autocmd BufWritePre *.cpp,*.h,*.c,*.php,*.cs,*.yml,*.txt,*.md :call TrimWhitespace()
-""autocmd BufWritePre *.cpp,*.h,*.c,*.php :%s/\s\+$//ge
-
-" Set terminal title when opening file
-"" autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
-"" set title
+""set termguicolors
 
 " Set tabwidth=2, adjust Vim shiftwidth to the same
 set tabstop=2 shiftwidth=2
@@ -64,23 +52,15 @@ set mouse=a
 
 set number
 
-" Use Powerline symbols
-""let g:airline_powerline_fonts = 1
-
 " Enable Syntax Highlighting in Vim
 syntax on
 " Use Sourcerer color scheme by Xero
 colorscheme sourcerer
 
-" Fix plugin compatibility issues
-set nocp
 " Allow backspace to remove all types of characters
 set backspace=indent,eol,start
 
-" Set terminal title when opening file
-"" autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
-"" set title
-
+"
 " Custom Vim Keybindings
 
 " nnoremap <C-e> <C-w> " Modify and remove leading quotation
@@ -95,6 +75,34 @@ nnoremap <C-e> <C-w>
 "nnoremap <C-b> :!cmake -S . -B ./build/ && cmake --build ./build
 "nnoremap <C-d> :!./build/scrap
 
+" Define function in vim to remove whitespace
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  " Restore window view to retain cursor position
+  call winrestview(l:save)
+endfun
+
+" :help autocmd
+augroup DotAutoCmd
+  autocmd!
+  " Set custom options based on filetype
+  autocmd FileType yaml set tabstop=2 shiftwidth=2
+
+  " Highlight characters past column N in source files based on file type
+  autocmd FileType cpp,c,cc,rust match ErrorMsg '\%>80v.\+'
+  autocmd FileType cs match ErrorMsg '\%>120v.\+'
+
+  "Call this on every attempt to save a file of types defined below..
+  autocmd BufWritePre * call TrimWhitespace()
+
+  " Set terminal title when opening file
+  "" autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+  "" set title
+augroup END
+
+
+"
 " Vim Plugin Settings
 
 " set rtp+=/path/to/rtp/that/included/pathogen/vim " if needed
@@ -133,7 +141,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "let g:colorizer_colornames = 0 " Don't color literal names, like red, green, etc
 let g:colorizer_auto_color = 0
 ""let g:colorizer_skip_comments = 1
-""let g:colorizer_auto_filetype ='css,html,vim'
+let g:colorizer_auto_filetype ='css,html,qml'
 nnoremap <C-c> :ColorToggle<CR>
 
 " Symbols important to vim / terminal layouts
@@ -178,7 +186,7 @@ elseif is_xorg
   let g:airline_symbols.notexists = 'Ɇ'
   let g:airline_symbols.whitespace = 'Ξ'
 else
-  " unicode symbols
+  " no symbols
   let g:airline_left_sep = ''
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
@@ -201,6 +209,7 @@ else
   let g:airline_symbols.whitespace = ''
 endif
 
+"
 " Clang completeion settings
 
 " If this is set, clang_complete will not be loaded at all
