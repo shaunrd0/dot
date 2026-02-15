@@ -13,6 +13,7 @@
 .config/Code/rapid_render.json
 .config/Code/Network*
 **/.config/.brightness
+.local/share/fonts/.uuid
 
 # Byte-compiled / optimized / DLL files
 *__pycache__/

@@ -1,3 +1,8 @@
+# Source ble.sh if installed.
+if [ -f ~/.local/share/blesh/ble.sh ]; then
+  source -- ~/.local/share/blesh/ble.sh
+fi
+
 # Source rust things if they exist
 if [ -f ~/.cargo/env ]; then
   . ~/.cargo/env
@@ -11,7 +16,7 @@ if [ -f /.dockerenv ]; then
   alias ,init='apt update -y && apt install -y $DOT_PACKAGES'
   alias ,swap='swapoff -a && swapon -a'
 else
-  export DOT_PACKAGES='git stow vim vim-gtk3 xsel xclip tmux ranger clang yakuake wget curl golang-go'
+  export DOT_PACKAGES='git stow vim vim-gtk3 xsel xclip tmux ranger clang yakuake wget curl golang-go gawk'
   alias ,update='sudo apt update -y && sudo apt upgrade -y && sudo apt upgrade --fix-broken --fix-missing --auto-remove'
   alias ,init='sudo apt update -y && sudo apt install -y $DOT_PACKAGES'
   # Clear kscreen cached settings
