@@ -1,16 +1,20 @@
 ## Dotfiles
 
-Dotfiles configurations for headless Kubuntu linux environments. Be sure to clone recursively if you want to grab updated plugins / submodules included. For example, using Pathogen with Vim to manage plugins requires that the plugin to be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively allows git to clone these same nested repositories/submodules within this directory so Pathogen can handle running the Vim plugins.
+Dotfiles configurations for headless Kubuntu linux environments. Be sure to
+clone recursively if you want to grab updated plugins / submodules included. For
+example, using Pathogen with Vim to manage plugins requires that the plugin to
+be installed are cloned to the `~/.vim/bundle/` directory. Cloning recursively
+allows git to clone these same nested repositories/submodules within this
+directory so Pathogen can handle running the Vim plugins.
 
-Once installed, editing source code in vim supports features displayed in the screenshot below
+Once installed, editing source code in vim supports features displayed in the
+screenshot below
 
 ![Vim screenshot](VimScreenshot.png)
 
 ### Install
 
-If you don't install `vim-gtk3`, vim will not have access to your system clipboard, and your copy and paste buffers will not stay in sync.
-
-Installation instructions -
+Installation instructions
 
 ```bash
 git clone --recursive https://github.com/shaunrd0/dot
@@ -20,19 +24,18 @@ mv ~/.bashrc ~/.bashrc.backup
 stow . -t ~
 ```
 
-If you forget to clone recursively
+To uninstall
+
 ```bash
-git submodule update --init
-Submodule path '.vim/bundle/Colorizer': checked out '53ada285f0acc171acda4280b6144e468dded89f'
-Submodule path '.vim/bundle/ale': checked out '7265ceb6d050d1a4642741d248f11e4f2abd37e1'
-Submodule path '.vim/bundle/clang_complete': checked out '0b98d7533ad967aac3fc4c1a5b0508dafa8a676f'
-Submodule path '.vim/bundle/supertab': checked out '40fe711e088e2ab346738233dd5adbb1be355172'
-Submodule path '.vim/bundle/unicode.vim': checked out '29f43f7b1be94dccfac461f4da0a34410408111f'
-Submodule path '.vim/bundle/vim-airline': checked out '6d665580a3435f21ad560af192d854d4b608fff5'
-Submodule path '.vim/bundle/vim-airline-themes': checked out '0d5c5c1e2995126e76606a628316c8e3f5efb37a'
-Submodule path '.vim/bundle/vim-signify': checked out '16eee41d2b267523b84bd4ac111627588bfd1a47'
+stow -D . -t ~
+mv ~/.bashrc.backup ~/.bashrc
 ```
 
+If you have files other than `~/.bashrc` that conflict with these
+configurations,
+be sure to back them up so you can restore to your original state. If you do not
+provide the `-t` flag to stow, the files will be symlinked within the parent
+of your current directory.
 
 ### Docker
 
@@ -45,33 +48,42 @@ docker build -t dot .
 docker run -it dot bash
 ```
 
-This container has the following packages installed and uses `ubuntu:latest` as a base.
+Note that some features may not work properly in the container, like system
+clipboard integration with vim or certain font icons used in themes. Still, the
+base configurations work, and using the container as a clean environment is
+useful for testing things such as installation instructions for a personal
+project.
 
-```
-git stow vim tmux ranger clang wget curl golang-go
-```
+### Configurations
 
+#### Utilities
 
-### Install Clang Completion
+| Tool                 | Description                                                                                                        | Repository                                                                                               |
+|----------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| ranger               | Console-based file manager with Vim-like keybindings, previews, and customizable commands.                         | [https://github.com/ranger/ranger](https://github.com/ranger/ranger)                                     |
+| ble.sh               | Advanced Bash line editor providing syntax highlighting, autosuggestions, and improved interactive shell behavior. | [https://github.com/akinomyoga/ble.sh](https://github.com/akinomyoga/ble.sh)                             |
+| GNU Stow             | Manages dotfiles using symlinks. Repository structure is organized for per-package Stow deployment.                | [https://www.gnu.org/software/stow/](https://www.gnu.org/software/stow/)                                 |
+| `.stow-local-ignore` | Stow configuration file that excludes specific files or patterns from being symlinked during deployment.           | [https://www.gnu.org/software/stow/manual/stow.html](https://www.gnu.org/software/stow/manual/stow.html) |
+| `setup.sh`           | Bootstrap script that automates symlink setup and environment initialization.                                      | (Repository-local script)                                                                                |
 
-**These configurations require the installation of clang for clang completion**
+#### Tmux
 
-If you don't want clang completion, just remove the plugin directory from `~/.vim/bundle/`.
+| Plugin              | Description                                                              | Repository                                                                                       |
+|---------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| tmux plugin manager | Manages tmux plugins directly from GitHub.                               | [https://github.com/tmux-plugins/tpm](https://github.com/tmux-plugins/tpm)                       |
+| tmux-resurrect      | Saves and restores tmux sessions, panes, and layouts between restarts.   | [https://github.com/tmux-plugins/tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) |
+| tmux-continuum      | Automatically saves tmux sessions and can restore them on system reboot. | [https://github.com/tmux-plugins/tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) |
+| xclip               | Integrates tmux copy mode with the system clipboard under X11.           | [https://github.com/astrand/xclip](https://github.com/astrand/xclip)                             |
 
-If you don't remove clang completion and skip the following steps, vim will show errors when opening source code files. This is because these configurations use clang completion for source code auto completion and drop-down menus within vim.
+#### Vim
 
-```bash
-sudo apt install clang
-source ~/.bashrc
-```
-
-
-### Gitmux
-
-To enable the gitmux status bar in tmux sessions
-
-```bash
-sudo apt install golang-go
-go install github.com/arl/gitmux@latest
-```
-
+| Plugin             | Description                                                        | Repository                                                                                             |
+|--------------------|--------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| Colorizer          | Highlights color codes in Vim buffers (useful for CSS/ web).       | [https://github.com/chrisbra/Colorizer](https://github.com/chrisbra/Colorizer)                         |
+| ALE                | Asynchronous Lint Engine - linting & fixing in Vim asynchronously. | [https://github.com/dense-analysis/ale](https://github.com/dense-analysis/ale)                         |
+| clang_complete     | Auto-completion support for C/C++ using libclang.                  | [https://github.com/xavierd/clang_complete](https://github.com/xavierd/clang_complete)                 |
+| supertab           | Expand completions using `<Tab>` in insert mode.                   | [https://github.com/ervandew/supertab](https://github.com/ervandew/supertab)                           |
+| unicode.vim        | Unicode helpers (insert and inspect Unicode characters).           | [https://github.com/chrisbra/unicode.vim](https://github.com/chrisbra/unicode.vim)                     |
+| vim-airline        | Lean and fast status/tabline for Vim.                              | [https://github.com/vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)               |
+| vim-airline-themes | Additional themes for vim-airline.                                 | [https://github.com/vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) |
+| vim-signify        | Shows VCS (git/hg) changes in the sign column.                     | [https://github.com/mhinz/vim-signify](https://github.com/mhinz/vim-signify)                           |

@@ -1,2 +1,4 @@
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+# This will automatically trigger reverse search when using up / down in bash
+# However it doesn't feel natural with ble.sh, so it's commented out for now.
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward

@@ -100,9 +100,18 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# Source all files in ~/.bash.d, if it exists.
+# This can contain .bash_aliases, or other configs to append to your shell.
+if [ -d ~/.bash.d ]; then
+  for f in ~/.bash.d/.*; do
+    if [ -f $f ]; then
+      . $f
+    fi
+  done
 fi
 
 # enable programmable completion features (you don't need to enable

@@ -1,0 +1,15 @@
+# Source ble.sh if installed.
+if [ -f ~/.local/share/blesh/ble.sh ]; then
+  source -- ~/.local/share/blesh/ble.sh
+fi
+
+# Source rust things if they exist
+if [ -f ~/.cargo/env ]; then
+  . ~/.cargo/env
+fi
+
+# Source a top-secret alias file
+if [ -f ~/.bash.d/.bash_secrets ]; then
+  . ~/.bash.d/.bash_secrets
+fi
+

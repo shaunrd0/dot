@@ -1,4 +1,4 @@
-.bash_secrets
+**/.bash_secrets
 .vim/.netrwhist
 .idea/
 .config/Code/Backups/*
@@ -14,6 +14,8 @@
 .config/Code/Network*
 **/.config/.brightness
 .local/share/fonts/.uuid
+.local/share/blesh
+.local/share/doc
 
 # Byte-compiled / optimized / DLL files
 *__pycache__/
